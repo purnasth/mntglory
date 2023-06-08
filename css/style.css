@@ -910,7 +910,7 @@ input:focus {
 main {
   background-color: var(--white-bg);
   z-index: 1;
-  margin-bottom: 50%;
+  margin-bottom: 30%;
 }
 
 @media screen and (max-width: 500px) {
@@ -1887,12 +1887,13 @@ animation: ripple-animation 1.5s;
 #facts {
   background: linear-gradient(
       to bottom,
-      rgba(0, 0, 0, 0.85),
-      rgba(0, 0, 0, 0.65)
+      rgba(0, 0, 0, 0.75),
+      rgba(0, 0, 0, 0.5)
     ),
-    url("https://scontent-ams4-1.xx.fbcdn.net/v/t1.6435-9/68441935_2376306989104162_4764922308290674688_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=csg9FNlvv7kAX-Wh0qF&_nc_ht=scontent-ams4-1.xx&oh=00_AfDkU6L5yOVxTYR6_ibtiLf7YAAN_nMGGITGlyNkogho5w&oe=64603EA9");
+    url("https://scontent.fktm10-1.fna.fbcdn.net/v/t39.30808-6/340271665_1476805263149836_1589689598082593528_n.jpg?stp=cp6_dst-jpg&_nc_cat=108&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=h7AQAJb4HtgAX80eH4n&_nc_ht=scontent.fktm10-1.fna&oh=00_AfCv6NgAJ35bIwbtBethvuqt_rIWH6EufCsnDe3Vsw2B2g&oe=6487863E");
   background-position: center center;
   background-attachment: fixed;
+  background-size: cover;
   position: relative;
   /* clip-path: polygon(0 0, 100% 0, 100% 100%, 0 85%); */
 
@@ -1940,7 +1941,7 @@ animation: ripple-animation 1.5s;
       rgba(0, 0, 0, 0.85),
       rgba(0, 0, 0, 0.65)
     ),
-    url("https://scontent-ams4-1.xx.fbcdn.net/v/t1.6435-9/68441935_2376306989104162_4764922308290674688_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=csg9FNlvv7kAX-Wh0qF&_nc_ht=scontent-ams4-1.xx&oh=00_AfDkU6L5yOVxTYR6_ibtiLf7YAAN_nMGGITGlyNkogho5w&oe=64603EA9");
+    url("https://scontent.fktm10-1.fna.fbcdn.net/v/t39.30808-6/339150673_254605356997664_6373799302284412923_n.jpg?stp=cp6_dst-jpg&_nc_cat=102&ccb=1-7&_nc_sid=8bfeb9&_nc_ohc=IB18nMM4gp0AX-zxski&_nc_ht=scontent.fktm10-1.fna&oh=00_AfBzouqf84kEPry1QR9sqYf04eW4QV4ZYyR4inI-w5TgJg&oe=6487D07D");
   background-position: center center;
   background-attachment: fixed;
   padding: 10px 0px 80px 0px;
@@ -2094,7 +2095,7 @@ animation: ripple-animation 1.5s;
 /*--------------------------------------------------------------
 # Partners
 --------------------------------------------------------------*/
-#partner {
+/* #partner {
   background: linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0.85),
@@ -2137,7 +2138,7 @@ animation: ripple-animation 1.5s;
   100% {
     opacity: 1;
   }
-}
+} */
 
 /*--------------------------------------------------------------
 # FOOTER
@@ -2800,7 +2801,8 @@ main {
   flex-shrink: 0;
   height: 300px;
   background-image: linear-gradient(147deg, #fe8a39 0%, var(--clr) 74%);
-  box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2);
+  /* box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2); */
+  box-shadow: 4px 13px 30px 1px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   transform: translateX(-80px);
   overflow: hidden;
@@ -2817,7 +2819,7 @@ main {
   right: 0;
   position: absolute;
 } */
-.blog-slider__img:after {
+/* .blog-slider__img:after {
   content: "";
   position: absolute;
   top: 0;
@@ -2827,7 +2829,7 @@ main {
   background-image: linear-gradient(147deg, #fe8a39 0%, var(--clr) 74%);
   border-radius: 20px;
   opacity: 0.8;
-}
+} */
 .blog-slider__img img {
   width: 100%;
   height: 100%;
