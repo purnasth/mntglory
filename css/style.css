@@ -910,7 +910,7 @@ input:focus {
 main {
   background-color: var(--white-bg);
   z-index: 1;
-  margin-bottom: 30%;
+  margin-bottom: 50%;
 }
 
 @media screen and (max-width: 500px) {
