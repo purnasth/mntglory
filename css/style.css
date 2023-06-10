@@ -2835,7 +2835,8 @@ main {
   height: 100%;
   object-fit: cover;
   display: block;
-  opacity: 0;
+  opacity: 0; 
+  /* //!here */
   border-radius: 20px;
   transition: all 0.3s;
 }

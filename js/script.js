@@ -344,4 +344,4 @@ $(document).ready(function () {
 // }
 
 
-console.log("wtf");
+console.log("I hate bugs!!!");

@@ -1,6 +1,6 @@
-// FROM INDEX.HTML
-
-// For About Us Slider
+/*--------------------------------------------------------------
+#  For About Us Slider
+--------------------------------------------------------------*/
 var swiper = new Swiper(".blog-slider", {
   spaceBetween: 30,
   effect: "fade",
@@ -14,7 +14,9 @@ var swiper = new Swiper(".blog-slider", {
     clickable: true,
   },
 });
-
+/*--------------------------------------------------------------
+#  For Fun fact Section
+--------------------------------------------------------------*/
 jQuery(".funfact-number").each(function () {
   var $this = jQuery(this);
   var parts = $this.text().match(/^(\d+)(.*)/);
@@ -35,8 +37,9 @@ jQuery(".funfact-number").each(function () {
   };
   runUp();
 });
-
-// For Smooth scroll behavior.
+/*--------------------------------------------------------------
+#   For Smooth scroll behavior.
+--------------------------------------------------------------*/
 $(document).ready(function () {
   $("a").on("click", function (event) {
     if (this.hash !== "") {
@@ -56,8 +59,9 @@ $(document).ready(function () {
     }
   });
 });
-
-// For FAQ Section
+/*--------------------------------------------------------------
+#For FAQ Section
+--------------------------------------------------------------*/
 const items = document.querySelectorAll(".accordion button");
 
 function toggleAccordion() {
@@ -74,7 +78,9 @@ function toggleAccordion() {
 
 items.forEach((item) => item.addEventListener("click", toggleAccordion));
 
-//? Parallax
+/*--------------------------------------------------------------
+#  PARALLAX
+--------------------------------------------------------------*/
 if (window.innerWidth > 768) {
   let header = document.querySelector("header");
   let search = document.querySelector(".form-search");
@@ -124,91 +130,9 @@ if (window.innerWidth > 768) {
     search.style.transition = "transform 1s ease-out, opacity 0.25s ease-out";
   });
 }
-
-setTimeout(function () {
-  document.getElementById("preloader").style.display = "none";
-}, 2000);
-
-// Scroll Reveal Effect
-const sr = ScrollReveal({
-  distance: "80px",
-  duration: 2600,
-  delay: 450,
-  reset: true,
-});
-if (window.innerWidth > 768) {
-  sr.reveal(".site-navbar-top", { delay: 2300, origin: "top" });
-  sr.reveal(".site-navbar", { delay: 2100, origin: "top", reset: false });
-  sr.reveal("header", { delay: 2700, origin: "top", reset: false });
-  sr.reveal(".form-search", {
-    delay: 2700,
-    origin: "left",
-    reset: false,
-  });
-}
-
-sr.reveal(".site-navbar-top", { delay: 2300, origin: "top" });
-sr.reveal(".site-navbar", { delay: 2100, origin: "top", reset: false });
-sr.reveal("header", { delay: 2700, origin: "top", reset: false });
-sr.reveal(".form-search", { delay: 2700, origin: "left", reset: false });
-// sr.reveal(".scroll", { delay: 2800, origin: "bottom", distance: "40px" });
-// sr.reveal(".scroll span", {
-//   delay: 2800,
-//   origin: "bottom",
-//   distance: "40px",
-// });
-// sr.reveal(".video-play-button", {
-//   delay: 800,
-//   origin: "bottom",
-//   distance: "40px",
-// });
-
-sr.reveal(".section-title", {
-  delay: 200,
-  origin: "right",
-  duration: 1600,
-});
-
-sr.reveal(".blog-slider__img", {
-  delay: 100,
-  origin: "left",
-  // beforeReveal: function (el) {
-  //   el.style.transform = "rotate(-45deg)";
-  // },
-  // afterReveal: function (el) {
-  //   el.style.transform = "rotate(0deg)";
-  // },
-});
-sr.reveal(".blog-slider__pagination", { delay: 100, origin: "top" });
-
-sr.reveal(".image-flip", { delay: 300, origin: "left" });
-
-sr.reveal(".book", { delay: 300, origin: "left" });
-
-sr.reveal("#class-section p", {
-  delay: 400,
-  origin: "bottom",
-});
-
-sr.reveal(".at-funfact-wrap", { delay: 300, origin: "top" });
-
-sr.reveal(".portfolio-wrap img", { delay: 300, origin: "left" });
-
-sr.reveal(".logos", { delay: 100, origin: "top" });
-
-// sr.reveal("p", { delay: 300, origin: "left" });
-const paragraphs = document.querySelectorAll(
-  "p:not(#faq p, #footer-section p)"
-);
-
-sr.reveal(paragraphs, { delay: 300, origin: "left" });
-
-sr.reveal("#footer-section", { delay: 100, origin: "top" });
-
-// sr.reveal(".owl-carousel", { delay: 300, origin: "top" });
-
-// sr.reveal(".input-container", { delay: 300, origin: "top" });
-
+/*--------------------------------------------------------------
+#  Up arrow button click
+--------------------------------------------------------------*/
 window.addEventListener("DOMContentLoaded", function () {
   let arrowUpIcon = document.querySelector(".arrow-up");
 
@@ -219,46 +143,9 @@ window.addEventListener("DOMContentLoaded", function () {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 });
-
-// For active class
-let menuItems = document.querySelectorAll(".site-menu li");
-let section = document.querySelectorAll("section");
-
-menuItems.forEach(function (item) {
-  item.addEventListener("click", function () {
-    menuItems.forEach(function (item) {
-      item.classList.remove("active");
-    });
-    this.classList.add("active");
-  });
-});
-
-// function activeMenu() {
-//   let scrollPosition = document.documentElement.scrollTop;
-
-//   section.forEach(function (current) {
-//     if (
-//       current.offsetTop <= scrollPosition &&
-//       current.offsetTop + current.offsetHeight > scrollPosition
-//     ) {
-//       menuItems.forEach(function (item) {
-//         item.classList.remove("active");
-//       });
-
-//       document
-//         .querySelector('a[href="#' + current.getAttribute("id") + '"]')
-//         .classList.add("active");
-//     }
-//   });
-// }
-
-// function activeMenu() {
-//   let len = sec.length;
-//   while (--len && window.scrollY + 97 < sec[len].offsetTop) {}
-//   menuItems.forEach(ltx.classList.remove("active"));
-//   menuItems[len].classList.add("active");
-// }
-
+/*--------------------------------------------------------------
+#  HEART BUTTON ANIMATION
+--------------------------------------------------------------*/
 // Heart Animation on Click
 let anchors = document.querySelectorAll("button.heart");
 
@@ -370,7 +257,9 @@ function r(a, b, c) {
     )
   );
 }
-
+/*--------------------------------------------------------------
+#  RIPPLE EFFECT
+--------------------------------------------------------------*/
 (function (window, $) {
   $(function () {
     $(".ripple").on("click", function (event) {
@@ -400,3 +289,124 @@ function r(a, b, c) {
     });
   });
 })(window, jQuery);
+
+/*--------------------------------------------------------------
+#   For active class
+--------------------------------------------------------------*/
+let menuItems = document.querySelectorAll(".site-menu li");
+let section = document.querySelectorAll("section");
+
+menuItems.forEach(function (item) {
+  item.addEventListener("click", function () {
+    menuItems.forEach(function (item) {
+      item.classList.remove("active");
+    });
+    this.classList.add("active");
+  });
+});
+/*--------------------------------------------------------------
+#   Scroll Reveal Effect
+--------------------------------------------------------------*/
+const sr = ScrollReveal({
+  distance: "80px",
+  duration: 2600,
+  delay: 450,
+  reset: true,
+});
+if (window.innerWidth > 768) {
+  sr.reveal(".site-navbar-top", { delay: 2300, origin: "top" });
+  sr.reveal(".site-navbar", { delay: 2100, origin: "top", reset: false });
+  sr.reveal("header", { delay: 2700, origin: "top", reset: false });
+  sr.reveal(".form-search", {
+    delay: 2700,
+    origin: "left",
+    reset: false,
+  });
+}
+
+sr.reveal(".site-navbar-top", { delay: 2300, origin: "top" });
+sr.reveal(".site-navbar", { delay: 2100, origin: "top", reset: false });
+sr.reveal("header", { delay: 2700, origin: "top", reset: false });
+sr.reveal(".form-search", { delay: 2700, origin: "left", reset: false });
+// sr.reveal(".scroll", { delay: 2800, origin: "bottom", distance: "40px" });
+// sr.reveal(".scroll span", {
+//   delay: 2800,
+//   origin: "bottom",
+//   distance: "40px",
+// });
+// sr.reveal(".video-play-button", {
+//   delay: 800,
+//   origin: "bottom",
+//   distance: "40px",
+// });
+
+sr.reveal(".section-title", {
+  delay: 200,
+  origin: "right",
+  duration: 1600,
+});
+
+sr.reveal(".blog-slider__item", {
+  delay: 100,
+  origin: "left",
+});
+sr.reveal(".blog-slider__pagination", { delay: 100, origin: "top" });
+
+// sr.reveal(".frontside .card", { delay: 300, origin: "left" });
+// sr.reveal(".backside .card", { delay: 300, origin: "right" });
+
+sr.reveal(".book", { delay: 300, origin: "left" });
+
+sr.reveal("#class-section p", {
+  delay: 400,
+  origin: "bottom",
+});
+
+sr.reveal(".at-funfact-wrap", { delay: 300, origin: "top" });
+
+sr.reveal(".portfolio-wrap img", { delay: 100, origin: "left" });
+
+sr.reveal("#testimonials", { delay: 100, origin: "bottom", duration: "1000" });
+sr.reveal("#faq", { delay: 100, origin: "left" });
+sr.reveal("#contact-section", { delay: 100, origin: "right" });
+
+// sr.reveal("#footer-section", { delay: 100, origin: "top" });
+
+const paragraphs = document.querySelectorAll(
+  "p:not(#faq p, #footer-section p)"
+);
+sr.reveal(paragraphs, { delay: 300, origin: "left" });
+
+// sr.reveal(".input-container", { delay: 300, origin: "top" });
+
+// function activeMenu() {
+//   let scrollPosition = document.documentElement.scrollTop;
+
+//   section.forEach(function (current) {
+//     if (
+//       current.offsetTop <= scrollPosition &&
+//       current.offsetTop + current.offsetHeight > scrollPosition
+//     ) {
+//       menuItems.forEach(function (item) {
+//         item.classList.remove("active");
+//       });
+
+//       document
+//         .querySelector('a[href="#' + current.getAttribute("id") + '"]')
+//         .classList.add("active");
+//     }
+//   });
+// }
+
+// function activeMenu() {
+//   let len = sec.length;
+//   while (--len && window.scrollY + 97 < sec[len].offsetTop) {}
+//   menuItems.forEach(ltx.classList.remove("active"));
+//   menuItems[len].classList.add("active");
+// }
+/*--------------------------------------------------------------
+#   PRELOADER
+--------------------------------------------------------------*/
+setTimeout(function () {
+  document.getElementById("preloader").style.display = "none";
+}, 2000);
