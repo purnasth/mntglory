@@ -369,6 +369,7 @@ sr.reveal(".portfolio-wrap img", { delay: 100, origin: "left" });
 sr.reveal("#testimonials", { delay: 100, origin: "bottom", duration: "1000" });
 sr.reveal("#faq", { delay: 100, origin: "left" });
 sr.reveal("#contact-section", { delay: 100, origin: "right" });
+// sr.reveal(".lower-footer", { delay: 100, origin: "top" });
 
 // sr.reveal("#footer-section", { delay: 100, origin: "top" });
 
