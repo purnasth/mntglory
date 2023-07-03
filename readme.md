@@ -7,7 +7,7 @@
 
 ## Usage
 
-[Click here](https://mntglory.saksham.edu.np)
+[mntglory.saksham.edu.np](https://mntglory.saksham.edu.np)
 
 ## Copyright
 
@@ -18,6 +18,6 @@ Saksham Education Foundation 2023
 ## Usage
 
 ```
-Designed and Developed with ❤️ by
+Designed and Developed with ❤️ by Purna Shrestha.
 ```
 [Purna Shrestha](https://purnashrestha.com.np/)
