@@ -361,6 +361,7 @@ sr.reveal("#class-section p", {
   delay: 400,
   origin: "bottom",
 });
+sr.reveal(".class-motto", { delay: 700, origin: "bottom" });
 
 sr.reveal(".at-funfact-wrap", { delay: 300, origin: "top" });
 
