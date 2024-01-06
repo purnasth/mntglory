@@ -68,6 +68,7 @@ body {
   background-color: var(--white-bg);
   max-width: 100%;
   overflow-x: hidden;
+  scroll-padding-top: 1.5rem;
 }
 /* body:before {
   content: "";

@@ -314,7 +314,7 @@ const sr = ScrollReveal({
   reset: true,
 });
 if (window.innerWidth > 768) {
-  sr.reveal(".site-navbar-top", { delay: 2300, origin: "top" });
+  sr.reveal(".site-navbar-top", { delay: 2100, origin: "top", reset: false });
   sr.reveal(".site-navbar", { delay: 2100, origin: "top", reset: false });
   sr.reveal("header", { delay: 2700, origin: "top", reset: false });
   sr.reveal(".form-search", {
@@ -324,7 +324,7 @@ if (window.innerWidth > 768) {
   });
 }
 
-sr.reveal(".site-navbar-top", { delay: 2300, origin: "top" });
+sr.reveal(".site-navbar-top", { delay: 2100, origin: "top", reset: false });
 sr.reveal(".site-navbar", { delay: 2100, origin: "top", reset: false });
 sr.reveal("header", { delay: 2700, origin: "top", reset: false });
 sr.reveal(".form-search", { delay: 2700, origin: "left", reset: false });
@@ -365,7 +365,7 @@ sr.reveal(".class-motto", { delay: 700, origin: "bottom" });
 
 sr.reveal(".at-funfact-wrap", { delay: 300, origin: "top" });
 
-sr.reveal(".portfolio-wrap img", { delay: 100, origin: "left" });
+// sr.reveal(".portfolio-wrap img", { delay: 100, origin: "left" });
 
 sr.reveal("#testimonials", { delay: 100, origin: "bottom", duration: "1000" });
 sr.reveal("#faq", { delay: 100, origin: "left" });
@@ -377,7 +377,7 @@ sr.reveal("#contact-section", { delay: 100, origin: "right" });
 const paragraphs = document.querySelectorAll(
   "p:not(#faq p, #footer-section p)"
 );
-sr.reveal(paragraphs, { delay: 300, origin: "left" });
+// sr.reveal(paragraphs, { delay: 300, origin: "left" });
 
 // sr.reveal(".input-container", { delay: 300, origin: "top" });
 
