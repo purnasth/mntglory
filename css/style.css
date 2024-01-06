@@ -1,9 +1,9 @@
 @import url("https://fonts.cdnfonts.com/css/classical-romance");
 :root {
-  --clr: #ff0000;
+  --clr: #1944f1;
   /* --clr: linear-gradient(315deg, #3f0d12 0%, #a71d31 74%); */
   --white: #ffffff;
-  --white-bg: #eee;
+  --white-bg: #e4f2f7;
   --black: #000000;
   --black-bg: #1d1d1f;
   /* --ui-white: #f5f5f7; */
@@ -14,6 +14,7 @@
     rgba(9, 9, 121, 1) 35%,
     rgba(0, 212, 255, 1) 100%
   );
+  --gradient: linear-gradient(to left, #010511, #0d2a91);
 }
 
 ::-webkit-scrollbar {
@@ -1548,7 +1549,7 @@ header > span:nth-child(1):hover,
   color: var(--white);
   font-size: 1.1rem;
   font-weight: 600;
-  background-color: var(--clr);
+  background: var(--gradient);
   padding: 0.3rem 0.4rem;
   border-radius: 5px;
   cursor: pointer;
@@ -1616,7 +1617,7 @@ header > span:nth-child(1):hover,
   height: 11px;
   width: 30px;
   opacity: 1;
-  background: var(--clr);
+  background: var(--gradient);
 }
 
 .testimonial {
@@ -1653,7 +1654,7 @@ header > span:nth-child(1):hover,
 
 /* Team section */
 #team {
-  background: #eee !important;
+  background: var(--white-bg);
 }
 
 .btn-primary:hover,
@@ -1892,8 +1893,7 @@ header > span:nth-child(1):hover,
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.5rem;
-  background: var(--clr);
-  background: var(--gradient-title);
+  background: var(--gradient);
   color: var(--white);
   border-radius: 50%;
   display: inline-flex;
@@ -2271,7 +2271,6 @@ header > span:nth-child(1):hover,
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #eee;
 }
 .footer-title {
   margin: 0 auto;
@@ -2317,24 +2316,17 @@ header > span:nth-child(1):hover,
   padding: 0.5em 1em;
   border: none;
   border-radius: 0 6px 6px 0;
-  background-color: var(--clr);
+  background: var(--gradient);
   color: var(--white);
   font-size: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
 }
 
-.eLearn .button--submit:hover {
-  /* background-color: transparent;
-  color: var(--clr);
-  border: inset 2px solid var(--clr); */
-  background-color: rgb(199, 2, 2);
-}
-
 .eLearn .input:focus,
 .input:focus-visible {
-  border-color: rgb(199, 2, 2);
-  outline: none;
+  border-color: var(--clr);
+  outline: 2px solid var(--clr);
 }
 
 .input::placeholder {
@@ -2345,7 +2337,7 @@ header > span:nth-child(1):hover,
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #262526;
+  background-image: linear-gradient(to top, #010511, #0d2a91);
   /* background-color: rgba(0, 0, 0, 0.15); */
 }
 
@@ -2384,6 +2376,11 @@ header > span:nth-child(1):hover,
 .copyright-content {
   color: var(--white-bg);
   font-size: 1.25rem;
+}
+
+.purna {
+  color: #f8edb5 !important;
+  font-size: 1.5rem;
 }
 
 /*--------------------------------------------------------------
@@ -2472,7 +2469,7 @@ header > span:nth-child(1):hover,
   height: 22px;
   border: 1px solid;
   border-radius: 22px;
-  background: var(--clr);
+  background: var(--gradient);
 }
 .accordion button .icon::before {
   display: block;
@@ -2796,7 +2793,7 @@ main {
 .section-title span {
   border-radius: 24px 24px 0 24px;
   padding: 12px 24px;
-  background-color: var(--clr);
+  background: var(--gradient);
   color: var(--white);
   /* animation: ripple-animation 2s; */
 }
@@ -2915,9 +2912,8 @@ main {
   width: 300px;
   flex-shrink: 0;
   height: 300px;
-  background-image: linear-gradient(147deg, #fe8a39 0%, var(--clr) 74%);
+  background-image: linear-gradient(147deg, #010511 0%, #081130 74%);
   object-fit: cover;
-  /* box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2); */
   box-shadow: 4px 13px 30px 1px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   transform: translateX(-80px);
@@ -2930,7 +2926,7 @@ main {
   width: 300px;
   flex-shrink: 0;
   height: 300px;
-  background-image: linear-gradient(147deg, #fe8a39 0%, var(--clr) 74%);
+   background-image: linear-gradient(147deg, #010511 0%, #081130 74%);
   box-shadow: 4px 13px 30px 1px rgba(252, 56, 56, 0.2);
   border-radius: 20px;
   transform: translateX(80px);
@@ -2945,7 +2941,7 @@ main {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(147deg, #fe8a39 0%, var(--clr) 74%);
+  background-image: linear-gradient(147deg, #010511 0%, #081130 74%);
   /* background-image: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.85),
@@ -3031,7 +3027,7 @@ main {
 }
 .blog-slider__button {
   display: inline-flex;
-  background-image: linear-gradient(147deg, #fe8a39 0%, var(--clr) 74%);
+  background-image: linear-gradient(147deg, #010511 0%, #081130 74%);
   padding: 15px 35px;
   border-radius: 50px;
   color: #fff;
@@ -3096,7 +3092,7 @@ main {
 }
 .blog-slider__pagination .swiper-pagination-bullet-active {
   opacity: 1;
-  background: var(--clr);
+  background: var(--gradient);
   height: 30px;
   box-shadow: 0px 0px 20px rgba(252, 56, 56, 0.3);
 }
@@ -3203,7 +3199,7 @@ main {
 } */
 
 .heart {
-  color: #666;
+  color: var(--white-bg);
   border: none;
   outline: none;
   background-color: transparent;
@@ -3212,12 +3208,12 @@ main {
   animation: beat 0.9s infinite;
 }
 .heart:hover {
-  color: #755;
-  filter: drop-shadow(0 0 30px #d02);
+  color: var(--white);
+  filter: drop-shadow(0 0 30px #f00);
 }
 .heart.active {
-  color: #d02;
-  /* text-shadow: 0 0 5px #d02, 0 0 45px #d02, 0 0 90px #d02; */
+  color: #f00;
+  text-shadow: 0 0 5px #f00, 0 0 45px #f00, 0 0 90px #f00;
 }
 
 @keyframes beat {
