@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var silder = $(".owl-carousel");
+  var silder = $("#testimonials .owl-carousel");
   silder.owlCarousel({
     autoplay: true,
     autoplayTimeout: 3000,
