@@ -17,26 +17,50 @@ var swiper = new Swiper(".blog-slider", {
 /*--------------------------------------------------------------
 #  For Fun fact Section
 --------------------------------------------------------------*/
-jQuery(".funfact-number").each(function () {
-  var $this = jQuery(this);
-  var parts = $this.text().match(/^(\d+)(.*)/);
-  if (parts.length < 2) return;
+// Function to check if an element is in the viewport
+function isElementInViewport(el) {
+  var rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
 
-  var scale = 20;
-  var delay = 50;
-  var end = 0 + parts[1];
-  var next = 0;
-  var suffix = parts[2];
+// Function to start counting animation when element is in viewport
+function startCountingAnimation() {
+  jQuery(".funfact-number").each(function () {
+    var $this = jQuery(this);
+    var parts = $this.text().match(/^(\d+)(.*)/);
+    if (parts.length < 2) return;
 
-  var runUp = function () {
-    var show = Math.ceil(next);
-    $this.text("" + show + suffix);
-    if (show == end) return;
-    next = next + (end - next) / scale;
-    window.setTimeout(runUp, delay);
-  };
-  runUp();
+    var scale = 20;
+    var delay = 50;
+    var end = 0 + parts[1];
+    var next = 0;
+    var suffix = parts[2];
+
+    var runUp = function () {
+      var show = Math.ceil(next);
+      $this.text("" + show + suffix);
+      if (show == end) return;
+      next = next + (end - next) / scale;
+      window.setTimeout(runUp, delay);
+    };
+    runUp();
+  });
+}
+
+// Trigger counting animation when user starts scrolling
+jQuery(window).on("scroll", function () {
+  jQuery(".funfact-number").each(function () {
+    if (isElementInViewport(this)) {
+      startCountingAnimation();
+    }
+  });
 });
+
 /*--------------------------------------------------------------
 #   For Smooth scroll behavior.
 --------------------------------------------------------------*/
