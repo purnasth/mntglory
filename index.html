@@ -2614,6 +2614,15 @@
 
     <!-- ======= Footer ======= -->
 
+    <!-- Popup Image Container -->
+    <div class="popup-container">
+      <div class="popup-content">
+        <img src="images/popup.webp" alt="Popup Image" />
+        <span class="close-popup">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </span>
+      </div>
+    </div>
     <!-- !!! uncomment -->
     <div id="preloader">
       <img src="./icon/logo.svg" alt="preloader" />
@@ -2645,6 +2654,33 @@
       setTimeout(function () {
         document.getElementById("preloader").style.display = "none";
       }, 2000);
+
+      // Popup
+      document.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          document.querySelector(".preloader").style.display = "none";
+
+          document.querySelector(".popup-container").style.display = "flex";
+        }, 3000);
+
+        document
+          .querySelector(".close-popup")
+          .addEventListener("click", function () {
+            closePopup();
+          });
+
+        document
+          .querySelector(".popup-container")
+          .addEventListener("click", function (event) {
+            if (event.target.classList.contains("popup-container")) {
+              closePopup();
+            }
+          });
+
+        function closePopup() {
+          document.querySelector(".popup-container").style.display = "none";
+        }
+      });
     </script>
   </body>
 </html>

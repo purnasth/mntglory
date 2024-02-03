@@ -3391,3 +3391,44 @@ main {
   text-align: center;
   margin-top: -28px;
 }
+
+
+/* PUPUP */
+
+.popup-container {
+  /* Style your popup container */
+  display: none; /* Initially hide the popup container */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  /* Style your popup content */
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+}
+
+.popup-content img {
+  /* Style your popup image */
+  width: 100%;
+  height: 500px;
+  object-fit: contain;
+}
+
+.close-popup {
+  position: absolute;
+  top: 5px;
+  right: 8px;
+  font-size: 1.5rem;
+  color: var(--white);
+  cursor: pointer;
+}
