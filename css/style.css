@@ -2348,6 +2348,8 @@ header > span:nth-child(1):hover,
 .copyright-content {
   color: var(--white-bg);
   font-size: 1.25rem;
+  margin-left: -35px;
+  padding: 10px;
 }
 
 .purna {
