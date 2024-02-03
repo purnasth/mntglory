@@ -28,35 +28,36 @@ function isElementInViewport(el) {
   );
 }
 
-// Function to start counting animation when element is in viewport
-function startCountingAnimation() {
-  jQuery(".funfact-number").each(function () {
-    var $this = jQuery(this);
-    var parts = $this.text().match(/^(\d+)(.*)/);
-    if (parts.length < 2) return;
+// Function to start counting animation for a specific element
+function startCountingAnimation($element) {
+  var parts = $element.text().match(/^(\d+)(.*)/);
+  if (parts.length < 2) return;
 
-    var scale = 20;
-    var delay = 50;
-    var end = 0 + parts[1];
-    var next = 0;
-    var suffix = parts[2];
+  var scale = 20;
+  var delay = 50;
+  var end = 0 + parts[1];
+  var next = 0;
+  var suffix = parts[2];
 
-    var runUp = function () {
-      var show = Math.ceil(next);
-      $this.text("" + show + suffix);
-      if (show == end) return;
-      next = next + (end - next) / scale;
-      window.setTimeout(runUp, delay);
-    };
-    runUp();
-  });
+  var runUp = function () {
+    var show = Math.ceil(next);
+    $element.text("" + show + suffix);
+    if (show == end) return;
+    next = next + (end - next) / scale;
+    window.setTimeout(runUp, delay);
+  };
+  runUp();
 }
 
 // Trigger counting animation when user starts scrolling
 jQuery(window).on("scroll", function () {
   jQuery(".funfact-number").each(function () {
     if (isElementInViewport(this)) {
-      startCountingAnimation();
+      // Check if counting animation has already started for this element
+      if (!jQuery(this).hasClass("counting")) {
+        jQuery(this).addClass("counting"); // Add a class to mark as counting
+        startCountingAnimation(jQuery(this));
+      }
     }
   });
 });

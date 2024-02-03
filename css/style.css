@@ -33,12 +33,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #888;
+  background: var(--line);
   border-radius: 100vw;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: var(--gradient);
 }
 
 ::selection {
@@ -57,7 +57,7 @@
 }
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
+
   /* scroll-snap-type: y mandatory; */
 }
 /* section{
@@ -71,11 +71,21 @@ body {
     */
   /* position: relative; */
   background-color: var(--white-bg);
-  max-width: 100%;
+
   /* overflow-x: hidden; */
   scroll-padding-top: 1.5rem;
 
   font-family: var(--font-body);
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
+@media screen and (max-width: 500px) {
+  html,
+  body {
+    overflow-x: hidden !important;
+    max-width: 100vw !important;
+  }
 }
 /* body:before {
   content: "";
@@ -118,7 +128,7 @@ h6,
   /* font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI",
     Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
-    font-family: var(--font-heading);
+  font-family: var(--font-heading);
 }
 
 a {
@@ -137,6 +147,10 @@ button {
 
 li {
   list-style: none;
+}
+
+#preloader::-webkit-scrollbar {
+  display: none;
 }
 
 #preloader {
@@ -1380,7 +1394,6 @@ header > span:nth-child(1) {
   user-select: none;
   transition: all 0.3s ease-in-out;
   animation: back 20s linear infinite;
-  
 }
 @keyframes back {
   /* 0% {
@@ -1473,184 +1486,126 @@ header > span:nth-child(1):hover,
 /*--------------------------------------------------------------
 # TESTIMONIALS
 --------------------------------------------------------------*/
-/* #testimonials .owl-carousel {
-} */
 
-/* .testimonial::before,
-.testimonial::after {
-  content: '"';
-  font-size: 4rem;
-  line-height: 1px;
-  position: relative;
-  bottom: -20px;
-  color: #c9c8c8;
-} */
-
-/* #testimonials #testimonials .owl-carousel {
-  padding-top: 0;
-} */
-
-.testimonial::before,
-.motto::before,
-.content span:nth-child(3)::before {
-  content: "\201C";
-  font-size: 4rem;
-  line-height: 1px;
-  position: relative;
-  bottom: -20px;
-  left: -10px;
-  color: #c9c8c8;
-  font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-.testimonial::after,
-.motto::after,
-.content span:nth-child(3)::after {
-  content: "\201D";
-  font-size: 4rem;
-  line-height: 1px;
-  position: relative;
-  bottom: -20px;
-  right: -10px;
-  color: #c9c8c8;
-  font-family: "Quicksand", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-}
-#testimonials .owl-carousel .owl-item {
-  transition: all 0.3s ease-in-out;
-  /* width: 450px; */
+#testimonials {
+  max-width: 100vw;
+  overflow: hidden;
 }
 
-#testimonials .owl-carousel .owl-item .card {
-  padding: 30px;
+.single-testi-box {
+  background: var(--white);
+  padding: 34px 43px 36px;
   position: relative;
+  margin: 40px 15px;
 }
 
-#testimonials .owl-carousel .owl-stage-outer {
-  overflow-y: auto !important;
-  padding-bottom: 40px;
-  position: relative;
-  /* overflow: hidden; */
-  overflow: visible !important;
-  -webkit-transform: translate3d(0, 0, 0);
-}
-
-#testimonials .owl-carousel .owl-item img {
+.single-testi-box:before {
   position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  object-position: top;
-  border-radius: 50%;
-  cursor: pointer;
-  z-index: 10;
-  background: var(--white-bg);
-  padding: 8px;
-}
-
-#testimonials .owl-carousel .owl-item .card .name {
-  margin: 0 auto;
-  transform: translate(0, 50px, 0);
-  /* left: 33%; */
-  color: var(--white);
-  font-size: 1.1rem;
-  font-weight: 600;
-  background: var(--gradient);
-  padding: 0.3rem 0.4rem;
-  border-radius: 5px;
-  cursor: pointer;
-  position: relative;
-  bottom: -50px;
-  transition: transform 0.3s;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-}
-
-.name:before {
   content: "";
-  pointer-events: none;
-  position: absolute;
-  z-index: -1;
-  top: 100%;
-  left: 5%;
+  width: 85%;
   height: 10px;
-  width: 90%;
-  opacity: 0;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(0, 0, 0, 0.35) 0%,
-    rgba(0, 0, 0, 0) 80%
-  );
-  transition-duration: 0.3s;
-  transition-property: transform opacity;
-}
-.name:hover {
-  transform: translateY(-5px);
-}
-.name:hover:before {
-  opacity: 1;
-  transform: translateY(5px);
+  left: 0;
+  right: 0;
+  top: -10px;
+  background: var(--gradient);
+  margin: auto;
 }
 
-#testimonials .owl-carousel .owl-item .card {
-  opacity: 0.2;
-  transform: scale3d(0.8, 0.8, 0.8);
-  transition: all 0.3s ease-in-out;
-  /* width: 300px; */
+.single-testi-box:after {
+  position: absolute;
+  content: "";
+  width: 85%;
+  height: 10px;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  background: var(--gradient);
+  margin: auto;
 }
 
-#testimonials .owl-carousel .owl-item.active.center .card {
-  opacity: 1;
-  transform: scale3d(1, 1, 1);
+.testi-quote-icon {
+  position: absolute;
+  z-index: 1;
+}
+.testi-quote-icon.left {
+  left: 20px;
+  top: 20px;
+}
+.testi-quote-icon.right {
+  right: 20px;
+  bottom: 140px;
+}
+.testi-quote-icon i {
+  font-size: 2rem;
+  border-radius: 50%;
+  background-image: var(--line);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-#testimonials .owl-carousel .owl-dots {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
+.testi-content {
+  height: 200px;
+  overflow-y: auto;
+  margin: 20px 0 30px 0;
+}
+.testi-content p {
+  font-size: 1.25rem;
+  line-height: 30px;
+  color: #4e4a67;
+  margin: 16px 0 46px;
+  position: relative;
 }
 
-.owl-theme .owl-dots .owl-dot span {
-  width: 11px;
-  height: 11px;
-  opacity: 0.8;
-  border-radius: 10px;
-  transition: all 0.3s;
-  margin: 0 3px;
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 19px;
+  position: relative;
 }
-
-.owl-theme .owl-dots .owl-dot.active span {
-  height: 11px;
-  width: 30px;
-  opacity: 1;
+.line {
+  position: absolute;
+  width: 2px;
+  height: 35px;
+  left: 0;
+  top: -20px;
   background: var(--gradient);
 }
 
-.testimonial {
-  /* text-align: justify; */
+.testi-author-title h4 {
+  font-size: 1.5rem;
+  line-height: 26px;
+  color: #1e1e1e;
+  /* font-family: var(--font-body); */
+}
+
+@media (max-width: 768px) {
+  .testi-author-title h4 {
+    font-size: 1.1rem;
+  }
+}
+
+.testi-author-title p {
+  margin-left: 29px;
   position: relative;
-  text-align: justify;
-  height: 300px;
-  overflow-y: auto;
-  padding: 10px;
 }
 
-/* @media (min-width: 480px) and (max-width: 575px) {
-  #testimonials .owl-carousel .owl-item .card .name {
-    left: 24%;
-  }
+.testi-author-title p:before {
+  position: absolute;
+  content: "";
+  width: 18px;
+  height: 3px;
+  top: 15px;
+  left: -26px;
+  background: var(--gradient);
 }
 
-@media (max-width: 360px) {
-  #testimonials .owl-carousel .owl-item .card .name {
-    left: 30%;
-  }
-} */
+.testi-author-thumb img {
+  width: 80px !important;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
 
 /* Updates */
 .site-logo img {
@@ -2019,7 +1974,7 @@ header > span:nth-child(1):hover,
   text-align: center;
 }
 .at-funfact span {
-  font-size: max(3vw, 2rem);  
+  font-size: max(3vw, 2rem);
   font-weight: 800;
   color: var(--white);
   font-family: var(--font-heading);
@@ -2807,6 +2762,7 @@ main {
   padding: 10px 0;
   border-radius: 24px 24px 0 24px;
   position: relative;
+  text-transform: uppercase;
 }
 .section-title span {
   border-radius: 24px 24px 0 24px;
@@ -2937,9 +2893,9 @@ main {
   transform: translateX(-80px);
   overflow: hidden;
 }
-#events-section {
+/* #events-section {
   padding: 0 1rem;
-}
+} */
 /* #events-section .blog-slider__img {
   width: 300px;
   flex-shrink: 0;
@@ -3266,6 +3222,8 @@ main {
 .events-sticky .pq-section-title {
   font-size: 2rem;
   letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 900;
   background-image: var(--line);
   -webkit-background-clip: text;
   background-clip: text;
@@ -3294,7 +3252,7 @@ main {
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 0;
 }
 .specialized i {
   font-size: 1.5rem;
@@ -3313,6 +3271,7 @@ main {
 .events-sticky .pq-icon-box-content {
   padding: 20px 40px;
 }
+
 .events-sticky .pq-icon-box-title {
   font-size: 1.75rem;
   letter-spacing: 1px;
@@ -3350,6 +3309,7 @@ main {
   height: 500px;
   object-fit: cover;
   animation: zoomInn 25s linear infinite;
+  overflow: hidden;
 }
 
 .events-sticky .owl-carousel {
@@ -3363,4 +3323,71 @@ main {
   100% {
     transform: scale(1.2);
   }
+}
+
+@media screen and (max-width: 768px) {
+  .events-sticky .pq-icon-box-content {
+    padding: 10px 20px;
+  }
+  .events-sticky .pq-icon-box-title {
+    font-size: 1.25rem;
+  }
+  .events-sticky .pq-icon-box-description {
+    font-size: 1rem;
+  }
+  .zoomIn {
+    height: 250px;
+  }
+}
+
+/* .nav-link {
+  font-family: var(--font-heading);
+} */
+
+/* Add this CSS to your styles */
+#testimonials .owl-carousel .owl-nav {
+  display: flex;
+  justify-content: center;
+  gap: 120px;
+  font-size: 1.25rem;
+  background-image: var(--line);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+#testimonials .owl-carousel .owl-nav button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Events dots */
+#events-section .owl-dots {
+  text-align: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#events-section .owl-dot,
+.testi-list .owl-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 3px;
+  background-color: #ccc;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+#events-section .owl-dot.active,
+.testi-list .owl-dot.active {
+  width: 30px;
+  background: var(--gradient);
+}
+
+/* Add this CSS to your styles */
+.testi-list .owl-dots {
+  text-align: center;
+  margin-top: -28px;
 }
