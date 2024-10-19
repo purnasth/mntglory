@@ -1,3 +1,40 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Purna Title';
+    src: url(./assets/fonts/chaviera.otf) format('opentype');
+}
+
+@layer components {
+    body {
+        @apply bg-white;
+    }
+
+    main {
+        @apply px-4 py-20 sm:py-28 md:px-12 md:py-[7.5rem] lg:py-[9rem];
+    }
+
+    h1,
+    h2,
+    h3,
+    .navlink {
+        @apply font-title font-extralight;
+    }
+
+    h4,
+    h5,
+    h6,
+    a,
+    button,
+    div {
+        @apply font-body font-semibold;
+    }
+
+    p,
+    span,
+    li {
+        @apply font-body font-light;
+    }
+}
