@@ -5,12 +5,12 @@
 }
 
 /* for blur on hover */
-ul:hover > li > a {
+/* ul:hover > li > a {
   opacity: 1;
 }
 ul:hover > li > a:not(:hover) {
   opacity: 0.25;
-}
+} */
 
 .a-hover-animation {
   position: relative;

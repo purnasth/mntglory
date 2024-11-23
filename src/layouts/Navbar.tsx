@@ -51,8 +51,8 @@ const Navbar: React.FC = () => {
     <>
       <nav className={`fixed top-0 z-40 w-full border-b border-dark/20`}>
         <div
-          className={`absolute inset-0 size-full ${
-            isScrolled ? 'bg-white' : 'bg-transparent'
+          className={`absolute inset-0 size-full transition-all duration-300 ${
+            isScrolled ? 'bg-white' : 'bg-white backdrop-blur-sm'
           }`}
         />
         <div className="relative flex items-center justify-between py-2">
@@ -83,7 +83,7 @@ const Navbar: React.FC = () => {
               ))}
             </ul>
             {/* <div className="md:hidden"> */}
-              <SideNav />
+            <SideNav />
             {/* </div> */}
           </div>
         </div>
