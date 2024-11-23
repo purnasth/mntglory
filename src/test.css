@@ -1,8 +1,7 @@
-::selection {
+/* ::selection {
   background-color: var(--white-clr);
   color: var(--clr);
-  /* color: var(--clr); */
-}
+} */
 
 /* for blur on hover */
 /* ul:hover > li > a {

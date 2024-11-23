@@ -52,10 +52,10 @@ const Navbar: React.FC = () => {
       <nav className={`fixed top-0 z-40 w-full border-b border-dark/20`}>
         <div
           className={`absolute inset-0 size-full transition-all duration-300 ${
-            isScrolled ? 'bg-white' : 'bg-white backdrop-blur-sm'
+            isScrolled ? 'bg-white' : ''
           }`}
         />
-        <div className="relative flex items-center justify-between py-2">
+        <div className="container relative flex items-center justify-between py-2">
           <a href="/" className="flex">
             <img
               src={logo}

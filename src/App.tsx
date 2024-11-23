@@ -8,26 +8,7 @@ import {
 import Intro from './components/Intro';
 import Navbar from './layouts/Navbar';
 import './test.css';
-import MasterSlider from './components/ui/MasterSlider';
-
-import slider1 from './assets/img/slider/62.jpg';
-import slider2 from './assets/img/slider/37.jpg';
-
-const sliderImages = [
-  {
-    image:
-      // 'https://wallpapercave.com/wp/wp4299473.jpg',
-      slider2,
-    // 'https://mntglory.saksham.edu.np/images/mgs.webp',
-    title: '28th Anniversary & Parents Day',
-    description: 'Description 1',
-  },
-  {
-    image: slider1,
-    title: 'Tihar Celebration 2078',
-    description: 'Description 1',
-  },
-];
+import AboutIntro from './components/AboutIntro';
 
 const App: React.FC = () => {
   return (
@@ -35,7 +16,7 @@ const App: React.FC = () => {
       <Router>
         <Navbar />
         <Intro />
-        <MasterSlider slides={sliderImages} hasContent={true} />
+        <AboutIntro />
       </Router>
     </>
   );

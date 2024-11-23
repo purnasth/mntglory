@@ -8,6 +8,16 @@
 }
 
 @layer components {
+
+    ::selection {
+        @apply text-light bg-dark;
+    }
+
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: #1944f1 transparent;
+    }
+
     body {
         @apply bg-white;
     }
@@ -25,7 +35,7 @@
     h3,
     .navlink {
         /* @apply font-title font-extralight; */
-        @apply font-title font-extralight;
+        @apply font-body;
     }
 
     h4,
@@ -34,7 +44,7 @@
     a,
     button,
     div {
-        @apply font-body font-semibold;
+        @apply font-body;
     }
 
     p,

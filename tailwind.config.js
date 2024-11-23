@@ -5,7 +5,13 @@ export default {
     extend: {
       fontFamily: {
         title: ['"Purna Title"', 'Georgia', 'Cambria', 'serif'],
-        body: ['"Kanit"', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        body: [
+          '"Bricolage Grotesque"',
+          'Kanit',
+          'ui-sans-serif',
+          'system-ui',
+          'sans-serif',
+        ],
       },
       colors: {
         dark: '#0a0a0a',
