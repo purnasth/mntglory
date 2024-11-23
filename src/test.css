@@ -1,0 +1,66 @@
+::selection {
+  background-color: var(--white-clr);
+  color: var(--clr);
+  /* color: var(--clr); */
+}
+
+/* for blur on hover */
+ul:hover > li > a {
+  opacity: 1;
+}
+ul:hover > li > a:not(:hover) {
+  opacity: 0.25;
+}
+
+.a-hover-animation {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform 0.4s ease,
+    color 0.4s ease;
+}
+
+.a-hover-animation::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 4px;
+  background: #1944f1;
+  border-radius: 2px;
+  transition:
+    width 0.5s ease,
+    left 0.5s ease;
+}
+
+.a-hover-animation::before {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #1944f1;
+  font-size: inherit;
+  font-weight: inherit;
+  transform: translateY(100%);
+  opacity: 0.5;
+  transition:
+    transform 0.4s ease,
+    opacity 0.4s ease;
+}
+
+.a-hover-animation:hover {
+  transform: translateY(-4px);
+  /* color: #1944f1; */
+}
+
+.a-hover-animation:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.a-hover-animation:hover::before {
+  transform: translateY(0%);
+  opacity: 1;
+}
