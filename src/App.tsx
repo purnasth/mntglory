@@ -19,12 +19,12 @@ const sliderImages = [
       // 'https://wallpapercave.com/wp/wp4299473.jpg',
       slider2,
     // 'https://mntglory.saksham.edu.np/images/mgs.webp',
-    title: 'Image 1',
+    title: '28th Anniversary & Parents Day',
     description: 'Description 1',
   },
   {
     image: slider1,
-    title: 'Image 1',
+    title: 'Tihar Celebration 2078',
     description: 'Description 1',
   },
 ];
@@ -35,7 +35,7 @@ const App: React.FC = () => {
       <Router>
         <Navbar />
         <Intro />
-        <MasterSlider slides={sliderImages} />
+        <MasterSlider slides={sliderImages} hasContent={true} />
       </Router>
     </>
   );

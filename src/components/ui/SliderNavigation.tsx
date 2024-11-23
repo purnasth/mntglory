@@ -1,5 +1,6 @@
 import React from 'react';
-// import { TbArrowNarrowRight, TbArrowNarrowLeft } from 'react-icons/tb';
+import { TbArrowNarrowRight, TbArrowNarrowLeft } from 'react-icons/tb';
+import { RxSlash } from 'react-icons/rx';
 
 interface SliderNavigationProps {
   currentIndex: number;
@@ -9,21 +10,33 @@ interface SliderNavigationProps {
 }
 
 const SliderNavigation: React.FC<SliderNavigationProps> = ({
-  currentIndex,
-  totalItems,
+  // currentIndex,
+  // totalItems,
   onNext,
   onPrev,
 }) => {
   return (
-    <div className="flex items-center gap-2">
-      <button onClick={onPrev} aria-label="Previous" className="text-4xl">
-        &larr;
+    <div className="border-light/40 flex h-7 items-center gap-0 overflow-hidden rounded-full border bg-gradient-to-r from-[#0575E6] to-[#021B79] px-4">
+      <button
+        onClick={onPrev}
+        aria-label="Previous"
+        className="text-light text-2xl"
+      >
+        <TbArrowNarrowLeft />
+        {/* &larr; */}
       </button>
-      <span className="text-base">
+      {/* <span className="text-base">
         {currentIndex + 1} / {totalItems}
-      </span>
-      <button onClick={onNext} aria-label="Next" className="text-4xl">
-        &rarr;
+      </span> */}
+
+      <RxSlash className="text-light scale-x-50 scale-y-110 text-3xl" />
+      <button
+        onClick={onNext}
+        aria-label="Next"
+        className="text-light text-2xl"
+      >
+        {/* &rarr; */}
+        <TbArrowNarrowRight />
       </button>
     </div>
   );

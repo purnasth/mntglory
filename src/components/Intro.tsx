@@ -1,8 +1,14 @@
-
 const Intro = () => {
   return (
     <>
-       <main className="z-50 h-screen w-full bg-white">
+      <main className="relative z-auto h-screen w-full bg-white">
+        <div
+          className="pointer-events-none absolute inset-0 size-full select-none bg-cover opacity-5"
+          style={{
+            backgroundImage:
+              'url("https://instagram.fktm7-1.fna.fbcdn.net/v/t39.30808-6/452567382_898640322298157_1724795144348302549_n.jpg?stp=dst-jpg_e35_s1080x1080_sh0.08&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4yMDQ4eDEzNjMuc2RyLmYzMDgwOC5kZWZhdWx0X2ltYWdlIn0&_nc_ht=instagram.fktm7-1.fna.fbcdn.net&_nc_cat=105&_nc_ohc=MEA_qhntdBoQ7kNvgG-Vje-&_nc_gid=8b7fccdcf3e64225b68ffd813a0bb9e9&edm=ANTKIIoAAAAA&ccb=7-5&oh=00_AYBQETT2GKIJz7plQupSZrMIBTe6W6R39IPKkkDZ5gJq8w&oe=67478DBF&_nc_sid=d885a2")',
+          }}
+        ></div>
         <div className="container flex size-full flex-col items-center justify-center gap-4 text-center">
           <img
             src="https://mntglory.saksham.edu.np/icon/logo.svg"
@@ -20,7 +26,7 @@ const Intro = () => {
         </div>
       </main>
     </>
-  )
-}
+  );
+};
 
-export default Intro
+export default Intro;
