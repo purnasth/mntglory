@@ -9,6 +9,7 @@ import Intro from './components/Intro';
 import Navbar from './layouts/Navbar';
 import './test.css';
 import AboutIntro from './components/AboutIntro';
+import Team from './components/Team';
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Navbar />
         <Intro />
         <AboutIntro />
+        <Team />
       </Router>
     </>
   );
