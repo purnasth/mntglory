@@ -1,9 +1,19 @@
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Founder from './Founder';
 import { MdOutlineFacebook, MdEmail } from 'react-icons/md';
-import { LiaLinkedinIn, LiaFacebookF } from 'react-icons/lia';
+import { LiaLinkedinIn } from 'react-icons/lia';
 
 import logo from '../assets/logo.svg';
+import TeamPopup from './ui/TeamPopup';
+
+interface TeamMember {
+  id: number;
+  image: string;
+  name: string;
+  position: string;
+  description: string;
+  socials: { id: number; title: string; link: string }[];
+}
 
 const ourTeamContents = {
   id: 'our-team',
@@ -216,9 +226,19 @@ const ourTeamContents = {
   ],
 };
 
-const { heading, teamMembers } = ourTeamContents;
+const Team: React.FC = () => {
+  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
 
-const Team = () => {
+  const handleReadMore = (member: TeamMember) => {
+    setSelectedMember(member);
+  };
+
+  const handleClosePopup = () => {
+    setSelectedMember(null);
+  };
+
+  const { heading, teamMembers } = ourTeamContents;
+
   return (
     <main>
       <h3 className="container mb-16 text-center text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-7xl lg:leading-snug">
@@ -226,7 +246,6 @@ const Team = () => {
       </h3>
 
       <section className="space-y-12">
-        {/* Render First Two Items in a 2-Column Grid */}
         <div
           className={`container grid ${
             teamMembers.length > 2 ? 'grid-cols-2 gap-12' : 'grid-cols-2 gap-12'
@@ -242,13 +261,17 @@ const Team = () => {
                   draggable="false"
                 />
               </div>
-              <div className="-mt-32 rounded-2xl bg-light p-8 pr-4 pt-40">
+              <div className="-mt-32 rounded-2xl bg-light p-8 pt-40">
                 <div className="flex items-center justify-between">
-                  <h4 className="text-base capitalize text-dark">
-                    <strong className="text-xl">{member.name}</strong>
-                    <br />({member.position})
-                  </h4>
-                  <ul className="socials mr-4 mt-4 flex items-center justify-center gap-4">
+                  <div>
+                    <h4 className="text-xl font-bold capitalize text-dark">
+                      {member.name}
+                    </h4>
+                    <h5 className="text-base capitalize text-dark">
+                      ({member.position})
+                    </h5>
+                  </div>
+                  <ul className="socials flex items-center justify-center gap-4">
                     {member.socials.map((social) => (
                       <li key={social.id}>
                         <Link to={social.link} className="text-xl">
@@ -264,15 +287,20 @@ const Team = () => {
                     ))}
                   </ul>
                 </div>
-                <p className="scroll mt-4 flex h-32 flex-wrap gap-2 gap-y-0 overflow-y-auto pr-4 text-justify">
+                <p className="scroll mt-4 line-clamp-3 text-justify">
                   {member.description}
                 </p>
+                <button
+                  className="mt-2 text-primary underline"
+                  onClick={() => handleReadMore(member)}
+                >
+                  More About {member.name.split(' ')[0]}
+                </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Render Remaining Items in a 3-Column Grid */}
         {teamMembers.length > 2 && (
           <div className="grid grid-cols-3 gap-12">
             {teamMembers.slice(2).map((member) => (
@@ -285,13 +313,17 @@ const Team = () => {
                     draggable="false"
                   />
                 </div>
-                <div className="-mt-32 rounded-2xl bg-light p-8 pr-4 pt-40">
+                <div className="-mt-32 rounded-2xl bg-light p-8 pt-40">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-base capitalize text-dark">
-                      <strong className="text-xl">{member.name}</strong>
-                      <br />({member.position})
-                    </h4>
-                    <ul className="socials mr-4 mt-4 flex items-center justify-center gap-4">
+                    <div>
+                      <h4 className="text-xl font-bold capitalize text-dark">
+                        {member.name}
+                      </h4>
+                      <h5 className="text-base capitalize text-dark">
+                        ({member.position})
+                      </h5>
+                    </div>
+                    <ul className="socials flex items-center justify-center gap-4">
                       {member.socials.map((social) => (
                         <li key={social.id}>
                           <Link to={social.link} className="text-xl">
@@ -307,15 +339,28 @@ const Team = () => {
                       ))}
                     </ul>
                   </div>
-                  <p className="scroll mt-4 flex h-32 flex-wrap gap-2 gap-y-0 overflow-y-auto pr-4 text-justify">
+                  <p className="scroll mt-4 line-clamp-2 text-justify">
                     {member.description}
                   </p>
+                  <button
+                    className="mt-2 text-primary underline"
+                    onClick={() => handleReadMore(member)}
+                  >
+                    More About {member.name.split(' ')[0]}
+                  </button>
                 </div>
               </div>
             ))}
           </div>
         )}
       </section>
+
+      {selectedMember && (
+        <TeamPopup
+          member={selectedMember}
+          handleClosePopup={handleClosePopup}
+        />
+      )}
     </main>
   );
 };
