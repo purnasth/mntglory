@@ -10,12 +10,14 @@ import Navbar from './layouts/Navbar';
 import './test.css';
 import AboutIntro from './components/AboutIntro';
 import Team from './components/Team';
+import Hero from './components/Hero';
 
 const App: React.FC = () => {
   return (
     <>
       <Router>
         <Navbar />
+        <Hero />
         <Intro />
         <AboutIntro />
         <Team />
