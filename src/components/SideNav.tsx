@@ -50,7 +50,7 @@ const SideNav: React.FC = () => {
 
   return (
     <>
-      <button onClick={toggleNav} className="text-light text-xl md:text-2xl">
+      <button onClick={toggleNav} className="text-dark text-xl md:text-2xl">
         <TbMenu2 />
       </button>
 

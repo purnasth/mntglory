@@ -42,10 +42,19 @@ const noticeContents = [
 const NoticeBoard = () => {
   return (
     <>
-      <div className="bg-light p-8">
-        <h2 className="mb-4 text-2xl font-bold">Notice Board</h2>
-        <hr className="mb-4 border-dark/20" />
-        <ul className="max-h-[60vh] list-none space-y-8 overflow-y-auto">
+      <div className="bg-light">
+        <div className="flex items-center justify-between p-8">
+          <h2 className="text-2xl font-bold">Notice Board</h2>
+          <Link
+            to="/notices"
+            className="a-hover-animation"
+            data-text="View All Notices"
+          >
+            View All Notices
+          </Link>
+        </div>
+        <hr className="border-dark/20" />
+        <ul className="scroll h-full max-h-[75vh] list-none space-y-8 overflow-y-auto bg-slate-100 p-8 pt-4">
           {noticeContents.slice(0, 12).map((notice, index) => (
             <li key={index} className="mt-2">
               <h3 className="text-lg font-semibold">{notice.title}</h3>
@@ -54,13 +63,6 @@ const NoticeBoard = () => {
             </li>
           ))}
         </ul>
-        <Link
-          to="/notices"
-          className="a-hover-animation inline-block pt-8"
-          data-text="View All Notices"
-        >
-          View All Notices
-        </Link>
       </div>
     </>
   );

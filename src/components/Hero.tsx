@@ -1,9 +1,10 @@
-import mgsBuilding from '../assets/img/building.webp';
+import sideBuilding from '../assets/img/sideBuilding.png';
+import NoticeBoard from './ui/NoticeBoard';
 
 const Hero = () => {
   return (
     <>
-      <main className="px-0 py-6">
+      <main className="px-0 pt-6">
         <div className="container">
           <section className="grid grid-cols-5 gap-6">
             <div className="col-span-1 mt-3 space-y-6">
@@ -12,50 +13,100 @@ const Hero = () => {
                 <hr className="w-full border-dark/40" />
               </p>
               <img
-                src="https://media.istockphoto.com/id/842857538/vector/modern-school-buildings-exterior-student-city-concept-elementary-school-facade-urban-street.jpg?s=612x612&w=0&k=20&c=OKfzoc1m5KfNnH3PfTXZFGk672g06qpxIKDcHEm4fyM="
+                src={sideBuilding}
                 alt="MGS Building"
-                className="h-72 w-full bg-white object-cover object-center shadow-lg"
+                className="h-72 w-full rounded-2xl bg-white object-cover object-center shadow-lg"
               />
               <div>
-                <h2>Mount Glory School</h2>
+                <h2 className="text-2xl font-semibold">Mount Glory School</h2>
                 <span>Chagal, Kathmandu</span>
               </div>
 
-              <p className="text-right">From PG to Grade X </p>
+              <div className="flex items-center justify-between gap-8">
+                <hr className="w-full flex-1 border-dark/20" />
+                <p className="">From PG to Grade X</p>
+              </div>
             </div>
             <aside className="col-span-4">
               <div className="mb-3 grid grid-cols-4">
-                <h1 className="col-span-2 text-3xl font-medium capitalize leading-relaxed">
+                <h1 className="col-span-2 text-4xl font-medium capitalize leading-snug">
                   Quality in Education & Character building is our motto.
                 </h1>
                 <div className="relative z-10 col-span-2">
-                  <p className="absolute inset-0 mx-auto size-full h-60 max-w-xs bg-slate-100 p-6 outline outline-1 outline-primary/20">
+                  {/* <p className="absolute inset-0 mx-auto size-full h-60 max-w-xs rounded-2xl bg-slate-100 p-6 shadow-lg outline outline-[1.25rem] outline-white">
                     We believe in a familiar and joyful learning process. We
                     ensure that your kid will get the best guardianship. Since
                     its establishment in 2052, it has been playing a great role
                     in enhancing the career and educational status of the
                     students.
-                  </p>
+                  </p> */}
+                  <div className="absolute inset-0 mx-auto size-full h-auto min-h-40 max-w-xs translate-y-8 rounded-2xl bg-white/40 p-6 shadow-lg outline outline-white backdrop-blur-sm">
+                    <div className="flex translate-x-2 items-center justify-center gap-0">
+                      <img
+                        src="https://www.purnashrestha.com.np/assets/hero-DDSQy-9a.avif"
+                        alt="Purna"
+                        className="size-10 -translate-x-0 rounded-full bg-white object-contain outline outline-1 outline-dark/30"
+                      />
+                      <img
+                        src="https://www.purnashrestha.com.np/assets/hero-DDSQy-9a.avif"
+                        alt="Purna"
+                        className="size-10 -translate-x-2 rounded-full bg-white object-contain outline outline-1 outline-dark/30"
+                      />
+                      <img
+                        src="https://www.purnashrestha.com.np/assets/hero-DDSQy-9a.avif"
+                        alt="Purna"
+                        className="size-10 -translate-x-4 rounded-full bg-white object-contain outline outline-1 outline-dark/30"
+                      />
+                      <img
+                        src="https://www.purnashrestha.com.np/assets/hero-DDSQy-9a.avif"
+                        alt="Purna"
+                        className="size-10 -translate-x-6 rounded-full bg-white object-contain outline outline-1 outline-dark/30"
+                      />
+                    </div>
+                    <hr className="my-4 border-dark/40" />
+                    <h3 className="text-center">
+                      Discover our team dedicated to build your child's future.
+                    </h3>
+                  </div>
                 </div>
               </div>
               <img
-                src="https://t3.ftcdn.net/jpg/09/25/34/62/360_F_925346213_KIBquS8HgdgNvA0QvX0WSsbKDeS8nkgk.jpg"
+                src="https://ai4spaces.com/bundles/project/images/spaces/be19b814a1cdc49a82dc05170c74407822c1e3c863af762622ffccca61922a7f/12371_1_1732191375.png"
                 alt="MGS Building"
-                className="-z-10 h-96 w-full object-cover shadow-lg"
+                className="-z-10 h-96 w-full rounded-2xl object-cover shadow-lg"
               />
             </aside>
           </section>
-          <section className="mt-6 grid grid-cols-5 gap-6">
-            <div className="col-span-3 space-y-8 bg-light">
-              <p className="">From PG to Grade X </p>
-            </div>
-            <aside className="col-span-2">
-              <p className="bg-white p-6 shadow outline outline-1 outline-primary/20">
+          <section className="mt-6 grid grid-cols-9 gap-6">
+            <div className="col-span-5 h-max">
+              <p className="rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20">
                 We believe in a familiar and joyful learning process. We ensure
                 that your kid will get the best guardianship. Since its
                 establishment in 2052, it has been playing a great role in
                 enhancing the career and educational status of the students.
               </p>
+
+              <section className="mt-32 flex size-full flex-col items-start justify-center gap-4 text-pretty">
+                {/* <img
+              src="https://mntglory.saksham.edu.np/icon/logo.svg"
+              alt="Mount Glory School"
+              className="size-48 object-contain"
+            /> */}
+                <span className="text-xl">Welcome to</span>
+                <h1 className="text-7xl leading-snug">
+                  Mount Glory English Boarding High School
+                </h1>
+
+                <p className="mt-8 max-w-xl text-xl">
+                  Mount Glory excels in mentoring the current generation through
+                  a tech-friendly, behavioral, and theoretical platform,
+                  fostering a morale-driven environment. Join us for an
+                  unrivaled learning experience.
+                </p>
+              </section>
+            </div>
+            <aside className="col-span-4 overflow-hidden rounded-2xl shadow-md outline outline-1 outline-dark/20">
+              <NoticeBoard />
             </aside>
           </section>
         </div>

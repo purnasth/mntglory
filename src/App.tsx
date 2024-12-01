@@ -5,7 +5,7 @@ import {
   // Route,
   // Navigate,
 } from 'react-router-dom';
-import Intro from './components/Intro';
+// import Intro from './components/Intro';
 import Navbar from './layouts/Navbar';
 import './test.css';
 import AboutIntro from './components/AboutIntro';
@@ -18,7 +18,7 @@ const App: React.FC = () => {
       <Router>
         <Navbar />
         <Hero />
-        <Intro />
+        {/* <Intro /> */}
         <AboutIntro />
         <Team />
       </Router>

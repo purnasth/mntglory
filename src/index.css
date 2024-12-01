@@ -3,77 +3,92 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Purna Title';
-    src: url(./assets/fonts/chaviera.otf) format('opentype');
+  font-family: 'Purna Title';
+  src: url(./assets/fonts/chaviera.otf) format('opentype');
 }
 
 @layer components {
+  ::selection {
+    @apply bg-dark text-light;
+  }
 
-    ::selection {
-        @apply text-light bg-dark;
-    }
+  * {
+    scrollbar-width: none;
+  }
 
-    * {
-        scrollbar-width: thin;
-        scrollbar-color: #1944f1 transparent;
-    }
+  .scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #1944f1 transparent;
+  }
 
-    body {
-        @apply bg-white;
-    }
+  /* ::-webkit-scrollbar {
+    @apply w-0;
+  }
 
-    main {
-        @apply px-4 py-20 sm:py-28 md:px-12 md:py-[7.5rem] lg:py-[9rem];
-    }
+  .scroll::-webkit-scrollbar {
+    @apply w-1 rounded-full bg-light;
+  }
 
-    nav {
-        @apply px-4 md:px-12;
-    }
+  .scroll::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-primary;
+  } */
 
-    h1,
-    h2,
-    h3,
-    .navlink {
-        /* @apply font-title font-extralight; */
-        @apply font-body;
-    }
+  body {
+    @apply bg-white;
+  }
 
-    h4,
-    h5,
-    h6,
-    a,
-    button,
-    div {
-        @apply font-body;
-    }
+  main {
+    @apply px-4 py-20 sm:py-28 md:px-12 md:py-[7.5rem] lg:py-[9rem];
+  }
 
-    p,
-    span,
-    li {
-        @apply font-body font-light;
-    }
+  nav {
+    @apply px-4 md:px-6;
+  }
 
-    .filter-white {
-        filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
-    }
+  h1,
+  h2,
+  h3,
+  .navlink {
+    /* @apply font-title font-extralight; */
+    @apply font-body;
+  }
 
-    .filter-black {
-        filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(327deg) brightness(96%) contrast(104%);
-    }
+  h4,
+  h5,
+  h6,
+  a,
+  button,
+  div {
+    @apply font-body;
+  }
 
-    .transition-300 {
-        @apply transition-all duration-300 ease-linear;
-    }
+  p,
+  span,
+  li {
+    @apply font-body font-light;
+  }
 
-    .transition-700 {
-        @apply transition-all duration-700 ease-in-out;
-    }
+  .filter-white {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+  }
 
-    .transition-1000 {
-        @apply transition-all duration-1000;
-    }
+  .filter-black {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(0%) saturate(7500%) hue-rotate(327deg) brightness(96%) contrast(104%);
+  }
 
-    .navlink {
-        @apply transition-300 font-body text-lg font-medium inline-flex items-center capitalize text-dark;
-    }
+  .transition-300 {
+    @apply transition-all duration-300 ease-linear;
+  }
+
+  .transition-700 {
+    @apply transition-all duration-700 ease-in-out;
+  }
+
+  .transition-1000 {
+    @apply transition-all duration-1000;
+  }
+
+  .navlink {
+    @apply transition-300 inline-flex items-center font-body text-lg font-medium capitalize text-dark;
+  }
 }
