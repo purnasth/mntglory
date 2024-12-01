@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { TbMenu2, TbMailFilled } from 'react-icons/tb';
-import { MdClose, MdCall, MdSchool } from 'react-icons/md';
-import { IoLogoWhatsapp } from 'react-icons/io';
+import { TbMenu2 } from 'react-icons/tb';
+import { MdClose, MdSchool } from 'react-icons/md';
+// import { TbMenu2, TbMailFilled } from 'react-icons/tb';
+// import { MdClose, MdCall, MdSchool } from 'react-icons/md';
+// import { IoLogoWhatsapp } from 'react-icons/io';
 import logo from '../assets/logo.svg';
 
-import { AiFillInstagram } from 'react-icons/ai';
+// import { AiFillInstagram } from 'react-icons/ai';
 
-import { PiWatchBold } from 'react-icons/pi';
-import { PiHandbagBold } from 'react-icons/pi';
-import { PiImageSquareBold } from 'react-icons/pi';
-import { TbRosetteDiscountCheck } from 'react-icons/tb';
+// import { PiWatchBold } from 'react-icons/pi';
+// import { PiHandbagBold } from 'react-icons/pi';
+// import { PiImageSquareBold } from 'react-icons/pi';
+// import { TbRosetteDiscountCheck } from 'react-icons/tb';
 import { NavLink } from 'react-router-dom';
 
 const navLinks = [
@@ -50,7 +52,7 @@ const SideNav: React.FC = () => {
 
   return (
     <>
-      <button onClick={toggleNav} className="text-dark text-xl md:text-2xl">
+      <button onClick={toggleNav} className="text-xl text-dark md:text-2xl">
         <TbMenu2 />
       </button>
 
@@ -62,7 +64,7 @@ const SideNav: React.FC = () => {
       )}
 
       <div
-        className={`bg-light fixed left-0 top-0 h-screen w-full text-dark transition-all duration-500 md:w-96 ${
+        className={`fixed left-0 top-0 h-screen w-full bg-light text-dark transition-all duration-500 md:w-96 ${
           isOpen
             ? 'pointer-events-auto translate-x-0'
             : 'pointer-events-none -translate-x-full'
