@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      lightgallery:
+        specifier: ^2.8.2
+        version: 2.8.2
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -905,6 +908,10 @@ packages:
   levn@0.4.1:
     resolution: {integrity: sha512-+bT2uH4E5LGE7h/n3evcS/sQlJXCpIp6ym8OWJ5eV6+67Dsql/LaaT7qJBAt2rzfoa/5QBGBhxDix1dMt2kQKQ==}
     engines: {node: '>= 0.8.0'}
+
+  lightgallery@2.8.2:
+    resolution: {integrity: sha512-6BV7joQtgdHUhDgNPeGu/RWqcGvmvwbyJpTdB5jgKX5nhU5yGEG3PVaETIlAEEV15Uop+8p+F3PqnokFUlywZA==}
+    engines: {node: '>=6.0.0'}
 
   lilconfig@2.1.0:
     resolution: {integrity: sha512-utWOt/GHzuUxnLKxB6dk81RoOeoNeHgbrXiuGk4yyF5qlRz+iIVWu56E2fqGHFrXz0QNUhLB/8nKqvRH66JKGQ==}
@@ -2127,6 +2134,8 @@ snapshots:
     dependencies:
       prelude-ls: 1.2.1
       type-check: 0.4.0
+
+  lightgallery@2.8.2: {}
 
   lilconfig@2.1.0: {}
 

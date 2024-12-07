@@ -86,22 +86,33 @@ const Hero = () => {
                 enhancing the career and educational status of the students.
               </p>
 
-              <section className="mt-32 flex size-full flex-col items-start justify-center gap-4 text-pretty">
+              <section className="mt-6 flex size-full flex-col items-start justify-center gap-2 text-pretty">
                 {/* <img
               src="https://mntglory.saksham.edu.np/icon/logo.svg"
               alt="Mount Glory School"
               className="size-48 object-contain"
             /> */}
                 <span className="text-xl">Welcome to</span>
-                <h1 className="text-7xl leading-snug">
+                <h1 className="text-7xl leading-tight">
                   Mount Glory English Boarding High School
                 </h1>
 
-                <p className="mt-8 max-w-xl text-xl">
+                <p className="mt-4 max-w-xl text-base">
                   Mount Glory excels in mentoring the current generation through
                   a tech-friendly, behavioral, and theoretical platform,
                   fostering a morale-driven environment. Join us for an
                   unrivaled learning experience.
+                  <br />
+                  <br />
+                  We believe in a familiar and joyful learning process. We
+                  ensure that your kid will get the best guardianship. Since its
+                  establishment in 2052, it has been playing a great role in
+                  enhancing the career and educational status of the students.
+                  <br />
+                  <br />
+                  Also, we highly encourage our potential students to join Mount
+                  Glory for reasonable fee structure and qualified teaching
+                  faculties.
                 </p>
               </section>
             </div>
