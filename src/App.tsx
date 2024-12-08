@@ -12,6 +12,7 @@ import AboutIntro from './components/AboutIntro';
 import Team from './components/Team';
 import Hero from './components/Hero';
 import Gallery from './components/Gallery';
+import Events from './components/Events';
 
 const App: React.FC = () => {
   return (
@@ -22,6 +23,7 @@ const App: React.FC = () => {
         {/* <Intro /> */}
         <AboutIntro />
         <Team />
+        <Events />
         <Gallery />
       </Router>
     </>

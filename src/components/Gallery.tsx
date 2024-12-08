@@ -126,7 +126,7 @@ const Gallery: React.FC = () => {
       <LightGallery
         plugins={[lgZoom, lgVideo, lgThumbnail, lgFullscreen]}
         mode="lg-fade"
-        elementClassNames={`w-full grid grid-cols-2 lg:grid-cols-4 gap-4 transition-linear ${
+        elementClassNames={`w-full columns-3 sm:columns-2 lg:columns-3 xl:columns-4 gap-2 md:gap-4 transition-linear ${
           isTransitioning ? 'translate-y-1/2' : 'translate-y-0'
         }`}
         thumbnail={true}
@@ -135,7 +135,7 @@ const Gallery: React.FC = () => {
         {filteredImages.map((image) => (
           <div
             key={image.id}
-            className={`gallery-item group overflow-hidden transition-all duration-200 ease-linear ${
+            className={`gallery-item group mb-2 overflow-hidden transition-all duration-300 ease-linear md:mb-4 origin-center ${
               isTransitioning ? 'scale-0' : 'scale-100'
             }`}
             data-src={image.url}
