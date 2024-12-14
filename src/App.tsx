@@ -13,6 +13,7 @@ import Hero from './components/Hero';
 import Gallery from './components/Gallery';
 import Events from './components/Events';
 import MasterContent from './components/MasterContent';
+import Footer from './layouts/Footer';
 
 const testimonialsContent = {
   id: 'testimonials',
@@ -170,6 +171,7 @@ const App: React.FC = () => {
           </h3>
           <MasterContent content={testimonialsContent} />
         </main>
+        <Footer />
       </Router>
     </>
   );
