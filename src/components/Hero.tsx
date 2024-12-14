@@ -79,12 +79,34 @@ const Hero = () => {
           </section>
           <section className="mt-6 grid grid-cols-9 gap-6">
             <div className="col-span-5 h-max">
-              <p className="rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20">
+              {/* <p className="rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20">
                 We believe in a familiar and joyful learning process. We ensure
                 that your kid will get the best guardianship. Since its
                 establishment in 2052, it has been playing a great role in
                 enhancing the career and educational status of the students.
-              </p>
+              </p> */}
+              <div className="rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20 flex items-center justify-between">
+                <h4 className="flex flex-col items-center text-3xl">
+                  42+
+                  <span className="text-sm">Total Staffs</span>
+                </h4>
+                <h4 className="flex flex-col items-center text-3xl">
+                  24+
+                  <span className="text-sm">Years of Experience</span>
+                </h4>
+                <h4 className="flex flex-col items-center text-3xl">
+                  100%
+                  <span className="text-sm">Happy Students</span>
+                </h4>
+                <h4 className="flex flex-col items-center text-3xl">
+                  97
+                  <span className="text-sm">Awards Won</span>
+                </h4>
+                <h4 className="flex flex-col items-center text-3xl">
+                  13000+
+                  <span className="text-sm">Students</span>
+                </h4>
+              </div>
 
               <section className="mt-6 flex size-full flex-col items-start justify-center gap-2 text-pretty">
                 {/* <img
@@ -93,7 +115,7 @@ const Hero = () => {
               className="size-48 object-contain"
             /> */}
                 <span className="text-xl">Welcome to</span>
-                <h1 className="text-7xl leading-tight">
+                <h1 className="text-6xl leading-tight">
                   Mount Glory English Boarding High School
                 </h1>
 

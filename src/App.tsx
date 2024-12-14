@@ -24,7 +24,9 @@ const App: React.FC = () => {
         <AboutIntro />
         <Team />
         <Events />
-        <Gallery />
+        <section className="px-2">
+          <Gallery />
+        </section>
       </Router>
     </>
   );
