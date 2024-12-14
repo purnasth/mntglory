@@ -22,7 +22,7 @@ const sliderImages = [
 const AboutIntro = () => {
   return (
     <>
-      <main className="border-t border-dark/20 px-0 pb-0">
+      <main className="bg-light border-t border-dark/20 px-0 pb-0">
         <div className="container mb-16 text-center">
           <h2 className="text-2xl font-medium capitalize">
             Quality in Education & Character building is our motto.
