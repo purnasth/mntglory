@@ -10,6 +10,7 @@ import './test.css';
 import Footer from './layouts/Footer';
 import Home from './pages/Home';
 import GalleryPage from './pages/GalleryPage';
+import Notice from './pages/Notice';
 
 const App: React.FC = () => {
   return (
@@ -18,7 +19,8 @@ const App: React.FC = () => {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/gallery" element={<GalleryPage/>} />
+          <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="notice" element={<Notice />} />
         </Routes>
         <Footer />
       </Router>

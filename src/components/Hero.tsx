@@ -40,7 +40,7 @@ const Hero = () => {
                     in enhancing the career and educational status of the
                     students.
                   </p> */}
-                  <div className="absolute inset-0 mx-auto size-full h-auto min-h-40 max-w-xs translate-y-8 rounded-2xl bg-white/40 p-6 shadow-lg outline outline-white backdrop-blur-sm">
+                  <div className="absolute inset-0 mx-auto size-full h-auto min-h-40 max-w-xs translate-y-8 rounded-2xl border bg-light/40 p-6 shadow-lg backdrop-blur-sm">
                     <div className="flex translate-x-2 items-center justify-center gap-0">
                       <img
                         src="https://www.purnashrestha.com.np/assets/hero-DDSQy-9a.avif"
@@ -85,7 +85,7 @@ const Hero = () => {
                 establishment in 2052, it has been playing a great role in
                 enhancing the career and educational status of the students.
               </p> */}
-              <div className="rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20 flex items-center justify-between">
+              <div className="flex items-center justify-between rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20">
                 <h4 className="flex flex-col items-center text-3xl">
                   42+
                   <span className="text-sm">Total Staffs</span>

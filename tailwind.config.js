@@ -14,9 +14,9 @@ export default {
         ],
       },
       colors: {
-        dark: '#0a0a0a',
+        dark: '#1a1a1a',
         light: '#e4f2f7',
-        primary: '#1944f1',
+        primary: '#2980b9',
       },
       screens: {
         sm: '640px',

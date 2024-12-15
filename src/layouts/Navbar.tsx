@@ -23,6 +23,11 @@ const navLinks = [
   },
   {
     id: 4,
+    title: 'Notice',
+    url: '/notice',
+  },
+  {
+    id: 5,
     title: 'Gallery',
     url: '/gallery',
   },
@@ -51,7 +56,7 @@ const Navbar: React.FC = () => {
     <>
       <nav className={`sticky top-0 z-40 w-full border-b border-dark/20`}>
         <div
-          className={`absolute inset-0 size-full transition-all duration-300 ${
+          className={`absolute inset-0 size-full transition-300 bg-white ${
             isScrolled ? 'bg-white' : ''
           }`}
         />

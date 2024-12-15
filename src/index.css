@@ -9,7 +9,7 @@
 
 @layer components {
   ::selection {
-    @apply bg-dark text-light;
+    @apply bg-primary text-light;
   }
 
   * {
@@ -18,7 +18,7 @@
 
   .scroll {
     scrollbar-width: thin;
-    scrollbar-color: #1944f1 transparent;
+    scrollbar-color: #2980b9 transparent;
   }
 
   /* ::-webkit-scrollbar {
@@ -34,7 +34,7 @@
   } */
 
   body {
-    @apply bg-white;
+    @apply bg-white text-dark;
   }
   footer,
   main {
