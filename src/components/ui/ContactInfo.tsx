@@ -51,14 +51,14 @@ const socialIcons: { [key: string]: JSX.Element } = {
 const ContactInfo = () => {
   return (
     <>
-      <ul className={`my-5 flex flex-col gap-1`}>
+      <ul className={`my-3 flex flex-col gap-1`}>
         {contactInfo
           .filter((info) => info.type !== 'social')
           .map((info) => (
             <li key={info.id}>
               <Link
                 to={info.url}
-                className="transition-300 inline-block text-sm font-medium text-dark hover:text-black hover:underline"
+                className="transition-300 inline-block text-sm font-medium text-black hover:text-black hover:underline"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={info.title}
@@ -75,7 +75,7 @@ const ContactInfo = () => {
           .map((info) => (
             <li
               key={info.id}
-              className="transition-300 group text-dark/80 hover:scale-125 hover:text-dark"
+              className="transition-300 group text-dark hover:scale-125 hover:text-dark"
             >
               <Link
                 to={info.url}

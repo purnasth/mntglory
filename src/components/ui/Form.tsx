@@ -67,7 +67,7 @@ const OffersEnquiry: React.FC = ({}) => {
   return (
     <>
       <div
-        className={`transition-700 relative w-full transform rounded-lg bg-white p-12 shadow-lg`}
+        className={`transition-700 relative w-full transform rounded-xl border bg-light/30 p-12 shadow-md`}
       >
         {/* <div className="space-y-2">
           <h3 className="font-body text-xl font-bold">Enquiry Form</h3>
@@ -118,7 +118,7 @@ const OffersEnquiry: React.FC = ({}) => {
             type="submit"
             aria-label="Submit"
             title="Submit"
-            className={`transition-300 group mt-4 flex items-center gap-2 rounded-lg border border-primary bg-primary px-5 py-2 font-semibold text-light hover:bg-light hover:text-primary ${
+            className={`transition-300 group mt-4 flex items-center gap-2 rounded-xl border border-primary bg-primary px-6 py-2 font-semibold text-light hover:bg-light hover:text-primary ${
               isSubmitting ? 'cursor-not-allowed opacity-75' : ''
             }`}
             disabled={isSubmitting}

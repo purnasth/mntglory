@@ -2,6 +2,7 @@ import AboutIntro from '../components/AboutIntro';
 import Events from '../components/Events';
 import Gallery from '../components/Gallery';
 import Hero from '../components/Hero';
+import InformationForm from '../components/InformationForm';
 import MasterContent from '../components/MasterContent';
 
 const testimonialsContent = {
@@ -158,6 +159,7 @@ const Home = () => {
         </h3>
         <MasterContent content={testimonialsContent} />
       </main>
+      <InformationForm />
     </>
   );
 };

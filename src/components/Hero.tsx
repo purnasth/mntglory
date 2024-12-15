@@ -1,5 +1,7 @@
 import sideBuilding from '../assets/img/sideBuilding.png';
+import FactsUI from './ui/FactsUI';
 import NoticeBoard from './ui/NoticeBoard';
+import TeamUI from './ui/TeamUI';
 
 const Hero = () => {
   return (
@@ -40,33 +42,8 @@ const Hero = () => {
                     in enhancing the career and educational status of the
                     students.
                   </p> */}
-                  <div className="absolute inset-0 mx-auto size-full h-auto min-h-40 max-w-xs translate-y-8 rounded-2xl border bg-light/40 p-6 shadow-lg backdrop-blur-sm">
-                    <div className="flex translate-x-2 items-center justify-center gap-0">
-                      <img
-                        src="https://www.purnashrestha.com.np/assets/hero-DDSQy-9a.avif"
-                        alt="Purna"
-                        className="size-10 -translate-x-0 rounded-full bg-white object-contain outline outline-1 outline-dark/30"
-                      />
-                      <img
-                        src="https://www.purnashrestha.com.np/assets/hero-DDSQy-9a.avif"
-                        alt="Purna"
-                        className="size-10 -translate-x-2 rounded-full bg-white object-contain outline outline-1 outline-dark/30"
-                      />
-                      <img
-                        src="https://www.purnashrestha.com.np/assets/hero-DDSQy-9a.avif"
-                        alt="Purna"
-                        className="size-10 -translate-x-4 rounded-full bg-white object-contain outline outline-1 outline-dark/30"
-                      />
-                      <img
-                        src="https://www.purnashrestha.com.np/assets/hero-DDSQy-9a.avif"
-                        alt="Purna"
-                        className="size-10 -translate-x-6 rounded-full bg-white object-contain outline outline-1 outline-dark/30"
-                      />
-                    </div>
-                    <hr className="my-4 border-dark/40" />
-                    <h3 className="text-center">
-                      Discover our team dedicated to build your child's future.
-                    </h3>
+                  <div className="absolute inset-0 mx-auto size-full h-auto min-h-40 max-w-xs translate-y-8">
+                    <TeamUI />
                   </div>
                 </div>
               </div>
@@ -85,28 +62,7 @@ const Hero = () => {
                 establishment in 2052, it has been playing a great role in
                 enhancing the career and educational status of the students.
               </p> */}
-              <div className="flex items-center justify-between rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20">
-                <h4 className="flex flex-col items-center text-3xl">
-                  42+
-                  <span className="text-sm">Total Staffs</span>
-                </h4>
-                <h4 className="flex flex-col items-center text-3xl">
-                  24+
-                  <span className="text-sm">Years of Experience</span>
-                </h4>
-                <h4 className="flex flex-col items-center text-3xl">
-                  100%
-                  <span className="text-sm">Happy Students</span>
-                </h4>
-                <h4 className="flex flex-col items-center text-3xl">
-                  97
-                  <span className="text-sm">Awards Won</span>
-                </h4>
-                <h4 className="flex flex-col items-center text-3xl">
-                  13000+
-                  <span className="text-sm">Students</span>
-                </h4>
-              </div>
+              <FactsUI />
 
               <section className="mt-6 flex size-full flex-col items-start justify-center gap-2 text-pretty">
                 {/* <img
