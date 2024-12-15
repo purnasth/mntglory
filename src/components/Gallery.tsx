@@ -116,7 +116,10 @@ const Gallery: React.FC = () => {
   };
   return (
     <>
-      <div className="sticky top-16 z-30 mb-4 mt-8 flex flex-wrap justify-center gap-4 bg-white p-2">
+      <div
+        id="gallery"
+        className="sticky top-16 z-30 mb-4 mt-8 flex flex-wrap justify-center gap-4 bg-white p-2"
+      >
         {categories.map((category) => (
           <button
             key={category}

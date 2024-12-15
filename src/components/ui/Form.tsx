@@ -67,16 +67,16 @@ const OffersEnquiry: React.FC = ({}) => {
   return (
     <>
       <div
-        className={`transition-700 relative w-full max-w-xl transform rounded-lg bg-white p-6 shadow-lg`}
+        className={`transition-700 relative w-full transform rounded-lg bg-white p-12 shadow-lg`}
       >
-        <div className="space-y-2">
+        {/* <div className="space-y-2">
           <h3 className="font-body text-xl font-bold">Enquiry Form</h3>
           <p>Send your information and query.</p>
-        </div>
-        <form className="mt-12" onSubmit={handleSubmit(onSubmit)}>
+        </div> */}
+        <form onSubmit={handleSubmit(onSubmit)}>
           {enquiryForm.map((input) => (
             <div key={input.name} className="relative mb-4">
-              <label htmlFor={input.name} className="block text-dark/80">
+              <label htmlFor={input.name} className="block text-dark/60">
                 {input.label}
                 {input.required && <span className="text-red-500">*</span>}
               </label>
@@ -85,7 +85,7 @@ const OffersEnquiry: React.FC = ({}) => {
                   {...register(input.name as keyof FormData)}
                   rows={2}
                   id={input.name}
-                  className={`w-full rounded-none border-b border-dark/20 bg-transparent py-0 text-base font-normal text-dark focus:border-dark focus:outline-none sm:py-2 md:text-xl ${
+                  className={`w-full rounded-none border-b border-dark/20 bg-transparent py-0 text-base font-normal text-dark focus:border-dark focus:outline-none sm:py-2 md:text-base ${
                     errors[input.name as keyof FormData]
                       ? 'border-red-500'
                       : 'border-gray-200'
@@ -96,7 +96,7 @@ const OffersEnquiry: React.FC = ({}) => {
                   {...register(input.name as keyof FormData)}
                   type={input.type}
                   id={input.name}
-                  className={`w-full rounded-none border-b border-dark/20 bg-transparent py-0 text-base font-normal text-dark focus:border-dark focus:outline-none sm:py-2 md:text-xl ${
+                  className={`w-full rounded-none border-b border-dark/20 bg-transparent py-0 text-base font-normal text-dark focus:border-dark focus:outline-none sm:py-2 md:text-base ${
                     errors[input.name as keyof FormData]
                       ? 'border-red-500'
                       : 'border-gray-200'

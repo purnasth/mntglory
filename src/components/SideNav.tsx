@@ -113,14 +113,14 @@ const SideNav: React.FC = () => {
           <div className="relative flex w-full flex-col justify-between">
             <p>&copy; 2024 Mount Glory School</p>
             <p className="item-center group flex">
-              Developed by
+              Website by
               <a
                 className="ml-1 flex items-center gap-1 font-semibold"
                 rel="noreferrer"
                 href="https://www.purnashrestha.com.np/"
                 target="_blank"
               >
-                <span className="h-[1px] w-1 bg-dark/80 transition-all duration-300 group-hover:w-6"></span>
+                <span className="h-[1px] w-2 bg-dark/80 transition-all duration-300 group-hover:w-8"></span>
                 Purna Shrestha
               </a>
             </p>

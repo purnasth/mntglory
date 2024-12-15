@@ -24,7 +24,7 @@ const navLinks = [
   {
     id: 4,
     title: 'Gallery',
-    url: '/gallery',
+    url: '/#gallery',
   },
 ];
 
@@ -66,7 +66,7 @@ const Navbar: React.FC = () => {
             />
           </a>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-8">
             <ul className="site-menu hidden items-center gap-8 md:flex">
               {navLinks.map((link) => (
                 <li key={link.id} className="group">
