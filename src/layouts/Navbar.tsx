@@ -24,7 +24,7 @@ const navLinks = [
   {
     id: 4,
     title: 'Gallery',
-    url: '/#gallery',
+    url: '/gallery',
   },
 ];
 

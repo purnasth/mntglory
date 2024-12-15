@@ -85,7 +85,11 @@ const galleryImages = [
   },
 ];
 
-const Gallery: React.FC = () => {
+interface GalleryProps {
+  limit?: number;
+}
+
+const Gallery: React.FC<GalleryProps> = ({ limit }) => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
@@ -114,6 +118,10 @@ const Gallery: React.FC = () => {
       }
     }, 200);
   };
+
+  const limitGalleryImages = limit
+    ? filteredImages.slice(0, limit)
+    : filteredImages;
   return (
     <>
       <div
@@ -143,7 +151,7 @@ const Gallery: React.FC = () => {
         thumbnail={true}
         autoplay={true}
       >
-        {filteredImages.map((image) => (
+        {limitGalleryImages.map((image) => (
           <div
             key={image.id}
             className={`gallery-item group mb-2 origin-center overflow-hidden transition-all duration-300 ease-linear md:mb-2 ${
