@@ -1,50 +1,129 @@
-# React + TypeScript + Vite
+## This is a documentation file for the "Mount Glory" project.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Description
 
-Currently, two official plugins are available:
+- Mount Glory School is a school website that provides information about the school, its programs, and its faculty. It also allows users to contact the school.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Technologies Used
 
-## Expanding the ESLint configuration
+- The project is built using the following technologies:
+  - Vite + React
+  - TypeScript
+  - Tailwind CSS
+  - Axios
+  - React Router
+  - React Icons
+  - React Toastify
+  - Yup
+  - React Hook Form
+  - Google reCAPTCHA
+  - Swiper
+  - Lightgallery
+  - Anime.js
+  - Prettier Tailwind Formatter
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Fonts Used
 
-- Configure the top-level `parserOptions` property like this:
+- The project uses the following fonts:
+  - Chaviera - Heading
+  - Bricolage Grotesque - Body
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Installation
+
+- To install the project, follow these steps:
+
+### 1. Clone the repository
+
+```bash
+git clone
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### 2. Install the dependencies
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+```bash
+pnpm install
 ```
+
+### 3. Start the development server
+
+```bash
+pnpm run dev
+```
+
+### 4. Build the project
+
+- Build the project using the following command:
+
+```bash
+pnpm vite build
+```
+
+### 5. For production build testing
+
+- To test the production build, run the following command:
+
+```bash
+pnpm vite preview
+```
+
+## Environment Variables
+
+- The project uses the following environment variables:
+
+### 1. VITE_APP_API_URL
+
+- This variable is used to specify the URL of the backend API. It is used to make API requests in the project.
+
+### 2. VITE_RECAPTCHA_SITE_KEY
+
+- This variable is used to specify the site key for Google reCAPTCHA. It is used to add reCAPTCHA to forms for spam protection.
+
+### 3. VITE_RECAPTCHA_SECRET_KEY
+
+- This variable is used to specify the secret key for Google reCAPTCHA. It is used to verify reCAPTCHA responses on the backend.
+
+## pnpm Packages Used
+
+### 1. pnpm i react-router-dom
+
+- This package is used to handle the routing in the project. It is used to navigate between different components in the project.
+
+### 2. pnpm i react-icons
+
+- This package is used to add icons to the project. It provides a wide range of icons to choose from.
+
+### 3. pnpm i axios
+
+- This package is used to make API requests in the project. It is used to fetch data from the backend server.
+
+### 4. pnpm i react-toastify
+
+- This package is used to display toast notifications in the project. It provides a simple way to show notifications to the user.
+
+### 5. pnpm i yup
+
+- This package is used for form validation in the project. It provides a simple way to validate form inputs.
+
+### 6. pnpm i react-hook-form
+
+- This package is used to handle form inputs in the project. It provides a simple way to manage form state and validation.
+
+### 7. pnpm i @types/react-google-recaptcha
+
+- This package is used to add Google reCAPTCHA to the project. It provides a way to add reCAPTCHA to forms for spam protection.
+
+### 8. pnpm i swiper
+
+- This package is used to create sliders in the project. It provides a simple way to create responsive sliders.
+
+### 9. pnpm i lightgallery
+
+- This package is used to create image galleries in the project. It provides a simple way to create responsive image galleries.
+
+### 10. pnpm i @types/animejs
+
+- This package is used to create animations in the project. It provides a simple way to create animations.
+
+## File Structure
+
+- The project is structured as follows:

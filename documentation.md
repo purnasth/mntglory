@@ -20,6 +20,67 @@
   - Swiper
   - Lightgallery
   - Anime.js
+  - Prettier Tailwind Formatter
+
+## Fonts Used
+
+- The project uses the following fonts:
+  - Chaviera - Heading
+  - Bricolage Grotesque - Body
+
+## Installation
+
+- To install the project, follow these steps:
+
+### 1. Clone the repository
+
+```bash
+git clone
+```
+
+### 2. Install the dependencies
+
+```bash
+pnpm install
+```
+
+### 3. Start the development server
+
+```bash
+pnpm run dev
+```
+
+### 4. Build the project
+
+- Build the project using the following command:
+
+```bash
+pnpm vite build
+```
+
+### 5. For production build testing
+
+- To test the production build, run the following command:
+
+```bash
+pnpm vite preview
+```
+
+## Environment Variables
+
+- The project uses the following environment variables:
+
+### 1. VITE_APP_API_URL
+
+- This variable is used to specify the URL of the backend API. It is used to make API requests in the project.
+
+### 2. VITE_RECAPTCHA_SITE_KEY
+
+- This variable is used to specify the site key for Google reCAPTCHA. It is used to add reCAPTCHA to forms for spam protection.
+
+### 3. VITE_RECAPTCHA_SECRET_KEY
+
+- This variable is used to specify the secret key for Google reCAPTCHA. It is used to verify reCAPTCHA responses on the backend.
 
 ## pnpm Packages Used
 
