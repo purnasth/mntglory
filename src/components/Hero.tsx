@@ -12,7 +12,7 @@ const Hero = () => {
             <div className="col-span-1 mt-3 space-y-6">
               <p className="flex items-center justify-between gap-8">
                 01
-                <hr className="w-full border-dark/40" />
+                <hr className="w-full border-primary/40" />
               </p>
               <img
                 src={sideBuilding}

@@ -78,6 +78,10 @@
       hue-rotate(327deg) brightness(96%) contrast(104%);
   }
 
+  .bg-gradient {
+    @apply bg-gradient-to-r from-[#7adcff] to-[#004471];
+  }
+
   .transition-300 {
     @apply transition-all duration-300 ease-linear;
   }

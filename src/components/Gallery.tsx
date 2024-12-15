@@ -134,9 +134,9 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
             onClick={() => handleCategoryClick(category)}
             className={`${
               activeCategory === category
-                ? 'font-bold text-primary'
+                ? 'font-medium text-primary bg-primary/5'
                 : 'font-medium text-dark/60'
-            } transition-linear rounded-md px-1 py-2 text-xs capitalize hover:bg-primary/5 hover:text-primary md:px-4 md:py-2 md:text-sm lg:text-lg`}
+            } transition-linear rounded-md px-4 py-1 text-xs capitalize hover:bg-primary/5 hover:text-primary md:px-4 md:py-1 md:text-sm lg:text-lg`}
           >
             {category}
           </button>

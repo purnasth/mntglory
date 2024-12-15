@@ -7,7 +7,6 @@ export default {
         title: ['"Purna Title"', 'Georgia', 'Cambria', 'serif'],
         body: [
           '"Bricolage Grotesque"',
-          'Kanit',
           'ui-sans-serif',
           'system-ui',
           'sans-serif',

@@ -6,10 +6,10 @@ const NoticeBoard = () => {
     <>
       <div className="bg-light">
         <div className="flex items-center justify-between p-8">
-          <h2 className="text-2xl font-bold">Notice Board</h2>
+          <h2 className="text-2xl font-medium">Notice Board</h2>
           <Link
             to="/notice"
-            className="transition-300 group flex items-center gap-2 rounded-lg border border-primary bg-primary px-5 py-2 font-semibold text-light hover:bg-primary/20 hover:text-primary"
+            className="transition-300 group flex items-center gap-2 rounded-lg border border-primary bg-primary px-5 py-2 text-light hover:bg-primary/20 hover:text-primary"
             data-text="View All Notices"
           >
             View All Notices

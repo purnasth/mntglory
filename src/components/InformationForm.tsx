@@ -16,7 +16,7 @@ const InformationForm = () => {
           />
           <div className="flex items-end justify-between gap-6">
             <div>
-              <h4 className="text-2xl font-semibold">Mount Glory School</h4>
+              <h4 className="text-2xl font-medium">Mount Glory School</h4>
               <p className="mt-2 max-w-xs text-sm">
                 We believe in a familiar and joyful learning process. We ensure
                 that your kid will get the best guardianship.

@@ -1,29 +1,106 @@
-const FactsUI = () => {
+import React, { useState, useEffect, useRef } from 'react';
+import anime from 'animejs';
+
+interface FactsContents {
+  number: string;
+  title: string;
+}
+
+const factsContents: FactsContents[] = [
+  {
+    number: '42+',
+    title: 'Total Staffs',
+  },
+  {
+    number: '24+',
+    title: 'Years Experience',
+  },
+  {
+    number: '100%',
+    title: 'Happy Students',
+  },
+  {
+    number: '97',
+    title: 'Awards Won',
+  },
+  {
+    number: '13000+',
+    title: 'Students',
+  },
+];
+
+const FactsUI: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [startAnimation, setStartAnimation] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStartAnimation(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => {
+      if (containerRef.current) observer.unobserve(containerRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (startAnimation) {
+      const targets = document.querySelectorAll('.animated-number');
+
+      targets.forEach((target) => {
+        const finalValue = target.getAttribute('data-value') || '0';
+        const symbol = target.getAttribute('data-symbol') || '';
+
+        anime({
+          targets: target,
+          innerHTML: [0, parseInt(finalValue)],
+          easing: 'easeOutExpo',
+          duration: 3000,
+          round: 1, // Round to whole numbers
+          update: (anim) => {
+            target.innerHTML = `${Math.floor((anim.currentTime / 3000) * parseInt(finalValue))}${symbol}`;
+          },
+        });
+      });
+    }
+  }, [startAnimation]);
+
   return (
-    <>
-      <div className="flex items-center justify-between rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20">
-        <h4 className="flex flex-col items-center text-3xl">
-          42+
-          <span className="text-sm">Total Staffs</span>
-        </h4>
-        <h4 className="flex flex-col items-center text-3xl">
-          24+
-          <span className="text-sm">Years of Experience</span>
-        </h4>
-        <h4 className="flex flex-col items-center text-3xl">
-          100%
-          <span className="text-sm">Happy Students</span>
-        </h4>
-        <h4 className="flex flex-col items-center text-3xl">
-          97
-          <span className="text-sm">Awards Won</span>
-        </h4>
-        <h4 className="flex flex-col items-center text-3xl">
-          13000+
-          <span className="text-sm">Students</span>
-        </h4>
-      </div>
-    </>
+    <div
+      ref={containerRef}
+      className="flex items-center justify-between rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20"
+    >
+      {factsContents.map((content, index) => {
+        const numberMatch = content.number.match(/\d+/);
+        const symbolMatch = content.number.replace(numberMatch?.[0] || '', '');
+
+        return (
+          <div
+            key={index}
+            className="flex flex-1 flex-col items-center"
+          >
+            <span
+              className="animated-number font-medium text-primary text-3xl"
+              data-value={numberMatch ? numberMatch[0] : '0'}
+              data-symbol={symbolMatch}
+            >
+              0{symbolMatch}
+            </span>
+            <span className="mt-1 text-sm text-gray-600">{content.title}</span>
+          </div>
+        );
+      })}
+    </div>
   );
 };
 

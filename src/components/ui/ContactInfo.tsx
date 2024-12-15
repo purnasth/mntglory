@@ -69,7 +69,7 @@ const ContactInfo = () => {
           ))}
       </ul>
 
-      <ul className={`flex gap-4 text-xl`}>
+      <ul className={`mt-4 flex gap-4 text-xl`}>
         {contactInfo
           .filter((info) => info.type === 'social')
           .map((info) => (
