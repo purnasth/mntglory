@@ -1,4 +1,5 @@
-import sideBuilding from '../assets/img/sideBuilding.png';
+import kidSchool from '../assets/img/kidSchool.png';
+import landscapeSchool from '../assets/img/landscapeSchool.svg';
 import FactsUI from './ui/FactsUI';
 import NoticeBoard from './ui/NoticeBoard';
 import TeamUI from './ui/TeamUI';
@@ -15,7 +16,7 @@ const Hero = () => {
                 <hr className="w-full border-primary/40" />
               </p>
               <img
-                src={sideBuilding}
+                src={kidSchool}
                 alt="MGS Building"
                 className="h-72 w-full rounded-2xl bg-white object-cover object-center shadow-lg"
               />
@@ -48,7 +49,9 @@ const Hero = () => {
                 </div>
               </div>
               <img
-                src="https://ai4spaces.com/bundles/project/images/spaces/be19b814a1cdc49a82dc05170c74407822c1e3c863af762622ffccca61922a7f/12371_1_1732191375.png"
+                // src="https://ai4spaces.com/bundles/project/images/spaces/be19b814a1cdc49a82dc05170c74407822c1e3c863af762622ffccca61922a7f/12371_1_1732191375.png"
+                // src="https://mntglory.saksham.edu.np/images/gallery/program/61.webp"
+                src={landscapeSchool}
                 alt="MGS Building"
                 className="-z-10 h-96 w-full rounded-2xl object-cover shadow-lg"
               />
