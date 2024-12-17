@@ -11,10 +11,12 @@ import Footer from './layouts/Footer';
 import Home from './pages/Home';
 import GalleryPage from './pages/GalleryPage';
 import Notice from './pages/Notice';
+import Loader from './layouts/Loader';
 
 const App: React.FC = () => {
   return (
     <>
+      <Loader />
       <Router>
         <Navbar />
         <Routes>

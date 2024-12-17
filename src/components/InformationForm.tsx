@@ -1,5 +1,5 @@
 import Form from '../components/ui/Form';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.webp';
 import ContactInfo from '../components/ui/ContactInfo';
 import TeamUI from '../components/ui/TeamUI';
 import FactsUI from '../components/ui/FactsUI';

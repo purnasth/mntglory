@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.webp';
 import SideNav from '../components/SideNav';
 
 import { NavLink } from 'react-router-dom';

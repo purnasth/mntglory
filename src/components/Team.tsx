@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { MdOutlineFacebook, MdEmail } from 'react-icons/md';
 import { LiaLinkedinIn } from 'react-icons/lia';
 
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.webp';
 import TeamPopup from './ui/TeamPopup';
 
 interface TeamMember {

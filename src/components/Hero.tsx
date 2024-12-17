@@ -69,7 +69,7 @@ const Hero = () => {
 
               <section className="mt-6 flex size-full flex-col items-start justify-center gap-2 text-pretty">
                 {/* <img
-              src="https://mntglory.saksham.edu.np/icon/logo.svg"
+              src="https://mntglory.saksham.edu.np/icon/logo.webp"
               alt="Mount Glory School"
               className="size-48 object-contain"
             /> */}

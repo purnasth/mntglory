@@ -4,7 +4,7 @@ import { MdClose, MdSchool } from 'react-icons/md';
 // import { TbMenu2, TbMailFilled } from 'react-icons/tb';
 // import { MdClose, MdCall, MdSchool } from 'react-icons/md';
 // import { IoLogoWhatsapp } from 'react-icons/io';
-import logo from '../assets/logo.svg';
+import logo from '../assets/logo.webp';
 
 // import { AiFillInstagram } from 'react-icons/ai';
 
