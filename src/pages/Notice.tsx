@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { noticeContents } from '../constants/data';
 import { TbSortDescending } from 'react-icons/tb';
 import { FiSearch } from 'react-icons/fi';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { TfiClose } from 'react-icons/tfi';
+import useFetchAPI from '../hooks/useFetchAPI';
 
 type NoticeType = {
   title: string;
@@ -29,19 +29,51 @@ const Notice: React.FC = () => {
   const [category, setCategory] = useState<string>('All');
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // Filter and sort logic
-  const filteredNotices = noticeContents
-    .filter(
-      (notice: NoticeType) =>
-        (category === 'All' || notice.category === category) &&
-        (notice.title.toLowerCase().includes(filter.toLowerCase()) ||
-          notice.content.toLowerCase().includes(filter.toLowerCase())),
-    )
-    .sort((a: NoticeType, b: NoticeType) =>
-      sortBy === 'date'
-        ? new Date(a.date).getTime() - new Date(b.date).getTime()
-        : a.title.localeCompare(b.title),
+  // Use the reusable API fetch hook
+  const {
+    data: noticeContents,
+    isLoading,
+    isError,
+  } = useFetchAPI<NoticeType[]>('notices', '/api/notice.json');
+
+  if (isLoading) return <div className="py-10 text-center">Loading...</div>;
+  if (isError)
+    return (
+      <div className="py-10 text-center text-red-500">
+        Failed to fetch notices.
+      </div>
     );
+
+  // Filter and sort logic
+  const filteredNotices =
+    noticeContents
+      ?.filter((notice) => {
+        console.log('Notice:', notice); // Log each notice
+        console.log('Category:', category);
+        console.log('Filter:', filter);
+
+        const matchesCategory =
+          category === 'All' || notice.category === category;
+        const matchesSearch =
+          notice.title?.toLowerCase().includes(filter.toLowerCase()) ||
+          notice.content?.toLowerCase().includes(filter.toLowerCase());
+
+        console.log(
+          'Matches Category:',
+          matchesCategory,
+          'Matches Search:',
+          matchesSearch,
+        );
+
+        return matchesCategory && matchesSearch; // Check conditions
+      })
+      .sort((a, b) =>
+        sortBy === 'date'
+          ? new Date(a.date).getTime() - new Date(b.date).getTime()
+          : a.title.localeCompare(b.title),
+      ) || [];
+
+  console.log('Filtered Notices:', filteredNotices);
 
   // Pagination logic
   const totalPages = Math.ceil(filteredNotices.length / itemsPerPage);
@@ -53,12 +85,15 @@ const Notice: React.FC = () => {
   const openModal = (notice: NoticeType) => setExpandedNotice(notice);
   const closeModal = () => setExpandedNotice(null);
 
+  console.log('Fetched Notices:', noticeContents);
+
   return (
     <main className="py-16">
       <h1 className="mb-12 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-6xl lg:leading-snug">
         Find all the notices about the events, Announcements & Occasions
       </h1>
 
+      {/* Search, Sort, and Category Filters */}
       <div className="sticky top-16 z-30 mb-6 flex flex-col items-center gap-4 bg-white py-4 md:flex-row md:justify-between">
         <div className="relative max-w-2xl flex-1">
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-dark" />
@@ -71,6 +106,7 @@ const Notice: React.FC = () => {
         </div>
 
         <div className="flex items-center justify-between gap-4">
+          {/* Sort Dropdown */}
           <div className="relative">
             <select
               className="w-full appearance-none rounded-md border border-gray-300 bg-white py-2 pl-4 pr-9 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
@@ -82,6 +118,7 @@ const Notice: React.FC = () => {
             <TbSortDescending className="absolute right-3 top-1/2 -translate-y-1/2 text-dark" />
           </div>
 
+          {/* Category Dropdown */}
           <div className="relative">
             <select
               className="w-full appearance-none rounded-md border border-gray-300 bg-white py-2 pl-4 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
@@ -98,11 +135,17 @@ const Notice: React.FC = () => {
         </div>
       </div>
 
+      {/* Notices Grid */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {/* here please mention how many notices found please */}
+        <h2 className="col-span-full text-lg text-gray-700">
+          <strong className="font-semibold">{filteredNotices.length}</strong>{' '}
+          notices found.
+        </h2>
         {paginatedNotices.map((notice, index) => (
           <div
             key={index}
-            className="transform rounded-lg border bg-light/30 p-6 opacity-100 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
+            className="transform rounded-lg border bg-light/30 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
           >
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-gray-700">
@@ -124,6 +167,7 @@ const Notice: React.FC = () => {
         ))}
       </div>
 
+      {/* Pagination */}
       <div className="mt-8 flex justify-center">
         {Array.from({ length: totalPages }, (_, i) => (
           <button
@@ -140,9 +184,10 @@ const Notice: React.FC = () => {
         ))}
       </div>
 
+      {/* Modal */}
       {expandedNotice && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-500">
-          <div className="animate-fade-in-down relative w-full max-w-2xl rounded-lg bg-white p-8">
+          <div className="relative w-full max-w-2xl animate-fade-in-down rounded-lg bg-white p-8">
             <div className="space-y-4">
               <h2 className="text-2xl font-bold">{expandedNotice.title}</h2>
               <hr />

@@ -63,7 +63,7 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
     ? filteredImages.slice(0, limit)
     : filteredImages;
 
-  if (isLoading) return <div className="p-4 text-center">Loading...</div>;
+  if (isLoading) return <></>;
   if (isError)
     return (
       <div className="p-4 text-center text-red-500">Failed to load images.</div>
