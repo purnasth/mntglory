@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import logo from '../assets/logo.webp';
 import SideNav from '../components/SideNav';
 
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const navLinks = [
   {
@@ -52,16 +52,21 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
+  const handleLogoClick = () => {
+    const event = new Event('scrollToTop');
+    window.dispatchEvent(event);
+  };
+
   return (
     <>
       <nav className={`sticky top-0 z-40 w-full border-b border-dark/20`}>
         <div
-          className={`absolute inset-0 size-full transition-300 bg-white ${
+          className={`transition-300 absolute inset-0 size-full bg-white ${
             isScrolled ? 'bg-white' : ''
           }`}
         />
         <div className="container relative flex items-center justify-between py-2">
-          <a href="/" className="flex">
+          <Link to="/" className="flex" onClick={handleLogoClick}>
             <img
               src={logo}
               alt="Logo"
@@ -69,7 +74,7 @@ const Navbar: React.FC = () => {
                 isScrolled ? 'size-10 md:size-12' : 'size-14 md:size-20'
               }`}
             />
-          </a>
+          </Link>
 
           <div className="flex items-center gap-8">
             <ul className="site-menu hidden items-center gap-8 md:flex">

@@ -12,12 +12,14 @@ import Home from './pages/Home';
 import GalleryPage from './pages/GalleryPage';
 import Notice from './pages/Notice';
 import Loader from './layouts/Loader';
+import RouterToTop from './utils/RouterToTop';
 
 const App: React.FC = () => {
   return (
     <>
       <Loader />
       <Router>
+        <RouterToTop />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
