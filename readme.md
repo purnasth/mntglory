@@ -139,3 +139,48 @@ pnpm vite preview
 ## File Structure
 
 - The project is structured as follows:
+
+```plaintext
+📂 mntglory
+├── 📂 public
+│   ├── favicon.ico
+│   ├── robots.txt
+│   └── index.html
+├── 📂 src
+│   ├── 📂 assets
+│   │   └── 📂 [folders]
+│   ├── 📂 components
+│   │   ├── 📂 ui
+│   │   └── [Other Components]
+|   ├── 📂 constants
+│   │   └── data.ts
+|   ├── 📂 layouts
+│   │   └── [Layout Components]
+│   ├── 📂 hooks
+│   │   └── useCustomHook.ts
+│   ├── 📂 pages
+│   │   ├── Home.tsx
+│   │   └── About.tsx
+│   ├── 📂 utils
+│   │   ├── api.ts
+│   │   └── RouterToTop.ts
+│   ├── App.tsx
+│   ├── global.d.ts
+│   ├── main.tsx
+│   ├── vite-env.d.ts
+│   └── index.css
+├── .env
+├── .gitignore
+├── .prettierignore
+├── .prettierrc
+├── eslintrc.config.js
+├── index.html
+├── package.json
+├── postcss.config.js
+├── README.md
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
