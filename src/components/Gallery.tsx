@@ -10,80 +10,14 @@ import 'lightgallery/css/lg-video.css';
 import 'lightgallery/css/lg-thumbnail.css';
 import 'lightgallery/css/lg-fullscreen.css';
 
-const galleryImages = [
-  {
-    id: 1,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/education/39.webp',
-    alt: 'Art Competition',
-    category: 'Education',
-  },
-  {
-    id: 2,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/program/51.webp',
-    alt: 'Parents Day',
-    category: 'Program',
-  },
-  {
-    id: 3,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/education/14.webp',
-    alt: 'Educational Trip',
-    category: 'Education',
-  },
-  {
-    id: 4,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/sports/28.webp',
-    alt: 'Futsal',
-    category: 'Sport',
-  },
-  {
-    id: 5,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/program/17.webp',
-    alt: 'Swimming',
-    category: 'Program',
-  },
-  {
-    id: 6,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/education/20.webp',
-    alt: 'Environment Day',
-    category: 'Education',
-  },
-  {
-    id: 7,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/sports/34.webp',
-    alt: 'Sports Meet',
-    category: 'Sport',
-  },
-  {
-    id: 8,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/sports/30.webp',
-    alt: 'Kids Marathon',
-    category: 'Sport',
-  },
-  {
-    id: 9,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/program/61.webp',
-    alt: "28th Parents' Day",
-    category: 'Program',
-  },
-  {
-    id: 10,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/sports/32.webp',
-    alt: 'Kids Game',
-    category: 'Sport',
-  },
-  {
-    id: 11,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/sports/64.webp',
-    alt: 'Prize Distribution',
-    category: 'Education',
-  },
-  {
-    id: 12,
-    url: 'https://mntglory.saksham.edu.np/images/gallery/program/37.webp',
-    alt: 'Tihar Celebration',
-    category: 'Program',
-  },
-];
+import useFetchAPI from '../hooks/useFetchAPI';
+
+interface ImageData {
+  id: number;
+  url: string;
+  alt: string;
+  category: string;
+}
 
 interface GalleryProps {
   limit?: number;
@@ -93,6 +27,12 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
   const [activeCategory, setActiveCategory] = useState('All');
   const [isTransitioning, setIsTransitioning] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
+
+  const {
+    data: galleryImages = [],
+    isLoading,
+    isError,
+  } = useFetchAPI<ImageData[]>('gallery', '/api/gallery.json'); // Replace with your API endpoint
 
   const filteredImages =
     activeCategory === 'All'
@@ -122,6 +62,13 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
   const limitGalleryImages = limit
     ? filteredImages.slice(0, limit)
     : filteredImages;
+
+  if (isLoading) return <div className="p-4 text-center">Loading...</div>;
+  if (isError)
+    return (
+      <div className="p-4 text-center text-red-500">Failed to load images.</div>
+    );
+
   return (
     <>
       <div
@@ -134,27 +81,26 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
             onClick={() => handleCategoryClick(category)}
             className={`${
               activeCategory === category
-                ? 'font-medium text-primary bg-primary/5'
+                ? 'bg-primary/5 font-semibold text-primary'
                 : 'font-medium text-dark/60'
-            } transition-linear rounded-md px-4 py-1 text-xs capitalize hover:bg-primary/5 hover:text-primary md:px-4 md:py-1 md:text-sm lg:text-lg`}
+            } transition-linear rounded-md px-4 py-1 text-lg capitalize hover:bg-primary/5 hover:text-primary`}
           >
             {category}
           </button>
         ))}
       </div>
+
       <LightGallery
         plugins={[lgZoom, lgVideo, lgThumbnail, lgFullscreen]}
         mode="lg-fade"
-        elementClassNames={`w-full columns-3 sm:columns-2 lg:columns-3 xl:columns-3 gap-2 md:gap-2 transition-linear ${
+        elementClassNames={`w-full columns-3 gap-2 transition-linear ${
           isTransitioning ? 'translate-y-1/2' : 'translate-y-0'
         }`}
-        thumbnail={true}
-        autoplay={true}
       >
         {limitGalleryImages.map((image) => (
           <div
             key={image.id}
-            className={`gallery-item group mb-2 origin-center overflow-hidden transition-all duration-300 ease-linear md:mb-2 ${
+            className={`gallery-item group mb-2 overflow-hidden transition-all duration-300 ease-linear ${
               isTransitioning ? 'scale-0' : 'scale-100'
             }`}
             data-src={image.url}

@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/education/39.webp",
+        "alt": "Art Competition",
+        "category": "Education"
+    },
+    {
+        "id": 2,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/program/51.webp",
+        "alt": "Parents Day",
+        "category": "Program"
+    },
+    {
+        "id": 3,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/education/14.webp",
+        "alt": "Educational Trip",
+        "category": "Education"
+    },
+    {
+        "id": 4,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/sports/28.webp",
+        "alt": "Futsal",
+        "category": "Sport"
+    },
+    {
+        "id": 5,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/program/17.webp",
+        "alt": "Swimming",
+        "category": "Program"
+    },
+    {
+        "id": 6,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/education/20.webp",
+        "alt": "Environment Day",
+        "category": "Education"
+    },
+    {
+        "id": 7,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/sports/34.webp",
+        "alt": "Sports Meet",
+        "category": "Sport"
+    },
+    {
+        "id": 8,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/sports/30.webp",
+        "alt": "Kids Marathon",
+        "category": "Sport"
+    },
+    {
+        "id": 9,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/program/61.webp",
+        "alt": "28th Parents' Day",
+        "category": "Program"
+    },
+    {
+        "id": 10,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/sports/32.webp",
+        "alt": "Kids Game",
+        "category": "Sport"
+    },
+    {
+        "id": 11,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/sports/64.webp",
+        "alt": "Prize Distribution",
+        "category": "Education"
+    },
+    {
+        "id": 12,
+        "url": "https://mntglory.saksham.edu.np/images/gallery/program/37.webp",
+        "alt": "Tihar Celebration",
+        "category": "Program"
+    }
+]
