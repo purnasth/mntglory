@@ -124,6 +124,18 @@ pnpm vite preview
 
 - This package is used to create animations in the project. It provides a simple way to create animations.
 
+### 11. pnpm i prettier-plugin-tailwind
+
+- This package is used to format Tailwind CSS classes in the project. It provides a simple way to format Tailwind CSS classes.
+
+### 12. pnpm i lenis
+
+- This package is used to have a smooth scroll effect in the project. It provides a simple way to have a smooth scroll effect.
+
+### 13. pnpm i @tanstack/react-query
+
+- This package is a powerful data fetching library for React. It provides a simple and flexible way to fetch, cache, and update data in the project.
+
 ## File Structure
 
 - The project is structured as follows:

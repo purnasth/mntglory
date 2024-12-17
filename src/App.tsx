@@ -13,8 +13,10 @@ import GalleryPage from './pages/GalleryPage';
 import Notice from './pages/Notice';
 import Loader from './layouts/Loader';
 import RouterToTop from './utils/RouterToTop';
+import useLenisScroll from './hooks/useLenisScroll';
 
 const App: React.FC = () => {
+  useLenisScroll();
   return (
     <>
       <Loader />
