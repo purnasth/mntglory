@@ -73,7 +73,7 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
     <>
       <div
         id="gallery"
-        className="sticky top-16 z-30 mb-4 mt-8 flex flex-wrap justify-center gap-4 bg-white p-2"
+        className="sticky top-16 z-30 mb-4 mt-8 flex flex-wrap justify-center gap-2 md:gap-4 bg-white p-2"
       >
         {categories.map((category) => (
           <button
@@ -83,7 +83,7 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
               activeCategory === category
                 ? 'bg-primary/5 font-semibold text-primary'
                 : 'font-medium text-dark/60'
-            } transition-linear rounded-md px-4 py-1 text-lg capitalize hover:bg-primary/5 hover:text-primary`}
+            } transition-linear rounded-md px-4 py-1 text-sm md:text-lg capitalize hover:bg-primary/5 hover:text-primary`}
           >
             {category}
           </button>
@@ -93,7 +93,7 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
       <LightGallery
         plugins={[lgZoom, lgVideo, lgThumbnail, lgFullscreen]}
         mode="lg-fade"
-        elementClassNames={`w-full columns-3 gap-2 transition-linear ${
+        elementClassNames={`w-full columns-1 md:columns-2 lg:columns-3 gap-2 transition-linear ${
           isTransitioning ? 'translate-y-1/2' : 'translate-y-0'
         }`}
       >

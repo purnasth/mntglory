@@ -9,33 +9,33 @@ const Hero = () => {
     <>
       <main className="px-0 pt-6">
         <div className="container">
-          <section className="grid grid-cols-5 gap-6">
+          <section className="grid grid-cols-1 gap-6 lg:grid-cols-5">
             <div className="col-span-1 mt-3 space-y-6">
-              <p className="flex items-center justify-between gap-8">
+              <p className="jusitfy-center flex items-center gap-8 lg:justify-between">
                 01
-                <hr className="w-full border-primary/40" />
+                <hr className="w-2/3 border-primary/40 lg:w-full" />
               </p>
               <img
                 src={kidSchool}
                 alt="MGS Building"
-                className="h-72 w-full rounded-2xl bg-white object-cover object-center shadow-lg"
+                className="hidden h-72 w-full rounded-2xl bg-white object-cover object-center shadow-lg lg:block"
               />
-              <div>
+              <div className="hidden lg:block">
                 <h2 className="text-2xl font-semibold">Mount Glory School</h2>
                 <span>Chagal, Kathmandu</span>
               </div>
 
-              <div className="flex items-center justify-between gap-8">
+              <div className="hidden items-center justify-between gap-8 lg:flex">
                 <hr className="w-full flex-1 border-dark/20" />
                 <p className="">From PG to Grade X</p>
               </div>
             </div>
             <aside className="col-span-4">
-              <div className="mb-3 grid grid-cols-4">
+              <div className="mb-3 grid grid-cols-2 gap-6 md:grid-cols-4 lg:gap-0">
                 <h1 className="col-span-2 text-4xl font-medium capitalize leading-snug">
                   Quality in Education & Character building is our motto.
                 </h1>
-                <div className="relative z-10 col-span-2">
+                <div className="relative z-10 col-span-2 my-4 md:my-0">
                   {/* <p className="absolute inset-0 mx-auto size-full h-60 max-w-xs rounded-2xl bg-slate-100 p-6 shadow-lg outline outline-[1.25rem] outline-white">
                     We believe in a familiar and joyful learning process. We
                     ensure that your kid will get the best guardianship. Since
@@ -43,7 +43,7 @@ const Hero = () => {
                     in enhancing the career and educational status of the
                     students.
                   </p> */}
-                  <div className="absolute inset-0 mx-auto size-full h-auto min-h-40 max-w-xs translate-y-8">
+                  <div className="inset-0 size-full h-auto min-h-40 max-w-xs content-end md:ml-auto lg:absolute lg:mx-auto lg:translate-y-8">
                     <TeamUI />
                   </div>
                 </div>
@@ -53,12 +53,12 @@ const Hero = () => {
                 // src="https://mntglory.saksham.edu.np/images/gallery/program/61.webp"
                 src={landscapeSchool}
                 alt="MGS Building"
-                className="-z-10 h-96 w-full rounded-2xl object-cover shadow-lg"
+                className="-z-10 h-64 w-full rounded-2xl object-cover shadow-lg sm:h-96"
               />
             </aside>
           </section>
-          <section className="mt-6 grid grid-cols-9 gap-6">
-            <div className="col-span-5 h-max">
+          <section className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-9">
+            <div className="lg:col-span-5 h-max">
               {/* <p className="rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20">
                 We believe in a familiar and joyful learning process. We ensure
                 that your kid will get the best guardianship. Since its
@@ -74,11 +74,11 @@ const Hero = () => {
               className="size-48 object-contain"
             /> */}
                 <span className="text-xl">Welcome to</span>
-                <h1 className="text-6xl leading-tight">
+                <h1 className="text-3xl md:text-6xl leading-snug md:leading-tight">
                   Mount Glory English Boarding High School
                 </h1>
 
-                <p className="mt-4 max-w-xl text-base">
+                <p className="mt-4 lg:max-w-xl text-base">
                   Mount Glory excels in mentoring the current generation through
                   a tech-friendly, behavioral, and theoretical platform,
                   fostering a morale-driven environment. Join us for an
@@ -97,7 +97,7 @@ const Hero = () => {
                 </p>
               </section>
             </div>
-            <aside className="col-span-4 overflow-hidden rounded-2xl shadow-md outline outline-1 outline-dark/20">
+            <aside className="lg:col-span-4 overflow-hidden rounded-2xl shadow-md outline outline-1 outline-dark/20 bg-red-600 w-full">
               <NoticeBoard />
             </aside>
           </section>

@@ -6,15 +6,15 @@ import FactsUI from '../components/ui/FactsUI';
 
 const InformationForm = () => {
   return (
-    <main className="pt-0 pb-16">
-      <div className="grid grid-cols-2 gap-x-6 items-center">
+    <main className="pb-16 pt-0">
+      <div className="grid grid-cols-1 items-center gap-y-6 lg:gap-x-6 lg:gap-y-0 lg:grid-cols-2">
         <div className="space-y-7">
           <img
             src={logo}
             alt="Mount Glory"
-            className="size-48 object-contain"
+            className="size-32 md:size-48 object-contain"
           />
-          <div className="flex items-end justify-between gap-6">
+          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
             <div>
               <h4 className="text-2xl font-medium">Mount Glory School</h4>
               <p className="mt-2 max-w-xs text-sm">
@@ -23,10 +23,8 @@ const InformationForm = () => {
               </p>
               <ContactInfo />
             </div>
-            <div className="flex flex-col">
-              <div className="size-full h-auto min-h-40 max-w-xs">
-                <TeamUI />
-              </div>
+            <div className="size-full h-auto min-h-40 max-w-xs">
+              <TeamUI />
             </div>
           </div>
           <FactsUI />

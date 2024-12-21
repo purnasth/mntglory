@@ -78,7 +78,7 @@ const FactsUI: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="flex items-center justify-between rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20"
+      className="flex items-center justify-between rounded-2xl bg-slate-100 p-3 sm:p-6 shadow-sm outline outline-1 outline-dark/20"
     >
       {factsContents.map((content, index) => {
         const numberMatch = content.number.match(/\d+/);
@@ -90,13 +90,13 @@ const FactsUI: React.FC = () => {
             className="flex flex-1 flex-col items-center"
           >
             <span
-              className="animated-number font-medium text-primary text-3xl"
+              className="animated-number font-medium text-primary text-xl md:text-3xl"
               data-value={numberMatch ? numberMatch[0] : '0'}
               data-symbol={symbolMatch}
             >
               0{symbolMatch}
             </span>
-            <span className="mt-1 text-sm text-gray-600">{content.title}</span>
+            <span className="mt-1 text-[0.5em] md:text-sm text-gray-600">{content.title}</span>
           </div>
         );
       })}

@@ -144,7 +144,7 @@ const Home = () => {
       {/* <Intro /> */}
       <AboutIntro />
       <main className="px-4">
-        <h3 className="mb-12 ml-12 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-6xl lg:leading-snug">
+        <h3 className="mb-8 md:mb-12 xl:ml-12 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-6xl lg:leading-snug">
           {ourTeamContents.heading}
         </h3>
         <MasterContent content={ourTeamContents} />
@@ -154,7 +154,7 @@ const Home = () => {
         <Gallery limit={12} />
       </section>
       <main className="px-4">
-        <h3 className="mb-12 ml-12 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-6xl lg:leading-snug">
+        <h3 className="mb-8 md:mb-12 xl:ml-12 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-6xl lg:leading-snug">
           {testimonialsContent.heading}
         </h3>
         <MasterContent content={testimonialsContent} />

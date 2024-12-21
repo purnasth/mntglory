@@ -33,8 +33,8 @@ const eventsContent = [
 const Events: React.FC = () => {
   return (
     <main className="border-y border-dark/20 bg-light">
-      <div className="grid grid-cols-1 gap-y-16 md:grid-cols-3 md:gap-16">
-        <div className="top-32 space-y-4 md:sticky md:col-span-1 md:max-h-fit">
+      <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-3 lg:gap-16">
+        <div className="top-32 space-y-4 lg:sticky lg:col-span-1 lg:max-h-fit">
           {/* <span className="text-sm uppercase opacity-60 md:text-base">
             What we do
           </span> */}
@@ -46,7 +46,7 @@ const Events: React.FC = () => {
             diverse facets of education at MGS. Stay tuned for more updates on
             our dynamic and enriching educational landscape!
           </p>
-          <div className="flex items-center gap-8 justify-between pt-5">
+          <div className="flex items-center gap-16 pt-5 lg:justify-between">
             <div className="flex flex-col items-center gap-4">
               <h5 className="text-3xl font-bold">100%</h5>
               <p className="text-xs md:text-xs xl:text-base">Education</p>
@@ -72,7 +72,7 @@ const Events: React.FC = () => {
             </Link>
           </div>
         </div>
-        <div className="space-y-14 md:col-span-2 md:space-y-14">
+        <div className="space-y-5 sm:space-y-14 md:col-span-2 md:space-y-14">
           {eventsContent.map((service, index) => (
             <div
               key={index}
@@ -84,7 +84,7 @@ const Events: React.FC = () => {
                 className="h-60 w-full object-cover md:h-[32rem]"
               />
               {/* <div className="mx-auto max-w-2xl -translate-y-1/2 space-y-5 bg-light p-8"> */}
-              <div className="space-y-2 p-2 md:space-y-5 md:p-10">
+              <div className="space-y-2 p-6 md:space-y-5 md:p-10">
                 <h5 className="font-body text-2xl capitalize md:text-4xl">
                   {service.title}
                 </h5>

@@ -67,7 +67,7 @@ const OffersEnquiry: React.FC = ({}) => {
   return (
     <>
       <div
-        className={`transition-700 relative w-full transform rounded-xl border bg-light/30 p-12 shadow-md`}
+        className={`transition-700 relative w-full transform rounded-xl border bg-light/30 p-8 md:p-12 shadow-md`}
       >
         {/* <div className="space-y-2">
           <h3 className="font-body text-xl font-bold">Enquiry Form</h3>

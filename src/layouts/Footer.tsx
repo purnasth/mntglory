@@ -1,9 +1,7 @@
-
-
 const Footer = () => {
   return (
-    <footer className="bg-light p-12 border-t">
-      <div className="flex items-center justify-between">
+    <footer className="border-t bg-light p-8 md:p-12">
+      <div className="flex flex-col justify-between gap-8 xl:flex-row xl:items-center">
         <div>
           <p className="font-normal">
             &copy; {new Date().getFullYear()} Mount Glory English Boarding High
