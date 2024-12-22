@@ -34,7 +34,7 @@ const Events: React.FC = () => {
   return (
     <main className="border-y border-dark/20 bg-light">
       <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-3 lg:gap-16">
-        <div className="top-32 space-y-4 lg:sticky lg:col-span-1 lg:max-h-fit">
+        <div className="top-32 space-y-4 lg:sticky lg:col-span-1 lg:max-h-fit text-primary">
           {/* <span className="text-sm uppercase opacity-60 md:text-base">
             What we do
           </span> */}
@@ -63,8 +63,8 @@ const Events: React.FC = () => {
           <div>
             <Link
               to="#"
-              className={`transition-1000 pointer-events-auto mt-2 inline-flex items-center gap-2 border border-dark/50 px-6 py-2 capitalize text-dark shadow backdrop-blur-sm hover:bg-dark/20 md:mt-12`}
-              aria-label="Meeting"
+              className={`transition-300 group mt-12 flex w-max items-center gap-2 rounded-lg border border-primary bg-primary px-5 py-2 text-sm text-light hover:bg-primary/20 hover:text-primary md:text-base`}
+              aria-label="Events"
               target="_blank"
             >
               View all events

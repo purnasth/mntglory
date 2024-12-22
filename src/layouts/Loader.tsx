@@ -43,7 +43,7 @@ const Loader: React.FC = () => {
       <img
         src={logo}
         alt="Mount Glory"
-        className="size-72 object-contain transition-transform duration-1000"
+        className="size-48 md:size-72 object-contain transition-transform duration-1000"
       />
     </div>
   );

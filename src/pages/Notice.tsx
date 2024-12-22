@@ -94,7 +94,7 @@ const Notice: React.FC = () => {
       </h1>
 
       {/* Search, Sort, and Category Filters */}
-      <div className="sticky top-16 z-30 mb-6 flex flex-col items-center gap-4 bg-white py-4 md:flex-row md:justify-between">
+      <div className="sticky top-14 md:top-16 z-30 mb-6 flex flex-col md:items-center gap-4 bg-white py-2 md:py-4 md:flex-row md:justify-between">
         <div className="relative max-w-2xl flex-1">
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-dark" />
           <input
@@ -187,7 +187,7 @@ const Notice: React.FC = () => {
       {/* Modal */}
       {expandedNotice && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-500">
-          <div className="relative w-full max-w-2xl animate-fade-in-down rounded-lg bg-white p-8">
+          <div className="relative w-[90%] md:w-full max-w-2xl animate-fade-in-down rounded-lg bg-white p-6 md:p-8">
             <div className="space-y-4">
               <h2 className="text-2xl font-bold">{expandedNotice.title}</h2>
               <hr />
