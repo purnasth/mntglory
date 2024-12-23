@@ -9,7 +9,7 @@
         "id": 2,
         "url": "https://mntglory.saksham.edu.np/images/gallery/program/51.webp",
         "alt": "Parents Day",
-        "category": "Program"
+        "category": "Events"
     },
     {
         "id": 3,
@@ -27,7 +27,7 @@
         "id": 5,
         "url": "https://mntglory.saksham.edu.np/images/gallery/program/17.webp",
         "alt": "Swimming",
-        "category": "Program"
+        "category": "Events"
     },
     {
         "id": 6,
@@ -51,7 +51,7 @@
         "id": 9,
         "url": "https://mntglory.saksham.edu.np/images/gallery/program/61.webp",
         "alt": "28th Parents' Day",
-        "category": "Program"
+        "category": "Events"
     },
     {
         "id": 10,
@@ -69,6 +69,6 @@
         "id": 12,
         "url": "https://mntglory.saksham.edu.np/images/gallery/program/37.webp",
         "alt": "Tihar Celebration",
-        "category": "Program"
+        "category": "Events"
     }
 ]

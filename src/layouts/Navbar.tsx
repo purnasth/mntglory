@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
             isScrolled ? 'bg-white' : ''
           }`}
         />
-        <div className="container relative flex items-center justify-between py-2">
+        <div className="md:container relative flex items-center justify-between py-2">
           <Link to="/" className="flex" onClick={handleLogoClick}>
             <img
               src={logo}

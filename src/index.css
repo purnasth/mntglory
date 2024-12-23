@@ -37,6 +37,7 @@
   body {
     @apply bg-white text-dark;
   }
+  
   footer,
   main {
     @apply px-4 py-20 sm:py-28 md:px-12 md:py-[7.5rem] lg:py-[9rem];

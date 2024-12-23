@@ -10,6 +10,7 @@ type EventType = {
   content: string;
   date: string;
   category: string;
+  image: string;
 };
 
 const categories = [
@@ -76,22 +77,22 @@ const EventsPage: React.FC = () => {
     currentPage * itemsPerPage,
   );
 
-  const openModal = (notice: EventType) => setExpandedEvent(notice);
+  const openModal = (events: EventType) => setExpandedEvent(events);
   const closeModal = () => setExpandedEvent(null);
 
   return (
-    <main className="py-16">
-      <h1 className="mb-12 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-6xl lg:leading-snug">
+    <main className="py-8 md:py-16">
+      <h1 className="mb-4 md:mb-12 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-6xl lg:leading-snug">
         Our events where we showcase the diverse facets of education.
       </h1>
 
       {/* Search, Sort, and Category Filters */}
-      <div className="sticky top-14 z-30 mb-6 flex flex-col gap-4 bg-white py-2 md:top-16 md:flex-row md:items-center md:justify-between md:py-4">
+      <div className="sticky top-14 z-30 mb-6 flex flex-col gap-2 md:gap-4 bg-white py-2 md:top-16 md:flex-row md:items-center md:justify-between md:py-4">
         <div className="relative max-w-2xl flex-1">
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-dark" />
           <input
             type="text"
-            placeholder="Search notices..."
+            placeholder="Search events ..."
             className="w-full rounded-md border border-gray-300 py-2 pl-10 pr-4 text-lg focus:outline-none focus:ring-1 focus:ring-primary"
             onChange={(e) => setFilter(e.target.value)}
           />
@@ -127,30 +128,31 @@ const EventsPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Notices Grid */}
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {/* here please mention how many notices found please */}
+      {/* eventss Grid */}
+      <div className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-2">
+        {/* here please mention how many eventss found please */}
         <h2 className="col-span-full text-lg text-gray-700">
           <strong className="font-semibold">{filteredEvents.length}</strong>{' '}
-          notices found.
+          events found.
         </h2>
-        {paginatedEvents.map((notice, index) => (
+        {paginatedEvents.map((events, index) => (
           <div
             key={index}
-            className="transform rounded-lg border bg-light/30 p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
+            className="transform rounded-lg border bg-light/30 p-4 md:p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
           >
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-gray-700">
-                {notice.title}
+                {events.title}
               </h2>
               <span className="text-sm text-gray-500">
-                {new Date(notice.date).toDateString()}
+                {new Date(events.date).toDateString()}
               </span>
             </div>
-            <hr className="my-3 border-primary/20" />
-            <p className="line-clamp-3 text-gray-600">{notice.content}</p>
+            {/* <hr className="my-3 border-primary/20" /> */}
+            <img src={events.image} alt={events.title} className="my-4 w-full h-52 md:h-72 xl:h-96 object-cover rounded-md" />
+            <p className="line-clamp-2 text-gray-600">{events.content}</p>
             <button
-              onClick={() => openModal(notice)}
+              onClick={() => openModal(events)}
               className="a-hover-animation mt-4 font-medium text-primary hover:text-blue-700"
             >
               Read More
