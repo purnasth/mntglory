@@ -8,7 +8,7 @@ const eventsContent = [
     description:
       'The motto goes well as "Learning by Doing". So does MGS, with this lively and worthy motto. For progressive learning, MGS includes the Glorians with multiple excursions, field visits, and community services. To nurture and garner research-based knowledge and displace it into wisdom and conscience, MGS never shakes its leg and allows the learners to ponder in the lap of raw nature.',
     image: 'https://mntglory.saksham.edu.np/images/08.webp',
-  },
+},
   {
     title: 'Science & Technology based activities',
     description:
@@ -62,10 +62,9 @@ const Events: React.FC = () => {
           </div>
           <div>
             <Link
-              to="#"
+              to="/events"
               className={`transition-300 group mt-12 flex w-max items-center gap-2 rounded-lg border border-primary bg-primary px-5 py-2 text-sm text-light hover:bg-primary/20 hover:text-primary md:text-base`}
               aria-label="Events"
-              target="_blank"
             >
               View all events
               <TbCalendarQuestion className="animate-bounce text-base" />

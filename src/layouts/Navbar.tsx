@@ -19,7 +19,7 @@ const navLinks = [
   {
     id: 3,
     title: 'Events',
-    url: '/services',
+    url: '/events',
   },
   {
     id: 4,
