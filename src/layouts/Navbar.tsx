@@ -4,37 +4,30 @@ import logo from '../assets/logo.webp';
 import SideNav from '../components/SideNav';
 
 import { Link, NavLink } from 'react-router-dom';
+import useFetchAPI from '../hooks/useFetchAPI';
 
-const navLinks = [
-  {
-    id: 1,
-    title: 'Home',
-    url: '/',
-  },
-  {
-    id: 2,
-    title: 'About',
-    url: '/about',
-  },
-  {
-    id: 3,
-    title: 'Events',
-    url: '/events',
-  },
-  {
-    id: 4,
-    title: 'Notice',
-    url: '/notice',
-  },
-  {
-    id: 5,
-    title: 'Gallery',
-    url: '/gallery',
-  },
-];
+interface NavLinksProps {
+  id: number;
+  title: string;
+  url: string;
+}
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const {
+    data: navLinks = [],
+    isLoading,
+    isError,
+  } = useFetchAPI<NavLinksProps[]>('navbar', '/api/navbar.json');
+
+  if (isLoading) return <></>;
+  if (isError)
+    return (
+      <div className="p-4 text-center text-red-500">
+        Failed to load the navlinks.
+      </div>
+    );
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +58,7 @@ const Navbar: React.FC = () => {
             isScrolled ? 'bg-white' : ''
           }`}
         />
-        <div className="md:container relative flex items-center justify-between py-2">
+        <div className="relative flex items-center justify-between py-2 md:container">
           <Link to="/" className="flex" onClick={handleLogoClick}>
             <img
               src={logo}
@@ -93,7 +86,7 @@ const Navbar: React.FC = () => {
               ))}
             </ul>
             {/* <div className="md:hidden"> */}
-            <SideNav />
+            <SideNav navLinks={navLinks} />
             {/* </div> */}
           </div>
         </div>

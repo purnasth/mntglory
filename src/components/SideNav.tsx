@@ -14,30 +14,17 @@ import logo from '../assets/logo.webp';
 // import { TbRosetteDiscountCheck } from 'react-icons/tb';
 import { NavLink } from 'react-router-dom';
 
-const navLinks = [
-  {
-    id: 1,
-    title: 'Home',
-    url: '/',
-  },
-  {
-    id: 2,
-    title: 'About',
-    url: '/about',
-  },
-  {
-    id: 3,
-    title: 'Events',
-    url: '/services',
-  },
-  {
-    id: 4,
-    title: 'Gallery',
-    url: '/gallery',
-  },
-];
+interface NavLink {
+  id: number;
+  url: string;
+  title: string;
+}
 
-const SideNav: React.FC = () => {
+interface SideNavProps {
+  navLinks: NavLink[];
+}
+
+const SideNav: React.FC<SideNavProps> = ({ navLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNav = () => {
@@ -58,7 +45,7 @@ const SideNav: React.FC = () => {
 
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black opacity-50"
+          className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
           onClick={closeNav}
         />
       )}
@@ -91,9 +78,9 @@ const SideNav: React.FC = () => {
             </button>
           </div>
           <div className="w-full">
-            <span className="uppercase text-dark/40">Menu</span>
+            {/* <span className="uppercase text-dark/40">Menu</span> */}
 
-            <ul className="links mt-8 flex flex-col items-start justify-start gap-6">
+            <ul className="links flex flex-col items-start justify-start gap-6">
               {navLinks.map((link) => (
                 <li key={link.id} className="group w-full">
                   <NavLink
