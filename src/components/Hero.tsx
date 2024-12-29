@@ -11,10 +11,10 @@ const Hero = () => {
         <div className="container">
           <section className="grid grid-cols-1 gap-6 lg:grid-cols-5">
             <div className="col-span-1 mt-3 space-y-6">
-              <p className="jusitfy-center flex items-center gap-8 lg:justify-between">
-                01
+              <div className="jusitfy-center flex items-center gap-8 lg:justify-between">
+                <p>01</p>
                 <hr className="w-2/3 border-primary/40 lg:w-full" />
-              </p>
+              </div>
               <img
                 src={kidSchool}
                 alt="MGS Building"
@@ -58,7 +58,7 @@ const Hero = () => {
             </aside>
           </section>
           <section className="mt-6 grid grid-cols-1 gap-6 lg:grid-cols-9">
-            <div className="lg:col-span-5 h-max">
+            <div className="h-max lg:col-span-5">
               {/* <p className="rounded-2xl bg-slate-100 p-6 shadow-sm outline outline-1 outline-dark/20">
                 We believe in a familiar and joyful learning process. We ensure
                 that your kid will get the best guardianship. Since its
@@ -74,11 +74,11 @@ const Hero = () => {
               className="size-48 object-contain"
             /> */}
                 <span className="text-xl">Welcome to</span>
-                <h1 className="text-3xl md:text-6xl leading-snug md:leading-tight">
+                <h1 className="text-3xl leading-snug md:text-6xl md:leading-tight">
                   Mount Glory English Boarding High School
                 </h1>
 
-                <p className="mt-4 lg:max-w-xl text-base">
+                <p className="mt-4 text-base lg:max-w-xl">
                   Mount Glory excels in mentoring the current generation through
                   a tech-friendly, behavioral, and theoretical platform,
                   fostering a morale-driven environment. Join us for an
@@ -97,7 +97,7 @@ const Hero = () => {
                 </p>
               </section>
             </div>
-            <aside className="lg:col-span-4 overflow-hidden rounded-2xl shadow-md outline outline-1 outline-dark/20 bg-red-600 w-full">
+            <aside className="w-full overflow-hidden rounded-2xl bg-red-600 shadow-md outline outline-1 outline-dark/20 lg:col-span-4">
               <NoticeBoard />
             </aside>
           </section>

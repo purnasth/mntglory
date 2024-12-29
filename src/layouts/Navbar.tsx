@@ -21,14 +21,6 @@ const Navbar: React.FC = () => {
     isError,
   } = useFetchAPI<NavLinksProps[]>('navbar', '/api/navbar.json');
 
-  if (isLoading) return <></>;
-  if (isError)
-    return (
-      <div className="p-4 text-center text-red-500">
-        Failed to load the navlinks.
-      </div>
-    );
-
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -49,6 +41,12 @@ const Navbar: React.FC = () => {
     const event = new Event('scrollToTop');
     window.dispatchEvent(event);
   };
+
+  if (isLoading) return null;
+  if (isError) {
+    console.error(isError);
+    return null;
+  }
 
   return (
     <>

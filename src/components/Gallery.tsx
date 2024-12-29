@@ -24,15 +24,15 @@ interface GalleryProps {
 }
 
 const Gallery: React.FC<GalleryProps> = ({ limit }) => {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const galleryRef = useRef<HTMLDivElement>(null);
-
   const {
     data: galleryImages = [],
     isLoading,
     isError,
-  } = useFetchAPI<ImageData[]>('gallery', '/api/gallery.json'); // Replace with your API endpoint
+  } = useFetchAPI<ImageData[]>('gallery', '/api/gallery.json');
+
+  const [activeCategory, setActiveCategory] = useState('All');
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const galleryRef = useRef<HTMLDivElement>(null);
 
   const filteredImages =
     activeCategory === 'All'
@@ -63,17 +63,17 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
     ? filteredImages.slice(0, limit)
     : filteredImages;
 
-  if (isLoading) return <></>;
-  if (isError)
-    return (
-      <div className="p-4 text-center text-red-500">Failed to load images.</div>
-    );
+  if (isLoading) return null;
+  if (isError) {
+    console.error(isError);
+    return null;
+  }
 
   return (
     <>
       <div
         id="gallery"
-        className="sticky top-16 z-30 mb-4 mt-8 flex flex-wrap justify-center gap-2 md:gap-4 bg-white p-2"
+        className="sticky top-16 z-30 mb-4 mt-8 flex flex-wrap justify-center gap-2 bg-white p-2 md:gap-4"
       >
         {categories.map((category) => (
           <button
@@ -83,7 +83,7 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
               activeCategory === category
                 ? 'bg-primary/5 font-semibold text-primary'
                 : 'font-medium text-dark/60'
-            } transition-linear rounded-md px-4 py-1 text-sm md:text-lg capitalize hover:bg-primary/5 hover:text-primary`}
+            } transition-linear rounded-md px-4 py-1 text-sm capitalize hover:bg-primary/5 hover:text-primary md:text-lg`}
           >
             {category}
           </button>

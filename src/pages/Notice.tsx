@@ -5,7 +5,7 @@ import { BiCategoryAlt } from 'react-icons/bi';
 import { TfiClose } from 'react-icons/tfi';
 import useFetchAPI from '../hooks/useFetchAPI';
 
-type NoticeType = {
+type Notice = {
   title: string;
   content: string;
   date: string;
@@ -23,47 +23,27 @@ const categories = [
 const itemsPerPage = 18;
 
 const Notice: React.FC = () => {
-  const [expandedNotice, setExpandedNotice] = useState<NoticeType | null>(null);
+  const {
+    data: noticeContents,
+    isLoading,
+    isError,
+  } = useFetchAPI<Notice[]>('notices', '/api/notice.json');
+
+  const [expandedNotice, setExpandedNotice] = useState<Notice | null>(null);
   const [filter, setFilter] = useState<string>('');
   const [sortBy, setSortBy] = useState<'date' | 'title'>('date');
   const [category, setCategory] = useState<string>('All');
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // Use the reusable API fetch hook
-  const {
-    data: noticeContents,
-    isLoading,
-    isError,
-  } = useFetchAPI<NoticeType[]>('notices', '/api/notice.json');
-
-  if (isLoading) return <div className="py-10 text-center">Loading...</div>;
-  if (isError)
-    return (
-      <div className="py-10 text-center text-red-500">
-        Failed to fetch notices.
-      </div>
-    );
-
   // Filter and sort logic
   const filteredNotices =
     noticeContents
       ?.filter((notice) => {
-        console.log('Notice:', notice); // Log each notice
-        console.log('Category:', category);
-        console.log('Filter:', filter);
-
         const matchesCategory =
           category === 'All' || notice.category === category;
         const matchesSearch =
           notice.title?.toLowerCase().includes(filter.toLowerCase()) ||
           notice.content?.toLowerCase().includes(filter.toLowerCase());
-
-        console.log(
-          'Matches Category:',
-          matchesCategory,
-          'Matches Search:',
-          matchesSearch,
-        );
 
         return matchesCategory && matchesSearch; // Check conditions
       })
@@ -73,8 +53,6 @@ const Notice: React.FC = () => {
           : a.title.localeCompare(b.title),
       ) || [];
 
-  console.log('Filtered Notices:', filteredNotices);
-
   // Pagination logic
   const totalPages = Math.ceil(filteredNotices.length / itemsPerPage);
   const paginatedNotices = filteredNotices.slice(
@@ -82,10 +60,14 @@ const Notice: React.FC = () => {
     currentPage * itemsPerPage,
   );
 
-  const openModal = (notice: NoticeType) => setExpandedNotice(notice);
+  const openModal = (notice: Notice) => setExpandedNotice(notice);
   const closeModal = () => setExpandedNotice(null);
 
-  console.log('Fetched Notices:', noticeContents);
+  if (isLoading) return null;
+  if (isError) {
+    console.error(isError);
+    return null;
+  }
 
   return (
     <main className="py-8 md:py-16">
@@ -94,7 +76,7 @@ const Notice: React.FC = () => {
       </h1>
 
       {/* Search, Sort, and Category Filters */}
-      <div className="sticky top-14 z-30 mb-6 flex flex-col gap-2 md:gap-4 bg-white py-2 md:top-16 md:flex-row md:items-center md:justify-between md:py-4">
+      <div className="sticky top-14 z-30 mb-6 flex flex-col gap-2 bg-white py-2 md:top-16 md:flex-row md:items-center md:justify-between md:gap-4 md:py-4">
         <div className="relative max-w-2xl flex-1">
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-dark" />
           <input

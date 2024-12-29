@@ -5,7 +5,7 @@ import { BiCategoryAlt } from 'react-icons/bi';
 import { TfiClose } from 'react-icons/tfi';
 import useFetchAPI from '../hooks/useFetchAPI';
 
-type EventType = {
+type Events = {
   title: string;
   content: string;
   date: string;
@@ -24,28 +24,18 @@ const categories = [
 const itemsPerPage = 18;
 
 const EventsPage: React.FC = () => {
-  const [expandedEvent, setExpandedEvent] = useState<EventType | null>(null);
+  const {
+    data: eventsContents,
+    isLoading,
+    isError,
+  } = useFetchAPI<Events[]>('events', '/api/events.json');
+
+  const [expandedEvent, setExpandedEvent] = useState<Events | null>(null);
   const [filter, setFilter] = useState<string>('');
   const [sortBy, setSortBy] = useState<'date' | 'title'>('date');
   const [category, setCategory] = useState<string>('All');
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // Use the reusable API fetch hook
-  const {
-    data: eventsContents,
-    isLoading,
-    isError,
-  } = useFetchAPI<EventType[]>('events', '/api/events.json');
-
-  if (isLoading) return <div className="py-10 text-center">Loading...</div>;
-  if (isError)
-    return (
-      <div className="py-10 text-center text-red-500">
-        Failed to fetch events.
-      </div>
-    );
-
-  // Filter and sort logic
   const filteredEvents =
     eventsContents
       ?.filter((events) => {
@@ -55,13 +45,6 @@ const EventsPage: React.FC = () => {
           events.title?.toLowerCase().includes(filter.toLowerCase()) ||
           events.content?.toLowerCase().includes(filter.toLowerCase());
 
-        console.log(
-          'Matches Category:',
-          matchesCategory,
-          'Matches Search:',
-          matchesSearch,
-        );
-
         return matchesCategory && matchesSearch; // Check conditions
       })
       .sort((a, b) =>
@@ -70,24 +53,29 @@ const EventsPage: React.FC = () => {
           : a.title.localeCompare(b.title),
       ) || [];
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredEvents.length / itemsPerPage);
   const paginatedEvents = filteredEvents.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage,
   );
 
-  const openModal = (events: EventType) => setExpandedEvent(events);
+  const openModal = (events: Events) => setExpandedEvent(events);
   const closeModal = () => setExpandedEvent(null);
+
+  if (isLoading) return null;
+  if (isError) {
+    console.error(isError);
+    return null;
+  }
 
   return (
     <main className="py-8 md:py-16">
-      <h1 className="mb-4 md:mb-12 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-6xl lg:leading-snug">
+      <h1 className="mb-4 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:mb-12 md:text-4xl lg:text-6xl lg:leading-snug">
         Our events where we showcase the diverse facets of education.
       </h1>
 
       {/* Search, Sort, and Category Filters */}
-      <div className="sticky top-14 z-30 mb-6 flex flex-col gap-2 md:gap-4 bg-white py-2 md:top-16 md:flex-row md:items-center md:justify-between md:py-4">
+      <div className="sticky top-14 z-30 mb-6 flex flex-col gap-2 bg-white py-2 md:top-16 md:flex-row md:items-center md:justify-between md:gap-4 md:py-4">
         <div className="relative max-w-2xl flex-1">
           <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-lg text-dark" />
           <input
@@ -129,7 +117,7 @@ const EventsPage: React.FC = () => {
       </div>
 
       {/* eventss Grid */}
-      <div className="grid grid-cols-1 gap-4 md:gap-6 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
         {/* here please mention how many eventss found please */}
         <h2 className="col-span-full text-lg text-gray-700">
           <strong className="font-semibold">{filteredEvents.length}</strong>{' '}
@@ -138,7 +126,7 @@ const EventsPage: React.FC = () => {
         {paginatedEvents.map((events, index) => (
           <div
             key={index}
-            className="transform rounded-lg border bg-light/30 p-4 md:p-6 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lg"
+            className="transform rounded-lg border bg-light/30 p-4 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lg md:p-6"
           >
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-gray-700">
@@ -149,7 +137,11 @@ const EventsPage: React.FC = () => {
               </span>
             </div>
             {/* <hr className="my-3 border-primary/20" /> */}
-            <img src={events.image} alt={events.title} className="my-4 w-full h-52 md:h-72 xl:h-96 object-cover rounded-md" />
+            <img
+              src={events.image}
+              alt={events.title}
+              className="my-4 h-52 w-full rounded-md object-cover md:h-72 xl:h-96"
+            />
             <p className="line-clamp-2 text-gray-600">{events.content}</p>
             <button
               onClick={() => openModal(events)}
