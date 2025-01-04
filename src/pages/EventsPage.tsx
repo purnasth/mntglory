@@ -4,22 +4,24 @@ import { FiSearch } from 'react-icons/fi';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { TfiClose } from 'react-icons/tfi';
 import useFetchAPI from '../hooks/useFetchAPI';
+import SmallGallery from '../components/ui/SmallGallery';
 
-type Events = {
+interface Events {
   title: string;
   content: string;
   date: string;
+  images: { src: string; alt: string }[];
   category: string;
-  image: string;
-};
+}
 
 const categories = [
   'All',
-  'Events',
-  'Announcements',
-  'Exam',
-  'Holiday',
-  'Others',
+  'Arts',
+  'Science',
+  'Programs',
+  'Sports',
+  'Music',
+  'Educational',
 ];
 const itemsPerPage = 18;
 
@@ -138,7 +140,7 @@ const EventsPage: React.FC = () => {
             </div>
             {/* <hr className="my-3 border-primary/20" /> */}
             <img
-              src={events.image}
+              src={events.images[0].src}
               alt={events.title}
               className="my-4 h-52 w-full rounded-md object-cover md:h-72 xl:h-96"
             />
@@ -181,6 +183,7 @@ const EventsPage: React.FC = () => {
               <p className="text-gray-500">
                 Date: {new Date(expandedEvent.date).toDateString()}
               </p>
+              <SmallGallery images={expandedEvent.images} />
             </div>
             <button
               onClick={closeModal}
