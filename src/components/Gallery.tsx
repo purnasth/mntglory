@@ -73,7 +73,7 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
     <>
       <div
         id="gallery"
-        className="sticky top-16 z-30 mb-4 mt-8 flex flex-wrap justify-center gap-2 bg-white p-2 md:gap-4"
+        className="sticky top-14 md:top-16 z-30 mb-4 mt-8 flex flex-wrap justify-center gap-2 bg-white p-2 md:gap-4"
       >
         {categories.map((category) => (
           <button

@@ -18,32 +18,34 @@ const aboutPageContents = [
 const AboutUsPage = () => {
   return (
     <>
-    <main className="space-y-16 py-16">
-      {aboutPageContents.map(({ id, title, content, image }, index) => (
-        <div
-          key={id}
-          className={`flex flex-col items-center gap-12 md:flex-row ${
-            index % 2 !== 0 ? '' : 'md:flex-row-reverse'
-          }`}
-        >
-          <div className="md:w-1/2">
-            <img
-              src={image}
-              alt={title}
-              className="h-full w-full rounded-2xl object-cover shadow-lg"
-            />
-          </div>
-          <div className="text-center md:w-1/2 md:text-left">
-            <h2 className="mb-4 text-3xl font-medium text-gray-800 md:text-4xl">
-              {title}
-            </h2>
-            <p className="text-pretty text-justify text-lg leading-relaxed text-gray-600 md:text-left">
-              {content}
-            </p>
-          </div>
-        </div>
-      ))}
-    </main>
+      <main className="py-16">
+        <section className="space-y-16">
+          {aboutPageContents.map(({ id, title, content, image }, index) => (
+            <div
+              key={id}
+              className={`flex flex-col items-center gap-12 md:flex-row ${
+                index % 2 !== 0 ? '' : 'md:flex-row-reverse'
+              }`}
+            >
+              <div className="md:w-1/2">
+                <img
+                  src={image}
+                  alt={title}
+                  className="h-56 w-full rounded-2xl object-cover shadow-lg md:h-96 lg:h-[32rem]"
+                />
+              </div>
+              <div className="text-center md:w-1/2 md:text-left">
+                <h2 className="mb-4 text-2xl font-medium text-gray-800 md:text-4xl">
+                  {title}
+                </h2>
+                <p className="text-pretty text-justify text-sm leading-relaxed text-gray-600 md:text-left md:text-lg">
+                  {content}
+                </p>
+              </div>
+            </div>
+          ))}
+        </section>
+      </main>
     </>
   );
 };

@@ -22,8 +22,8 @@ const sliderImages = [
 const AboutIntro = () => {
   return (
     <>
-      <main className="bg-light border-t border-dark/20 px-0 pb-0">
-        <div className="container mb-16 text-center">
+      <main className="bg-light border-t border-dark/20 md:px-0 md:pb-0">
+        <div className="mb-8 md:mb-16 text-center">
           <h2 className="text-2xl font-medium capitalize">
             Quality in Education & Character building is our motto.
           </h2>

@@ -171,7 +171,7 @@ const Notice: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-500">
           <div className="relative w-[90%] max-w-2xl animate-fade-in-down rounded-lg bg-white p-6 md:w-full md:p-8">
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold">{expandedNotice.title}</h2>
+              <h2 className="text-xl md:text-2xl font-semibold">{expandedNotice.title}</h2>
               <hr />
               <p className="text-gray-700">{expandedNotice.content}</p>
               <p className="text-gray-500">

@@ -78,7 +78,7 @@ const FactsUI: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="flex items-center justify-between rounded-2xl bg-slate-100 p-3 sm:p-6 shadow-sm outline outline-1 outline-dark/20"
+      className="flex items-center justify-between rounded-2xl bg-slate-100 px-1 p-3 sm:p-6 shadow-sm outline outline-1 outline-dark/20"
     >
       {factsContents.map((content, index) => {
         const numberMatch = content.number.match(/\d+/);

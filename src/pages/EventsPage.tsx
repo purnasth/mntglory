@@ -23,7 +23,7 @@ const categories = [
   'Music',
   'Educational',
 ];
-const itemsPerPage = 18;
+const itemsPerPage = 8;
 
 const EventsPage: React.FC = () => {
   const {
@@ -175,11 +175,15 @@ const EventsPage: React.FC = () => {
       {/* Modal */}
       {expandedEvent && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-500">
-          <div className="relative w-[90%] max-w-2xl animate-fade-in-down rounded-lg bg-white p-6 md:w-full md:p-8">
+          <div className="relative max-h-[90vh] w-[90%] max-w-2xl animate-fade-in-down overflow-y-auto rounded-lg bg-white p-5 md:w-full md:p-8">
             <div className="space-y-4">
-              <h2 className="text-2xl font-bold">{expandedEvent.title}</h2>
+              <h2 className="text-base font-semibold md:text-2xl">
+                {expandedEvent.title}
+              </h2>
               <hr />
-              <p className="text-gray-700">{expandedEvent.content}</p>
+              <p className="text-sm text-gray-700 md:text-base">
+                {expandedEvent.content}
+              </p>
               <p className="text-gray-500">
                 Date: {new Date(expandedEvent.date).toDateString()}
               </p>

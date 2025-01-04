@@ -6,7 +6,7 @@ import FactsUI from '../components/ui/FactsUI';
 
 const InformationForm = () => {
   return (
-    <main className="pb-16 pt-0">
+    <main className="pb-6 md:pb-16 pt-0">
       <div className="grid grid-cols-1 items-center gap-y-6 lg:gap-x-6 lg:gap-y-0 lg:grid-cols-2">
         <div className="space-y-7">
           <img

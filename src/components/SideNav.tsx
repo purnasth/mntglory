@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TbMenu2 } from 'react-icons/tb';
 import { MdClose, MdSchool } from 'react-icons/md';
 // import { TbMenu2, TbMailFilled } from 'react-icons/tb';
@@ -12,7 +12,8 @@ import logo from '../assets/logo.webp';
 // import { PiHandbagBold } from 'react-icons/pi';
 // import { PiImageSquareBold } from 'react-icons/pi';
 // import { TbRosetteDiscountCheck } from 'react-icons/tb';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import ContactInfo from './ui/ContactInfo';
 
 interface NavLink {
   id: number;
@@ -26,6 +27,12 @@ interface SideNavProps {
 
 const SideNav: React.FC<SideNavProps> = ({ navLinks }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setIsOpen(false);
+    document.body.style.overflow = 'auto';
+  }, [location]);
 
   const toggleNav = () => {
     setIsOpen(!isOpen);
@@ -64,7 +71,7 @@ const SideNav: React.FC<SideNavProps> = ({ navLinks }) => {
               'url("https://media.istockphoto.com/id/1704870086/vector/abstract-gray-and-white-color-gradient-background-vector-illustration.jpg?s=612x612&w=0&k=20&c=U_tzoW8Rktdydkc8Ng-O-1kPI-r7BcJun-o2O3n2nvM=")',
           }}
         ></div> */}
-        <div className="flex size-full flex-col items-center justify-between p-6">
+        <div className="flex size-full flex-col justify-between p-6">
           <div className="relative flex w-full items-center justify-between">
             <a href="/" className="flex">
               <img src={logo} alt="Logo" className="size-14 object-contain" />
@@ -79,7 +86,6 @@ const SideNav: React.FC<SideNavProps> = ({ navLinks }) => {
           </div>
           <div className="w-full">
             {/* <span className="uppercase text-dark/40">Menu</span> */}
-
             <ul className="links flex flex-col items-start justify-start gap-6">
               {navLinks.map((link) => (
                 <li key={link.id} className="group w-full">
@@ -96,6 +102,10 @@ const SideNav: React.FC<SideNavProps> = ({ navLinks }) => {
                 </li>
               ))}
             </ul>
+            <hr className="my-8 border-dark/10" />
+            <div>
+              <ContactInfo />
+            </div>
           </div>
           <div className="relative flex w-full flex-col justify-between">
             <p>&copy; 2024 Mount Glory School</p>

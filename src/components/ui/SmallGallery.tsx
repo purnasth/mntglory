@@ -20,7 +20,7 @@ const SmallGallery: React.FC<ImageTypes> = ({ images }) => {
       <LightGallery
         plugins={[lgZoom, lgVideo, lgThumbnail, lgFullscreen]}
         mode="lg-fade"
-        elementClassNames={`w-full columns-1 md:columns-2 lg:columns-3 gap-2 transition-linear`}
+        elementClassNames={`w-full columns-2 md:columns-2 lg:columns-3 gap-2 transition-linear`}
       >
         {images.slice(0, 6).map((image, index) => (
           <div
