@@ -16,6 +16,7 @@ import useLenisScroll from './hooks/useLenisScroll';
 import RouterToTop from './utils/RouterToTop';
 import AboutPage from './pages/AboutPage';
 import EventsPage from './pages/EventsPage';
+import Error404 from './pages/Error404';
 
 const App: React.FC = () => {
   useLenisScroll();
@@ -31,6 +32,7 @@ const App: React.FC = () => {
           <Route path="/notice" element={<Notice />} />
           <Route path="/events" element={<EventsPage />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </Router>
