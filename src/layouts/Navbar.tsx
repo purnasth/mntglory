@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
 import logo from '../assets/logo.webp';
-import SideNav from '../components/SideNav';
 
-import { Link, NavLink } from 'react-router-dom';
 import useFetchAPI from '../hooks/useFetchAPI';
+
+import NavPage from './NavPage';
 
 interface NavLinksProps {
   id: number;
@@ -84,7 +85,7 @@ const Navbar: React.FC = () => {
               ))}
             </ul>
             {/* <div className="md:hidden"> */}
-            <SideNav navLinks={navLinks} />
+            <NavPage navLinks={navLinks} />
             {/* </div> */}
           </div>
         </div>
