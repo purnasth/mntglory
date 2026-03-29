@@ -6,6 +6,7 @@ import Gallery from '../components/Gallery';
 import AboutIntro from '../components/AboutIntro';
 import MasterContent from '../components/MasterContent';
 import InformationForm from '../components/InformationForm';
+import { Link } from 'react-router-dom';
 
 const testimonialsContent = {
   id: 'testimonials',
@@ -76,6 +77,15 @@ const Home = () => {
           {ourTeamContents.heading}
         </h3>
         <MasterContent content={ourTeamContents} />
+        <div className="-z-10 flex -translate-y-4 flex-col items-center justify-center">
+          <div className="mx-auto h-28 w-px bg-primary/50" />
+          <Link
+            to="/team"
+            className="transition-300 group flex items-center justify-center gap-2 rounded-full border border-primary/50 bg-light px-4 py-2 text-sm text-primary hover:bg-primary hover:text-light md:text-base"
+          >
+            View all team members
+          </Link>
+        </div>
       </main>
       <Events />
       <section className="px-2">

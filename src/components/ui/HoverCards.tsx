@@ -4,8 +4,8 @@ const HoverCards = () => {
       <div className="group relative w-full cursor-pointer overflow-hidden">
         <div className="absolute inset-0 z-10 size-full outline outline-1 -outline-offset-[10px] outline-white transition-all duration-500 ease-linear group-hover:-outline-offset-[30px] group-hover:outline-white/50" />
         <img
-          src="https://jijivishanepal.com/wp-content/themes/yootheme/cache/b4/jijivisha-nepal-sustainable-clothing-natural-dyeing-fibers-b47708b9.webp"
-          alt="Deluxe Room"
+          src="https://mntglory.saksham.edu.np/images/mgs.webp"
+          alt="Mount Glory Event"
           className="h-96 w-full object-cover shadow-lg transition-all duration-500 ease-linear group-hover:scale-110 md:h-[28rem]"
           draggable="false"
         />

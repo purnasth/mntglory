@@ -1,5 +1,6 @@
 import { ourTeamContents } from '../../constants/data';
 import logo from '../../assets/logo.webp';
+import Avatar from './Avatar';
 
 const TeamUI = () => {
   return (
@@ -9,11 +10,14 @@ const TeamUI = () => {
           {ourTeamContents.members.length > 0 && (
             <>
               {ourTeamContents.members.slice(0, 6).map((member, idx) => (
-                <img
+                <Avatar
                   key={member.id}
-                  src={member.image ? member.image : logo}
+                  src={member.image}
                   alt={member.name}
-                  className={`size-10 rounded-full bg-white object-cover outline outline-1 outline-white ${idx !== 0 ? `-translate-x-${idx * 2}` : ''}`}
+                  name={member.name}
+                  size="md"
+                  fallback={logo}
+                  className={idx !== 0 ? `-translate-x-${idx * 2}` : ''}
                   style={{ zIndex: ourTeamContents.members.length - idx }}
                 />
               ))}

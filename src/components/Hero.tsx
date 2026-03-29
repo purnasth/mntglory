@@ -122,7 +122,7 @@ const Hero = () => {
               </aside>
             </section>
           </div>
-          <aside className="w-full overflow-hidden rounded-2xl bg-red-600 shadow-md outline outline-1 outline-dark/20 lg:col-span-4">
+          <aside className="w-full overflow-hidden rounded-2xl shadow-md outline outline-1 outline-dark/20 lg:col-span-4">
             <NoticeBoard />
           </aside>
         </section>

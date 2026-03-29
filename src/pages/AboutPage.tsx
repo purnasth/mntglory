@@ -1,6 +1,4 @@
 // TODO: responsive - for reference, check other pages classes and tailwind docs
-import { Link } from 'react-router-dom';
-import { HiArrowLongRight } from 'react-icons/hi2';
 
 import { mountGloryFacts } from '../constants/en';
 
@@ -10,6 +8,7 @@ import logo from '../assets/logo.webp';
 
 import FactsUI from '../components/ui/FactsUI';
 import HoverCards from '../components/ui/HoverCards';
+import ReadMoreLink from '../components/ui/ReadMoreLink';
 
 const AboutUsPage = () => {
   return (
@@ -19,9 +18,9 @@ const AboutUsPage = () => {
           {mountGloryFacts.title}
         </span>
         <img
-          src="https://jijivishanepal.com/wp-content/themes/yootheme/cache/99/jijivisha-nepal-sustainable-clothing-making-purse-hand-990055be.webp"
+          src="https://mntglory.purnashrestha.com.np/assets/62-CDA-YElM.jpg"
           alt="About Mount Glory"
-          className="mx-auto h-[34rem] w-auto object-cover"
+          className="mx-auto h-[34rem] w-full max-w-6xl object-cover"
         />
         <span className="mx-auto block max-w-xl text-center text-4xl leading-snug">
           {mountGloryFacts.motto}
@@ -175,13 +174,7 @@ const AboutUsPage = () => {
                   </div>
                 ))}
             </div>
-            <Link
-              to="#"
-              className="mt-4 block text-sm uppercase tracking-wider"
-            >
-              View All Teams
-              <HiArrowLongRight className="ml-2 inline-block text-xl" />
-            </Link>
+            <ReadMoreLink to="/team" value="View all team members" />
           </div>
         </div>
       </main>
