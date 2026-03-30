@@ -19,7 +19,7 @@
   .scroll {
     scrollbar-width: thin;
     /* scrollbar-width:initial; */
-    scrollbar-color: #2980b9 transparent;
+    scrollbar-color: #f7e4e4 transparent;
   }
 
   /* ::-webkit-scrollbar {

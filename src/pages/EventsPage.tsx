@@ -1,28 +1,19 @@
 import React, { useState } from 'react';
-import { TbSortDescending } from 'react-icons/tb';
+import { Link } from 'react-router-dom';
 import { FiSearch } from 'react-icons/fi';
 import { BiCategoryAlt } from 'react-icons/bi';
-import { TfiClose } from 'react-icons/tfi';
+import { TbSortDescending } from 'react-icons/tb';
+
+import { EventData } from '../interfaces/types';
+
+import { EventCategory, getAllCategories } from '../constants/enums';
+
 import useFetchAPI from '../hooks/useFetchAPI';
-import SmallGallery from '../components/ui/SmallGallery';
 
-interface Events {
-  title: string;
-  content: string;
-  date: string;
-  images: { src: string; alt: string }[];
-  category: string;
-}
+import { getEventPath, formatEventDate } from '../utils/eventUtils';
 
-const categories = [
-  'All',
-  'Arts',
-  'Science',
-  'Programs',
-  'Sports',
-  'Music',
-  'Educational',
-];
+import ReadMoreLink from '../components/ui/ReadMoreLink';
+
 const itemsPerPage = 8;
 
 const EventsPage: React.FC = () => {
@@ -30,19 +21,18 @@ const EventsPage: React.FC = () => {
     data: eventsContents,
     isLoading,
     isError,
-  } = useFetchAPI<Events[]>('events', '/api/events.json');
+  } = useFetchAPI<EventData[]>('events', '/api/events.json');
 
-  const [expandedEvent, setExpandedEvent] = useState<Events | null>(null);
   const [filter, setFilter] = useState<string>('');
   const [sortBy, setSortBy] = useState<'date' | 'title'>('date');
-  const [category, setCategory] = useState<string>('All');
+  const [category, setCategory] = useState<string>(EventCategory.ALL);
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   const filteredEvents =
     eventsContents
       ?.filter((events) => {
         const matchesCategory =
-          category === 'All' || events.category === category;
+          category === EventCategory.ALL || events.category === category;
         const matchesSearch =
           events.title?.toLowerCase().includes(filter.toLowerCase()) ||
           events.content?.toLowerCase().includes(filter.toLowerCase());
@@ -60,9 +50,6 @@ const EventsPage: React.FC = () => {
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage,
   );
-
-  const openModal = (events: Events) => setExpandedEvent(events);
-  const closeModal = () => setExpandedEvent(null);
 
   if (isLoading) return null;
   if (isError) {
@@ -107,7 +94,7 @@ const EventsPage: React.FC = () => {
               className="w-full appearance-none rounded-md border border-gray-300 bg-white py-2 pl-4 pr-4 text-sm focus:outline-none focus:ring-1 focus:ring-primary"
               onChange={(e) => setCategory(e.target.value)}
             >
-              {categories.map((cat) => (
+              {getAllCategories().map((cat) => (
                 <option key={cat} value={cat}>
                   {cat}
                 </option>
@@ -120,22 +107,22 @@ const EventsPage: React.FC = () => {
 
       {/* eventss Grid */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
-        {/* here please mention how many eventss found please */}
         <h2 className="col-span-full text-lg text-gray-700">
           <strong className="font-semibold">{filteredEvents.length}</strong>{' '}
           events found.
         </h2>
         {paginatedEvents.map((events, index) => (
-          <div
+          <Link
+            to={getEventPath(events)}
             key={index}
-            className="transform rounded-lg border bg-light/30 p-4 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lg md:p-6"
+            className="group transform rounded-lg border bg-light/30 p-4 shadow-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-lg md:p-6"
           >
             <div className="flex items-center justify-between">
               <h2 className="text-xl font-semibold text-gray-700">
                 {events.title}
               </h2>
               <span className="text-sm text-gray-500">
-                {new Date(events.date).toDateString()}
+                {formatEventDate(events.date)}
               </span>
             </div>
             {/* <hr className="my-3 border-primary/20" /> */}
@@ -145,13 +132,8 @@ const EventsPage: React.FC = () => {
               className="my-4 h-52 w-full rounded-md object-cover md:h-72 xl:h-96"
             />
             <p className="line-clamp-2 text-gray-600">{events.content}</p>
-            <button
-              onClick={() => openModal(events)}
-              className="a-hover-animation mt-4 font-medium text-primary hover:text-blue-700"
-            >
-              Read More
-            </button>
-          </div>
+            <ReadMoreLink to={getEventPath(events)} value="Read More" />
+          </Link>
         ))}
       </div>
 
@@ -171,33 +153,6 @@ const EventsPage: React.FC = () => {
           </button>
         ))}
       </div>
-
-      {/* Modal */}
-      {expandedEvent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-500">
-          <div className="relative max-h-[90vh] w-[90%] max-w-2xl animate-fade-in-down overflow-y-auto rounded-lg bg-white p-5 md:w-full md:p-8">
-            <div className="space-y-4">
-              <h2 className="text-base font-semibold md:text-2xl">
-                {expandedEvent.title}
-              </h2>
-              <hr />
-              <p className="text-sm text-gray-700 md:text-base">
-                {expandedEvent.content}
-              </p>
-              <p className="text-gray-500">
-                Date: {new Date(expandedEvent.date).toDateString()}
-              </p>
-              <SmallGallery images={expandedEvent.images} />
-            </div>
-            <button
-              onClick={closeModal}
-              className="absolute right-5 top-6 text-base text-dark"
-            >
-              <TfiClose />
-            </button>
-          </div>
-        </div>
-      )}
     </main>
   );
 };

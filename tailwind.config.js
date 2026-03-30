@@ -15,6 +15,7 @@ export default {
       colors: {
         dark: '#1a1a1a',
         light: '#e4f2f7',
+        'red-light': '#f7e4e4',
         primary: '#2980b9',
       },
       screens: {
