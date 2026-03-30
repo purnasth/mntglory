@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import LightGallery from 'lightgallery/react';
 import lgZoom from 'lightgallery/plugins/zoom';
@@ -14,6 +14,7 @@ import 'lightgallery/css/lg-fullscreen.css';
 
 import api from '../utils/api';
 import { useAuth } from '../context/AuthContext';
+import { getAllCategories } from '../constants/enums';
 
 interface ImageData {
   id: number;
@@ -28,10 +29,12 @@ interface GalleryProps {
 
 const Gallery: React.FC<GalleryProps> = ({ limit }) => {
   const { isAuthenticated } = useAuth();
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const activeCategory = searchParams.get('category') || 'All';
   const [isTransitioning, setIsTransitioning] = useState(false);
   const galleryRef = useRef<HTMLDivElement>(null);
 
+  // Fetch all images once (for building the category filter list)
   const { data: allImages = [], isLoading: allLoading } = useQuery<ImageData[]>(
     {
       queryKey: ['gallery-all'],
@@ -43,7 +46,8 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
     },
   );
 
-  const { data: filteredFromApi = [], isLoading: filteredLoading } = useQuery<
+  // Fetch images based on active category query param
+  const { data: filteredImages = [], isLoading: filteredLoading } = useQuery<
     ImageData[]
   >({
     queryKey: ['gallery', activeCategory],
@@ -56,16 +60,18 @@ const Gallery: React.FC<GalleryProps> = ({ limit }) => {
     staleTime: 1000 * 60 * 5,
   });
 
-  const galleryImages = activeCategory === 'All' ? allImages : filteredFromApi;
+  const galleryImages = activeCategory === 'All' ? allImages : filteredImages;
 
-  const categories = [
-    'All',
-    ...new Set(allImages.map((image) => image.category)),
-  ];
+  const categories = getAllCategories();
 
   const handleCategoryClick = (category: string) => {
     setIsTransitioning(true);
-    setActiveCategory(category);
+
+    if (category === 'All') {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category });
+    }
 
     setTimeout(() => {
       setIsTransitioning(false);

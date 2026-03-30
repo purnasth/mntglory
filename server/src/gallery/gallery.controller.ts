@@ -14,13 +14,14 @@ import { diskStorage } from 'multer';
 import { GalleryService } from './gallery.service';
 import { CreateGalleryDto } from './dto/create-gallery.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { GalleryCategory } from './gallery-category.enum';
 
 @Controller('gallery')
 export class GalleryController {
   constructor(private readonly galleryService: GalleryService) {}
 
   @Get()
-  findAll(@Query('category') category?: string) {
+  findAll(@Query('category') category?: GalleryCategory) {
     return this.galleryService.findAll(category);
   }
 

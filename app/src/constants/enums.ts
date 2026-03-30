@@ -7,6 +7,7 @@ export enum EventCategory {
   MUSIC = 'Music',
   EDUCATIONAL = 'Educational',
   CULTURAL = 'Cultural',
+  OTHER = 'Other',
 }
 
 // Helper function to get all category values as an array
