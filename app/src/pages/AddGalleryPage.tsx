@@ -109,7 +109,7 @@ const AddGalleryPage: React.FC = () => {
         headers: { 'Content-Type': 'multipart/form-data' },
       });
       toast.success('Image added to gallery!');
-      await queryClient.invalidateQueries({ queryKey: ['gallery-all'] });
+      await queryClient.invalidateQueries({ queryKey: ['gallery'] });
       reset();
       removeFile();
       navigate('/gallery');

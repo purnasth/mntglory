@@ -129,44 +129,53 @@ The token expires in **7 days**.
 
 ### `GET /api/gallery`
 
-Retrieve all gallery images. Optionally filter by category using a query parameter.
+Retrieve gallery images with cursor-based pagination. Optionally filter by category.
 
 **Query Parameters**
 
-| Param      | Type   | Required | Description                          |
-| ---------- | ------ | -------- | ------------------------------------ |
-| `category` | string | No       | Filter images by exact category name |
+| Param      | Type   | Required | Default | Description                                                                                               |
+| ---------- | ------ | -------- | ------- | --------------------------------------------------------------------------------------------------------- |
+| `category` | string | No       | —       | Filter by category (`Arts`, `Science`, `Programs`, `Sports`, `Music`, `Educational`, `Cultural`, `Other`) |
+| `cursor`   | number | No       | —       | ID of the last item from the previous page (for pagination)                                               |
+| `limit`    | number | No       | `12`    | Number of items per page                                                                                  |
 
 **Example Requests**
 
 ```
 GET /api/gallery
-GET /api/gallery?category=Education
-GET /api/gallery?category=Sport
+GET /api/gallery?category=Sports
+GET /api/gallery?limit=6
+GET /api/gallery?category=Arts&cursor=25&limit=12
 ```
 
 **Response** `200`
 
 ```json
-[
-  {
-    "id": 1,
-    "url": "https://example.com/images/gallery/photo.webp",
-    "alt": "Art Competition",
-    "category": "Education",
-    "createdAt": "2026-03-31T12:00:00.000Z"
-  },
-  {
-    "id": 2,
-    "url": "https://example.com/images/gallery/event.webp",
-    "alt": "Parents Day",
-    "category": "Events",
-    "createdAt": "2026-03-31T11:00:00.000Z"
-  }
-]
+{
+  "data": [
+    {
+      "id": 30,
+      "url": "/uploads/gallery/1711900200000-123456789.webp",
+      "alt": "Art Competition",
+      "category": "Arts",
+      "createdAt": "2026-03-31T12:00:00.000Z"
+    },
+    {
+      "id": 29,
+      "url": "/uploads/gallery/1711900100000-987654321.webp",
+      "alt": "Parents Day",
+      "category": "Cultural",
+      "createdAt": "2026-03-31T11:00:00.000Z"
+    }
+  ],
+  "nextCursor": 18
+}
 ```
 
-Returns an empty array `[]` if no images match the filter.
+- `data` — Array of gallery images (ordered by newest first).
+- `nextCursor` — ID to pass as `?cursor=` for the next page. `null` when there are no more items.
+
+Returns `{ "data": [], "nextCursor": null }` if no images match.
 
 ---
 
@@ -190,11 +199,11 @@ Authorization: Bearer <accessToken>
 
 **Form Data Fields**
 
-| Field      | Type   | Required | Description                              |
-| ---------- | ------ | -------- | ---------------------------------------- |
-| `image`    | file   | Yes      | Image file (PNG, JPG, WEBP). Max 5 MB    |
-| `alt`      | string | Yes      | Alt text describing the image            |
-| `category` | string | Yes      | Category (e.g. Education, Events, Sport) |
+| Field      | Type   | Required | Description                                                                                  |
+| ---------- | ------ | -------- | -------------------------------------------------------------------------------------------- |
+| `image`    | file   | Yes      | Image file (PNG, JPG, WEBP). Max 10 MB raw (auto-compressed to WebP)                         |
+| `alt`      | string | Yes      | Alt text describing the image                                                                |
+| `category` | string | Yes      | One of: `Arts`, `Science`, `Programs`, `Sports`, `Music`, `Educational`, `Cultural`, `Other` |
 
 **Example Request (cURL)**
 

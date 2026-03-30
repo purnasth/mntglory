@@ -13,12 +13,27 @@ const QUALITY = 80;
 export class GalleryService {
   constructor(private prisma: PrismaService) {}
 
-  async findAll(category?: string) {
+  async findAll(category?: string, cursor?: number, limit = 12) {
     const where = category ? { category } : {};
-    return this.prisma.galleryImage.findMany({
+    const query: Parameters<typeof this.prisma.galleryImage.findMany>[0] = {
       where,
       orderBy: { createdAt: 'desc' },
-    });
+      take: limit + 1, // fetch one extra to check hasMore
+    };
+
+    if (cursor) {
+      query.cursor = { id: cursor };
+      query.skip = 1; // skip the cursor item itself
+    }
+
+    const items = await this.prisma.galleryImage.findMany(query);
+    const hasMore = items.length > limit;
+    if (hasMore) items.pop(); // remove the extra item
+
+    return {
+      data: items,
+      nextCursor: hasMore ? items[items.length - 1].id : null,
+    };
   }
 
   async create(dto: CreateGalleryDto, file: Express.Multer.File) {

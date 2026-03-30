@@ -21,8 +21,16 @@ export class GalleryController {
   constructor(private readonly galleryService: GalleryService) {}
 
   @Get()
-  findAll(@Query('category') category?: GalleryCategory) {
-    return this.galleryService.findAll(category);
+  findAll(
+    @Query('category') category?: GalleryCategory,
+    @Query('cursor') cursor?: string,
+    @Query('limit') limit?: string,
+  ) {
+    return this.galleryService.findAll(
+      category,
+      cursor ? Number(cursor) : undefined,
+      limit ? Number(limit) : undefined,
+    );
   }
 
   @UseGuards(JwtAuthGuard)
