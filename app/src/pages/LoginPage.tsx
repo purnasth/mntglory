@@ -4,8 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import axios from 'axios';
+import api from '../utils/api';
 import { useAuth } from '../context/AuthContext';
 import logo from '../assets/logo.webp';
 
@@ -19,10 +20,8 @@ interface LoginFormData {
   password: string;
 }
 
-const API_URL = 'http://localhost:3000/api';
-
 const LoginPage: React.FC = () => {
-  const { login, isAdmin } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -34,16 +33,15 @@ const LoginPage: React.FC = () => {
     resolver: yupResolver(schema),
   });
 
-  if (isAdmin) {
-    navigate('/', { replace: true });
-    return null;
+  if (isAuthenticated) {
+    return <Navigate to="/" replace />;
   }
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      const response = await axios.post(`${API_URL}/auth/login`, data);
-      const { accessToken, user } = response.data;
-      login(accessToken, user);
+      const response = await api.post('/auth/login', data);
+      const { user } = response.data;
+      login(user);
       toast.success('Login successful!');
       setTimeout(() => navigate('/'), 500);
     } catch (error) {
@@ -136,7 +134,6 @@ const LoginPage: React.FC = () => {
           </form>
         </div>
       </main>
-      <ToastContainer />
     </>
   );
 };

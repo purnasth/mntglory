@@ -20,6 +20,8 @@ import EventDetailsPage from './pages/EventDetailsPage';
 import TeamPage from './pages/TeamPage';
 import Error404 from './pages/Error404';
 import LoginPage from './pages/LoginPage';
+import ProfilePage from './pages/ProfilePage';
+import { ToastContainer } from 'react-toastify';
 
 const App: React.FC = () => {
   useLenisScroll();
@@ -38,10 +40,12 @@ const App: React.FC = () => {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/team" element={<TeamPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
       </Router>
+      <ToastContainer />
     </>
   );
 };
