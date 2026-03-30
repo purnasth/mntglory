@@ -1,0 +1,4 @@
+packages:
+  - app
+  - server
+onlyBuiltDependencies: '["@prisma/client", "@prisma/engines", "prisma", "esbuild", "@swc/core", "@nestjs/core"]'
