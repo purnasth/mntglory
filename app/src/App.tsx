@@ -19,6 +19,7 @@ import EventsPage from './pages/EventsPage';
 import EventDetailsPage from './pages/EventDetailsPage';
 import TeamPage from './pages/TeamPage';
 import Error404 from './pages/Error404';
+import LoginPage from './pages/LoginPage';
 
 const App: React.FC = () => {
   useLenisScroll();
@@ -36,6 +37,7 @@ const App: React.FC = () => {
           <Route path="/events/:eventTitle" element={<EventDetailsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/team" element={<TeamPage />} />
+          <Route path="/login" element={<LoginPage />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
