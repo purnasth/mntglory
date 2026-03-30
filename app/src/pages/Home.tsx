@@ -76,7 +76,7 @@ const Home = () => {
         <h3 className="mb-8 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:mb-10 md:text-4xl lg:text-6xl lg:leading-snug xl:ml-8">
           {ourTeamContents.heading}
         </h3>
-        <MasterContent content={ourTeamContents} />
+        <MasterContent content={ourTeamContents} limit={8} />
         <div className="-z-10 flex -translate-y-4 flex-col items-center justify-center">
           <div className="mx-auto h-28 w-px bg-primary/50" />
           <Link

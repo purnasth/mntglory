@@ -23,3 +23,22 @@ model GalleryImage {
   category  String
   createdAt DateTime @default(now())
 }
+
+model Notice {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  category  String
+  date      DateTime @default(now())
+  createdAt DateTime @default(now())
+}
+
+model TeamMember {
+  id          Int      @id @default(autoincrement())
+  name        String
+  position    String
+  image       String   @default("")
+  description String
+  socials     Json     @default("[]")
+  createdAt   DateTime @default(now())
+}
