@@ -3,7 +3,10 @@ import { TbSortDescending } from 'react-icons/tb';
 import { FiSearch } from 'react-icons/fi';
 import { BiCategoryAlt } from 'react-icons/bi';
 import { TfiClose } from 'react-icons/tfi';
+import { Link } from 'react-router-dom';
+import { IoAddCircleOutline } from 'react-icons/io5';
 import useFetchAPI from '../hooks/useFetchAPI';
+import { useAuth } from '../context/AuthContext';
 
 type Notice = {
   title: string;
@@ -23,11 +26,7 @@ const categories = [
 const itemsPerPage = 18;
 
 const Notice: React.FC = () => {
-  const {
-    data: noticeContents,
-    isLoading,
-    isError,
-  } = useFetchAPI<Notice[]>('notices', '/api/notice.json');
+  const { isAuthenticated } = useAuth();
 
   const [expandedNotice, setExpandedNotice] = useState<Notice | null>(null);
   const [filter, setFilter] = useState<string>('');
@@ -35,23 +34,27 @@ const Notice: React.FC = () => {
   const [category, setCategory] = useState<string>('All');
   const [currentPage, setCurrentPage] = useState<number>(1);
 
+  const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+  const {
+    data: noticeContents,
+    isLoading,
+    isError,
+  } = useFetchAPI<Notice[]>(
+    `notices-${sortBy}`,
+    `${apiBase}/notice?sortBy=${sortBy}`,
+  );
+
   // Filter and sort logic
   const filteredNotices =
-    noticeContents
-      ?.filter((notice) => {
-        const matchesCategory =
-          category === 'All' || notice.category === category;
-        const matchesSearch =
-          notice.title?.toLowerCase().includes(filter.toLowerCase()) ||
-          notice.content?.toLowerCase().includes(filter.toLowerCase());
+    noticeContents?.filter((notice) => {
+      const matchesCategory =
+        category === 'All' || notice.category === category;
+      const matchesSearch =
+        notice.title?.toLowerCase().includes(filter.toLowerCase()) ||
+        notice.content?.toLowerCase().includes(filter.toLowerCase());
 
-        return matchesCategory && matchesSearch; // Check conditions
-      })
-      .sort((a, b) =>
-        sortBy === 'date'
-          ? new Date(a.date).getTime() - new Date(b.date).getTime()
-          : a.title.localeCompare(b.title),
-      ) || [];
+      return matchesCategory && matchesSearch; // Check conditions
+    }) || [];
 
   // Pagination logic
   const totalPages = Math.ceil(filteredNotices.length / itemsPerPage);
@@ -71,9 +74,20 @@ const Notice: React.FC = () => {
 
   return (
     <main className="py-8 md:py-16">
-      <h1 className="mb-4 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:mb-12 md:text-4xl lg:text-6xl lg:leading-snug">
-        Find all the notices about the events, Announcements & Occasions
-      </h1>
+      <div className="mb-4 flex items-start justify-between gap-4 md:mb-12">
+        <h1 className="max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:text-4xl lg:text-6xl lg:leading-snug">
+          Find all the notices about the events, Announcements & Occasions
+        </h1>
+        {isAuthenticated && (
+          <Link
+            to="/notice/add"
+            className="flex shrink-0 items-center gap-2 rounded-xl border border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-light transition-colors duration-300 hover:bg-light hover:text-primary md:px-6 md:text-base"
+          >
+            <IoAddCircleOutline className="text-lg" />
+            Add Notice
+          </Link>
+        )}
+      </div>
 
       {/* Search, Sort, and Category Filters */}
       <div className="sticky top-14 z-30 mb-6 flex flex-col gap-2 bg-white py-2 md:top-16 md:flex-row md:items-center md:justify-between md:gap-4 md:py-4">
@@ -171,7 +185,9 @@ const Notice: React.FC = () => {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm transition-opacity duration-500">
           <div className="relative w-[90%] max-w-2xl animate-fade-in-down rounded-lg bg-white p-6 md:w-full md:p-8">
             <div className="space-y-4">
-              <h2 className="text-xl md:text-2xl font-semibold">{expandedNotice.title}</h2>
+              <h2 className="text-xl font-semibold md:text-2xl">
+                {expandedNotice.title}
+              </h2>
               <hr />
               <p className="text-gray-700">{expandedNotice.content}</p>
               <p className="text-gray-500">

@@ -235,3 +235,101 @@ The `url` field is a server-relative path. Access the image at `<server-base>/<u
 | ------ | ----------------- | ----------------------------- |
 | `400`  | Validation errors | Invalid/missing fields        |
 | `401`  | Unauthorized      | Missing or invalid auth token |
+
+---
+
+## Notice
+
+### `GET /api/notice`
+
+Retrieve all notices. Optionally filter by category.
+
+**Query Parameters**
+
+| Param      | Type   | Required | Default | Description                                                                 |
+| ---------- | ------ | -------- | ------- | --------------------------------------------------------------------------- |
+| `category` | string | No       | —       | Filter by category (`Events`, `Announcements`, `Exam`, `Holiday`, `Others`) |
+
+**Example Requests**
+
+```
+GET /api/notice
+GET /api/notice?category=Exam
+```
+
+**Response** `200`
+
+```json
+[
+  {
+    "id": 1,
+    "title": "Annual Exam Schedule",
+    "content": "The annual examinations will begin from April 15...",
+    "category": "Exam",
+    "date": "2026-03-31T00:00:00.000Z",
+    "createdAt": "2026-03-31T14:00:00.000Z"
+  }
+]
+```
+
+Returns an empty array `[]` if no notices match.
+
+---
+
+### `POST /api/notice`
+
+Create a new notice. **Requires authentication** (JWT via httpOnly cookie or Bearer token).
+
+**Request Headers**
+
+```
+Content-Type: application/json
+Cookie: accessToken=<jwt>
+```
+
+_or_
+
+```
+Content-Type: application/json
+Authorization: Bearer <accessToken>
+```
+
+**Request Body**
+
+| Field      | Type   | Required | Description                                                    |
+| ---------- | ------ | -------- | -------------------------------------------------------------- |
+| `title`    | string | Yes      | Title of the notice                                            |
+| `content`  | string | Yes      | Full content/body of the notice                                |
+| `category` | string | Yes      | One of: `Events`, `Announcements`, `Exam`, `Holiday`, `Others` |
+| `date`     | string | No       | ISO date string (defaults to current date if omitted)          |
+
+**Example Request**
+
+```json
+{
+  "title": "Annual Exam Schedule",
+  "content": "The annual examinations will begin from April 15 and end on April 30.",
+  "category": "Exam",
+  "date": "2026-04-01"
+}
+```
+
+**Response** `201`
+
+```json
+{
+  "id": 1,
+  "title": "Annual Exam Schedule",
+  "content": "The annual examinations will begin from April 15 and end on April 30.",
+  "category": "Exam",
+  "date": "2026-04-01T00:00:00.000Z",
+  "createdAt": "2026-03-31T14:30:00.000Z"
+}
+```
+
+**Error Responses**
+
+| Status | Message           | When                          |
+| ------ | ----------------- | ----------------------------- |
+| `400`  | Validation errors | Invalid/missing fields        |
+| `401`  | Unauthorized      | Missing or invalid auth token |
