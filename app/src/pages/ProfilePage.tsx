@@ -7,8 +7,10 @@ import logo from '../assets/logo.webp';
 import { useAuth } from '../context/AuthContext';
 
 const ProfilePage: React.FC = () => {
-  const { user, isAuthenticated, logout } = useAuth();
+  const { user, isAuthenticated, loading, logout } = useAuth();
   const navigate = useNavigate();
+
+  if (loading) return null;
 
   if (!isAuthenticated || !user) {
     return <Navigate to="/login" replace />;

@@ -122,3 +122,116 @@ Authorization: Bearer <accessToken>
 ```
 
 The token expires in **7 days**.
+
+---
+
+## Gallery
+
+### `GET /api/gallery`
+
+Retrieve gallery images with cursor-based pagination. Optionally filter by category.
+
+**Query Parameters**
+
+| Param      | Type   | Required | Default | Description                                                                                               |
+| ---------- | ------ | -------- | ------- | --------------------------------------------------------------------------------------------------------- |
+| `category` | string | No       | —       | Filter by category (`Arts`, `Science`, `Programs`, `Sports`, `Music`, `Educational`, `Cultural`, `Other`) |
+| `cursor`   | number | No       | —       | ID of the last item from the previous page (for pagination)                                               |
+| `limit`    | number | No       | `12`    | Number of items per page                                                                                  |
+
+**Example Requests**
+
+```
+GET /api/gallery
+GET /api/gallery?category=Sports
+GET /api/gallery?limit=6
+GET /api/gallery?category=Arts&cursor=25&limit=12
+```
+
+**Response** `200`
+
+```json
+{
+  "data": [
+    {
+      "id": 30,
+      "url": "/uploads/gallery/1711900200000-123456789.webp",
+      "alt": "Art Competition",
+      "category": "Arts",
+      "createdAt": "2026-03-31T12:00:00.000Z"
+    },
+    {
+      "id": 29,
+      "url": "/uploads/gallery/1711900100000-987654321.webp",
+      "alt": "Parents Day",
+      "category": "Cultural",
+      "createdAt": "2026-03-31T11:00:00.000Z"
+    }
+  ],
+  "nextCursor": 18
+}
+```
+
+- `data` — Array of gallery images (ordered by newest first).
+- `nextCursor` — ID to pass as `?cursor=` for the next page. `null` when there are no more items.
+
+Returns `{ "data": [], "nextCursor": null }` if no images match.
+
+---
+
+### `POST /api/gallery`
+
+Upload a new image to the gallery. **Requires authentication** (JWT via httpOnly cookie or Bearer token).
+
+**Request Headers**
+
+```
+Content-Type: multipart/form-data
+Cookie: accessToken=<jwt>
+```
+
+_or_
+
+```
+Content-Type: multipart/form-data
+Authorization: Bearer <accessToken>
+```
+
+**Form Data Fields**
+
+| Field      | Type   | Required | Description                                                                                  |
+| ---------- | ------ | -------- | -------------------------------------------------------------------------------------------- |
+| `image`    | file   | Yes      | Image file (PNG, JPG, WEBP). Max 10 MB raw (auto-compressed to WebP)                         |
+| `alt`      | string | Yes      | Alt text describing the image                                                                |
+| `category` | string | Yes      | One of: `Arts`, `Science`, `Programs`, `Sports`, `Music`, `Educational`, `Cultural`, `Other` |
+
+**Example Request (cURL)**
+
+```bash
+curl -X POST http://localhost:3000/api/gallery \
+  -H "Cookie: accessToken=<jwt>" \
+  -F "image=@/path/to/photo.webp" \
+  -F "alt=Annual Sports Day" \
+  -F "category=Sport"
+```
+
+**Response** `201`
+
+```json
+{
+  "id": 3,
+  "url": "/uploads/gallery/1711900200000-123456789.webp",
+  "alt": "Annual Sports Day",
+  "category": "Sport",
+  "createdAt": "2026-03-31T14:30:00.000Z"
+}
+```
+
+The `url` field is a server-relative path. Access the image at `<server-base>/<url>`.
+
+**Error Responses**
+
+| Status | Message           | When                          |
+| ------ | ----------------- | ----------------------------- |
+| `400`  | Validation errors | Invalid/missing fields        |
+| `401`  | Unauthorized      | Missing or invalid auth token |
