@@ -1,15 +1,12 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '',
+  baseURL: import.meta.env.VITE_API_URL || '/api',
   headers: {
     'Content-Type': 'application/json',
   },
+  withCredentials: true,
 });
-
-interface ApiResponse {
-  data: any;
-}
 
 interface ApiError {
   response?: {
@@ -21,7 +18,9 @@ interface ApiError {
 
 export const submitForm = async (endpoint: string, data: any): Promise<any> => {
   try {
-    const response: ApiResponse = await api.post(endpoint, data);
+    const response = await axios.post(endpoint, data, {
+      headers: { 'Content-Type': 'application/json' },
+    });
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

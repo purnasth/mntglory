@@ -49,7 +49,7 @@ const OffersEnquiry: React.FC = ({}) => {
     }
 
     try {
-      await submitForm('/enquiry.php', {
+      await submitForm('#', {
         ...data,
         recaptchaToken,
       });
@@ -67,7 +67,7 @@ const OffersEnquiry: React.FC = ({}) => {
   return (
     <>
       <div
-        className={`transition-700 relative w-full transform rounded-xl border bg-light/30 p-5 md:p-12 shadow-md`}
+        className={`transition-700 relative w-full transform rounded-xl border bg-light/30 p-5 shadow-md md:p-12`}
       >
         {/* <div className="space-y-2">
           <h3 className="font-body text-xl font-bold">Enquiry Form</h3>
@@ -137,7 +137,6 @@ const OffersEnquiry: React.FC = ({}) => {
           </p>
         </form>
       </div>
-      <ToastContainer />
     </>
   );
 };

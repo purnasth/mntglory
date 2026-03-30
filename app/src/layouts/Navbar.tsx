@@ -5,6 +5,7 @@ import SideNav from '../components/SideNav';
 
 import { Link, NavLink } from 'react-router-dom';
 import useFetchAPI from '../hooks/useFetchAPI';
+import { useAuth } from '../context/AuthContext';
 
 interface NavLinksProps {
   id: number;
@@ -14,6 +15,7 @@ interface NavLinksProps {
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const { isAuthenticated } = useAuth();
 
   const {
     data: navLinks = [],
@@ -67,7 +69,7 @@ const Navbar: React.FC = () => {
             />
           </Link>
 
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-4 md:gap-8">
             <ul className="site-menu hidden items-center gap-8 md:flex">
               {navLinks.map((link) => (
                 <li key={link.id} className="group">
@@ -83,6 +85,22 @@ const Navbar: React.FC = () => {
                 </li>
               ))}
             </ul>
+            <NavLink
+              to={isAuthenticated ? '/profile' : '/login'}
+              className={({ isActive }) =>
+                `transition-300 flex size-8 items-center justify-center rounded-full text-xs font-semibold ${
+                  isActive
+                    ? 'bg-primary text-light'
+                    : isAuthenticated
+                      ? 'bg-primary/10 text-primary hover:bg-primary hover:text-light'
+                      : 'border border-dark/20 text-dark/60 hover:border-primary hover:text-primary'
+                }`
+              }
+              title={isAuthenticated ? 'My Profile' : 'Login'}
+              aria-label={isAuthenticated ? 'My Profile' : 'Login'}
+            >
+              <span aria-hidden="true">{isAuthenticated ? '✓' : '→'}</span>
+            </NavLink>
             {/* <div className="md:hidden"> */}
             <SideNav navLinks={navLinks} />
             {/* </div> */}
