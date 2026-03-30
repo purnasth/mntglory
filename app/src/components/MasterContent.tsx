@@ -11,10 +11,12 @@ interface MasterContentProps {
       description: string;
     }[];
   };
+  limit?: number;
 }
 
-const MasterContent: React.FC<MasterContentProps> = ({ content }) => {
-  const { members } = content;
+const MasterContent: React.FC<MasterContentProps> = ({ content, limit }) => {
+  const members = limit ? content.members.slice(0, limit) : content.members;
+
   return (
     <>
       <div

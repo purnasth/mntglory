@@ -333,3 +333,115 @@ Authorization: Bearer <accessToken>
 | ------ | ----------------- | ----------------------------- |
 | `400`  | Validation errors | Invalid/missing fields        |
 | `401`  | Unauthorized      | Missing or invalid auth token |
+
+---
+
+## Team
+
+### `GET /api/team`
+
+Retrieve all team members, ordered by creation date (oldest first).
+
+**Example Request**
+
+```
+GET /api/team
+```
+
+**Response** `200`
+
+```json
+[
+  {
+    "id": 1,
+    "name": "Gopal Acharya",
+    "position": "Founder/Principal",
+    "image": "https://mntglory.saksham.edu.np/images/07.webp",
+    "description": "I, as the founder and principal of Mount Glory...",
+    "socials": [
+      { "title": "Facebook", "link": "https://facebook.com/..." },
+      { "title": "Email", "link": "mailto:info@mntglory.edu.np" },
+      { "title": "LinkedIn", "link": "https://linkedin.com/in/..." }
+    ],
+    "createdAt": "2026-03-31T14:00:00.000Z"
+  }
+]
+```
+
+Returns an empty array `[]` if no team members exist.
+
+---
+
+### `POST /api/team`
+
+Add a new team member. **Requires authentication** (JWT via httpOnly cookie or Bearer token).
+
+**Request Headers**
+
+```
+Content-Type: application/json
+Cookie: accessToken=<jwt>
+```
+
+_or_
+
+```
+Content-Type: application/json
+Authorization: Bearer <accessToken>
+```
+
+**Request Body**
+
+| Field         | Type   | Required | Description                                                            |
+| ------------- | ------ | -------- | ---------------------------------------------------------------------- |
+| `name`        | string | Yes      | Full name of the team member                                           |
+| `position`    | string | Yes      | Role/position (e.g. "HOD - Science")                                   |
+| `image`       | string | No       | URL to profile image (defaults to empty string)                        |
+| `description` | string | Yes      | Bio or description of the team member                                  |
+| `socials`     | array  | No       | Array of social links, each with `title` and `link` (defaults to `[]`) |
+
+**Social Link Object**
+
+| Field   | Type   | Required | Description                                       |
+| ------- | ------ | -------- | ------------------------------------------------- |
+| `title` | string | Yes      | Platform name: `Facebook`, `LinkedIn`, or `Email` |
+| `link`  | string | Yes      | URL or email link                                 |
+
+**Example Request**
+
+```json
+{
+  "name": "Gopal Acharya",
+  "position": "Founder/Principal",
+  "image": "https://mntglory.saksham.edu.np/images/07.webp",
+  "description": "I, as the founder and principal of Mount Glory...",
+  "socials": [
+    { "title": "Facebook", "link": "https://facebook.com/gopal" },
+    { "title": "Email", "link": "mailto:gopal@mntglory.edu.np" }
+  ]
+}
+```
+
+**Response** `201`
+
+```json
+{
+  "id": 1,
+  "name": "Gopal Acharya",
+  "position": "Founder/Principal",
+  "image": "https://mntglory.saksham.edu.np/images/07.webp",
+  "description": "I, as the founder and principal of Mount Glory...",
+  "socials": [
+    { "title": "Facebook", "link": "https://facebook.com/gopal" },
+    { "title": "Email", "link": "mailto:gopal@mntglory.edu.np" }
+  ],
+  "createdAt": "2026-03-31T14:30:00.000Z"
+}
+```
+
+**Error Responses**
+
+| Status | Message           | When                          |
+| ------ | ----------------- | ----------------------------- |
+| `400`  | Validation errors | Invalid/missing fields        |
+| `401`  | Unauthorized      | Missing or invalid auth token |

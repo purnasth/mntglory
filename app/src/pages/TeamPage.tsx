@@ -2,15 +2,26 @@ import React, { useState } from 'react';
 import { IoIosMail } from 'react-icons/io';
 import { LiaLinkedinIn } from 'react-icons/lia';
 import { BiLogoFacebook } from 'react-icons/bi';
+import { IoAddCircleOutline } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 import logo from '../assets/logo.webp';
 import { TeamMember } from '../interfaces/types';
-import { ourTeamContents } from '../constants/data';
 
 import Modal from '../components/ui/Modal';
+import useFetchAPI from '../hooks/useFetchAPI';
+import { useAuth } from '../context/AuthContext';
 
 const TeamPage: React.FC = () => {
+  const { isAuthenticated } = useAuth();
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
+  const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+  const {
+    data: members,
+    isLoading,
+    isError,
+  } = useFetchAPI<TeamMember[]>('team', `${apiBase}/team`);
 
   const getSocialIcon = (title: string) => {
     switch (title.toLowerCase()) {
@@ -33,19 +44,34 @@ const TeamPage: React.FC = () => {
     setSelectedMember(null);
   };
 
+  if (isLoading) return null;
+  if (isError) {
+    console.error(isError);
+    return null;
+  }
+
   return (
     <>
       <main className="py-8 md:py-16">
         {/* Header */}
-        <header className="mb-12">
+        <header className="mb-12 flex items-start justify-between gap-4">
           <h1 className="mb-8 max-w-5xl text-left text-xl capitalize leading-snug sm:text-2xl md:mb-10 md:text-4xl lg:text-6xl lg:leading-snug">
-            {ourTeamContents.heading}
+            Meet the MGS Leaders' who are dedicated to your child's success.
           </h1>
+          {isAuthenticated && (
+            <Link
+              to="/team/add"
+              className="flex shrink-0 items-center gap-2 rounded-xl border border-primary bg-primary px-4 py-2.5 text-sm font-semibold text-light transition-colors duration-300 hover:bg-light hover:text-primary md:px-6 md:text-base"
+            >
+              <IoAddCircleOutline className="text-lg" />
+              Add Member
+            </Link>
+          )}
         </header>
 
         <section>
           <div className="w-full columns-1 gap-2 sm:columns-2 md:gap-4 lg:columns-3 xl:columns-3">
-            {ourTeamContents.members.map((member) => (
+            {(members || []).map((member) => (
               <div
                 key={member.id}
                 className="group mb-4 origin-center cursor-pointer space-y-4 overflow-hidden rounded-xl bg-light p-4 shadow transition-all duration-300 ease-linear hover:shadow-lg md:space-y-6 md:p-6"

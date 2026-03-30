@@ -4,6 +4,7 @@ import { PrismaModule } from './prisma/prisma.module';
 import { AuthModule } from './auth/auth.module';
 import { GalleryModule } from './gallery/gallery.module';
 import { NoticeModule } from './notice/notice.module';
+import { TeamModule } from './team/team.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -14,6 +15,7 @@ import { AppService } from './app.service';
     AuthModule,
     GalleryModule,
     NoticeModule,
+    TeamModule,
   ],
   controllers: [AppController],
   providers: [AppService],

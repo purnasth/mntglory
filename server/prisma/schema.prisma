@@ -32,3 +32,13 @@ model Notice {
   date      DateTime @default(now())
   createdAt DateTime @default(now())
 }
+
+model TeamMember {
+  id          Int      @id @default(autoincrement())
+  name        String
+  position    String
+  image       String   @default("")
+  description String
+  socials     Json     @default("[]")
+  createdAt   DateTime @default(now())
+}

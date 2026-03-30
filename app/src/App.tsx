@@ -23,6 +23,7 @@ import LoginPage from './pages/LoginPage';
 import ProfilePage from './pages/ProfilePage';
 import AddGalleryPage from './pages/AddGalleryPage';
 import AddNoticePage from './pages/AddNoticePage';
+import AddTeamPage from './pages/AddTeamPage';
 import { ToastContainer } from 'react-toastify';
 
 const App: React.FC = () => {
@@ -45,6 +46,7 @@ const App: React.FC = () => {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/gallery/add" element={<AddGalleryPage />} />
           <Route path="/notice/add" element={<AddNoticePage />} />
+          <Route path="/team/add" element={<AddTeamPage />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
         <Footer />
