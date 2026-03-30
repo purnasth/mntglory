@@ -1,3 +1,5 @@
+# Mount Glory English Boarding High School (deployed-app version)
+
 ## This is a documentation file for the "Mount Glory" project.
 
 ## Project Description
